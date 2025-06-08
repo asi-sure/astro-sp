@@ -54,7 +54,8 @@ public class SecurityConfig {
                     corsConfig.setAllowedOrigins(Arrays.asList(
 //                            "http://localhost:8100", // Para desarrollo local
                             "http://localhost:4200", // Para desarrollo local
-                            "https://tallerweb.uajms.edu.bo", // Para swagger
+//                            "https://tallerweb.uajms.edu.bo", // Para swagger
+                            "https://astro-sp.onrender.com", // Para swagger
                             "https://inspiring-pithivier-5b81f7.netlify.app", // Para tu sitio de Netlify
                             "https://alexpc94.github.io" // Para tu página de GitHub Pages
                     ));
