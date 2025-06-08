@@ -34,7 +34,7 @@ import org.springframework.http.HttpHeaders;
                 ),*/
                 @Server(
                         description = "PROD SERVER",
-                        url = "https://tallerweb.uajms.edu.bo"
+                        url = "https://astro-sp.onrender.com"
                 )
         },
         security = @SecurityRequirement(
