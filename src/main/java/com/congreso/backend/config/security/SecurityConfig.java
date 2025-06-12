@@ -52,7 +52,6 @@ public class SecurityConfig {
                     CorsConfiguration corsConfig = new CorsConfiguration();
 //                    corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                     corsConfig.setAllowedOrigins(Arrays.asList(
-//                            "http://localhost:8100", // Para desarrollo local
                             "http://localhost:4200", // Para desarrollo local
 //                            "https://tallerweb.uajms.edu.bo", // Para swagger
                             "https://astro-sp.onrender.com", // Para swagger

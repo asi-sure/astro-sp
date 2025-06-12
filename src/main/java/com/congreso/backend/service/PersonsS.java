@@ -1,0 +1,15 @@
+package com.congreso.backend.service;
+
+import com.congreso.backend.model.Person;
+import com.congreso.backend.model.Persons;
+import com.congreso.backend.utils.ApiResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+public interface PersonsS {
+
+//    ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
+    ResponseEntity<ApiResponse> findAll(boolean xstatus);
+    ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
+
+}

@@ -1,0 +1,14 @@
+package com.congreso.backend.repository;
+
+import com.congreso.backend.model.Departament;
+import com.congreso.backend.model.Person;
+import com.congreso.backend.model.Persons;
+
+import java.util.List;
+
+public interface PersonsR {
+
+    List<Persons> findAll(boolean xstatus);
+    Long savePersons(Persons person);
+
+}

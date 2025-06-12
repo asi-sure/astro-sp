@@ -39,10 +39,10 @@ public class Persons {
     private String email;
 
     @Size(max = 20)
-    private String gender;
+    private String telephone;
 
     @Size(max = 20)
-    private String telephone;
+    private String gender;
 
     @Size(max = 200)
     private String photo;

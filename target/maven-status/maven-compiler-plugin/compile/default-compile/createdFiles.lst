@@ -1,4 +1,5 @@
 com\congreso\backend\model\dto\RoleDto.class
+com\congreso\backend\repository\PersonsR.class
 com\congreso\backend\service\DepartamentS.class
 com\congreso\backend\service\Impl\PermissionImplS.class
 com\congreso\backend\model\Menu.class
@@ -21,6 +22,7 @@ com\congreso\backend\repository\Impl\RegionImplR.class
 com\congreso\backend\service\PermissionS.class
 com\congreso\backend\model\Role.class
 com\congreso\backend\controller\PersonC.class
+com\congreso\backend\controller\PersonsC.class
 com\congreso\backend\controller\Impl\RoleImplC.class
 com\congreso\backend\service\MenuS.class
 com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
@@ -32,6 +34,7 @@ com\congreso\backend\model\SystemUser$SystemUserBuilder.class
 com\congreso\backend\model\Team.class
 com\congreso\backend\model\SystemUser.class
 com\congreso\backend\service\RolS.class
+com\congreso\backend\controller\Impl\PersonsImplC.class
 com\congreso\backend\utils\CustomResponseBuilder.class
 com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
@@ -44,6 +47,7 @@ com\congreso\backend\model\dto\MenuDto$MenuDtoBuilder.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
 com\congreso\backend\service\Impl\TeamImplS.class
 com\congreso\backend\controller\Impl\RegionImplC.class
+com\congreso\backend\repository\Impl\PersonsImplR.class
 com\congreso\backend\controller\Impl\TeamImplC.class
 com\congreso\backend\exception\util\ApiResponse.class
 com\congreso\backend\controller\Impl\SystemUserImplC.class
@@ -60,6 +64,7 @@ com\congreso\backend\controller\Impl\CityImplC.class
 com\congreso\backend\repository\Impl\SystemUserImplR.class
 com\congreso\backend\controller\RegionC.class
 com\congreso\backend\service\CityS.class
+com\congreso\backend\service\PersonsS.class
 com\congreso\backend\model\Region.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\model\Menu$MenuBuilder.class
@@ -114,6 +119,7 @@ com\congreso\backend\controller\MenuC.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\service\SystemsUserS.class
 com\congreso\backend\repository\Impl\MenuImplR.class
+com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class
 com\congreso\backend\model\City.class
 com\congreso\backend\repository\CityR.class
