@@ -43,6 +43,18 @@ public class PersonsImplR implements PersonsR {
         return db.queryForObject(sqlString, new Object[]{person.getCedula(),person.getName(),person.getFirstName(),person.getSecondName(),person.getEmail(),person.getTelephone(),person.getGender(),person.getPhoto(),person.getDateBirth(),true}, Long.class);
     }
 
+    @Override
+    public boolean update(Persons obj, int id) {
+        String sql =" UPDATE persons "+
+                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telefono=?,gender=?,photo=?,date_birth=? "+
+                    " WHERE id = ?;";
+        return db.update(sql,obj.getCedula(),obj.getName(),obj.getFirstName(),obj.getSecondName(),obj.getEmail(),obj.getTelephone(),obj.getGender(),obj.getPhoto(),obj.getDateBirth(), id) > 0;
+    }
+
+    @Override
+    public boolean verificarCedula(String xcedula, int id) {
+        return false;
+    }
 
 
 }

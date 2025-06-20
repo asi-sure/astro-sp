@@ -69,6 +69,43 @@ public class PersonsImplS implements PersonsS {
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
+    @Override
+    public ResponseEntity<ApiResponse> update(Persons obj, MultipartFile file, int id) {
+        if (file.isEmpty()) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Seleccione un archivo para subir.", 0);
+        }
+        String fileName=generateUniqueFileName(file);
+        obj.setPhoto(photoDir+fileName);
+
+        boolean updated = false;
+        try {
+            //Long idper = personsR.savePersons(person);
+            updated = personsR.update(obj, id);
+
+            // Crear el directorio de uploads si no existe
+            File uploadDir = new File(photoDirectory);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+            // Definir la ruta completa donde se guardará el archivo
+            Path filePath = Paths.get(photoDirectory + fileName);
+            // Guardar el archivo en el sistema de archivos
+            Files.copy(file.getInputStream(), filePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al subir archivo.", updated);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+//
+//        try {
+//            boolean updated = personsR.update(obj, id);
+//            return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+//        } catch (Exception e) {
+//            log.error("update ", e);
+//            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al actualizar datos Personales.", e.getMessage());
+//        }
+    }
+
     public static String generateUniqueFileName(MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
         String fileExtension = "";

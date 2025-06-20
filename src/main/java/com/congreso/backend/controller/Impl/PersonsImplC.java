@@ -33,14 +33,25 @@ public class PersonsImplC implements PersonsC {
     @Override
     @PostMapping("persons")
     public ResponseEntity<ApiResponse> save(
-            @RequestPart("person") Persons person,      // <-- CHANGE IS HERE!
-            @RequestPart("file") MultipartFile file) { // Can also be @RequestParam, but @RequestPart is safer with mixed types
-
+            @RequestPart("person") Persons person,
+            @RequestPart("file") MultipartFile file) {
         if (file.isEmpty()) {
             System.out.println("Por favor selecciona un archivo para subir.");
         }
-
         return personsS.savePersons(person, file);
+    }
+
+    @Override
+    @PutMapping("persons/{id}")
+    public ResponseEntity<ApiResponse> update(
+            @RequestPart("person") Persons person,
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id
+    ) {
+        if (file.isEmpty()) {
+            System.out.println("Por favor selecciona un archivo para subir.");
+        }
+        return personsS.update(person, file, id);
     }
 
 //    @Override

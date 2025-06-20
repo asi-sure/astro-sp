@@ -10,5 +10,8 @@ public interface PersonsR {
 
     List<Persons> findAll(boolean xstatus);
     Long savePersons(Persons person);
+    boolean update(Persons obj, int id);
+
+    boolean verificarCedula(String xcedula, int id);
 
 }
