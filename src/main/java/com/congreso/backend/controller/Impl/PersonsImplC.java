@@ -31,13 +31,17 @@ public class PersonsImplC implements PersonsC {
     }
 
     @Override
+    @GetMapping("persons/id/{xid}")
+    public ResponseEntity<ApiResponse> findById(@PathVariable int xid) {
+//        int id=Integer.parseInt(xid);
+        return personsS.findById(xid);
+    }
+
+    @Override
     @PostMapping("persons")
     public ResponseEntity<ApiResponse> save(
             @RequestPart("person") Persons person,
             @RequestPart("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            System.out.println("Por favor selecciona un archivo para subir.");
-        }
         return personsS.savePersons(person, file);
     }
 
@@ -48,9 +52,6 @@ public class PersonsImplC implements PersonsC {
             @RequestPart("file") MultipartFile file,
             @PathVariable int id
     ) {
-        if (file.isEmpty()) {
-            System.out.println("Por favor selecciona un archivo para subir.");
-        }
         return personsS.update(person, file, id);
     }
 

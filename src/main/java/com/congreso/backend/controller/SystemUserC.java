@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 public interface SystemUserC {
-    @GetMapping("get")
-    @PreAuthorize("permitAll()")
-    ResponseEntity<ApiResponse> findAll();
+//    @GetMapping("get")
+//    @PreAuthorize("permitAll()")
+//    ResponseEntity<ApiResponse> findAll();
 
 }

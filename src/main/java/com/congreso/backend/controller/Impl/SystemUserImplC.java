@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemUserImplC implements SystemUserC {
     private final SystemsUserS systemsUserS;
 
-    @Override
-    @GetMapping("get")
-    @PreAuthorize("hasAuthority('CREATE')")
-    public ResponseEntity<ApiResponse> findAll() {
-        return systemsUserS.findAll();
-    }
+//    @Override
+//    @GetMapping("get")
+//    @PreAuthorize("hasAuthority('CREATE')")
+//    public ResponseEntity<ApiResponse> findAll() {
+//        return systemsUserS.findAll();
+//    }
 
 
 }

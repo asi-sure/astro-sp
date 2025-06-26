@@ -28,10 +28,10 @@ import org.springframework.http.HttpHeaders;
                 )
         ),
         servers = {
-/*                @Server(
-                        description = "DEV SERVER",
-                        url = "http://localhost:8080"
-                ),*/
+//                @Server(
+//                        description = "DEV SERVER",
+//                        url = "http://localhost:8080"
+//                ),
                 @Server(
                         description = "PROD SERVER",
                         url = "https://astro-sp.onrender.com"

@@ -9,6 +9,8 @@ import java.util.List;
 public interface PersonsR {
 
     List<Persons> findAll(boolean xstatus);
+
+    Persons findById(int id);
     Long savePersons(Persons person);
     boolean update(Persons obj, int id);
 

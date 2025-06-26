@@ -44,6 +44,12 @@ public class PersonsImplS implements PersonsS {
     }
 
     @Override
+    public ResponseEntity<ApiResponse> findById(int id) {
+        Persons persons = personsR.findById(id);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", persons);
+    }
+
+    @Override
     public ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file) {
         if (personsR.verificarCedula(person.getCedula(),0)) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
@@ -77,41 +83,38 @@ public class PersonsImplS implements PersonsS {
     }
     @Override
     public ResponseEntity<ApiResponse> update(Persons obj, MultipartFile file, int id) {
-        if (file.isEmpty()) {
-            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Seleccione un archivo para subir.", 0);
+        System.out.println("llego"+id);
+        if (personsR.verificarCedula(obj.getCedula(),id)) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
         }
-        String fileName=generateUniqueFileName(file);
-        obj.setPhoto(photoDir+fileName);
-
+        String fileName="-"; //si es '-' no actulizará foto
+        if (!file.isEmpty()) {  //si hay imagen
+            fileName = generateUniqueFileName(file);
+            obj.setPhoto(photoDir + fileName);
+        }else{
+            obj.setPhoto(fileName);
+        }
         boolean updated = false;
         try {
-            //Long idper = personsR.savePersons(person);
             updated = personsR.update(obj, id);
 
-            // Crear el directorio de uploads si no existe
-            File uploadDir = new File(photoDirectory);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
+            if (!file.isEmpty()) {
+                // Crear el directorio de uploads si no existe
+                File uploadDir = new File(photoDirectory);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs();
+                }
+                // Definir la ruta completa donde se guardará el archivo
+                Path filePath = Paths.get(photoDirectory + fileName);
+                // Guardar el archivo en el sistema de archivos
+                Files.copy(file.getInputStream(), filePath);
             }
-            // Definir la ruta completa donde se guardará el archivo
-            Path filePath = Paths.get(photoDirectory + fileName);
-            // Guardar el archivo en el sistema de archivos
-            Files.copy(file.getInputStream(), filePath);
         } catch (Exception e) {
             e.printStackTrace();
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al subir archivo.", updated);
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
-//
-//        try {
-//            boolean updated = personsR.update(obj, id);
-//            return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
-//        } catch (Exception e) {
-//            log.error("update ", e);
-//            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al actualizar datos Personales.", e.getMessage());
-//        }
     }
-
     public static String generateUniqueFileName(MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
         String fileExtension = "";

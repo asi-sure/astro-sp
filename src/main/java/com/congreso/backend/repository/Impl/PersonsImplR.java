@@ -21,21 +21,28 @@ public class PersonsImplR implements PersonsR {
         sqlString = "SELECT * FROM persons WHERE status = ?;";
         return db.query(sqlString, new BeanPropertyRowMapper<>(Persons.class),xstatus);
     }
-/*
-    public List<City> findCitiesByStatusBetween(int minStatus, int maxStatus) {
-        // Define the SQL query directly within the method or as a constant
-        sql = "SELECT * FROM city WHERE status BETWEEN ? AND ?";
 
-        // Pass the parameters as arguments to the query method
-        // The order of parameters matters: minStatus replaces the first ?, maxStatus replaces the second ?
-        return db.query(sql, new BeanPropertyRowMapper<>(City.class), minStatus, maxStatus);
-    }
     @Override
-    public List<Departament> findAll() {
-        sql = "SELECT * FROM departament WHERE status = true;";
-        return db.query(sql, new BeanPropertyRowMapper<Departament>(Departament.class));
+    public Persons findById(int id) {
+        sqlString = "SELECT * FROM persons WHERE id = ?;";
+        return db.queryForObject(sqlString, new BeanPropertyRowMapper<>(Persons.class), id);
     }
- */
+
+    /*
+        public List<City> findCitiesByStatusBetween(int minStatus, int maxStatus) {
+            // Define the SQL query directly within the method or as a constant
+            sql = "SELECT * FROM city WHERE status BETWEEN ? AND ?";
+
+            // Pass the parameters as arguments to the query method
+            // The order of parameters matters: minStatus replaces the first ?, maxStatus replaces the second ?
+            return db.query(sql, new BeanPropertyRowMapper<>(City.class), minStatus, maxStatus);
+        }
+        @Override
+        public List<Departament> findAll() {
+            sql = "SELECT * FROM departament WHERE status = true;";
+            return db.query(sql, new BeanPropertyRowMapper<Departament>(Departament.class));
+        }
+     */
     @Override
     public Long savePersons(Persons person) {
         String sqlString = "  INSERT INTO persons (cedula,name,first_name,second_name,email,telephone,gender,photo,date_birth,status) "
@@ -45,13 +52,20 @@ public class PersonsImplR implements PersonsR {
 
     @Override
     public boolean update(Persons obj, int id) {
-        String sql =" UPDATE persons "+
-                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telefono=?,gender=?,photo=?,date_birth=? "+
+        Boolean res=false;
+        if (obj.getPhoto().equals("-")) {  //sin foto  atributo photo es "-"
+            String sql1 = " UPDATE persons " +
+                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,date_birth=? " +
                     " WHERE id = ?;";
-        return db.update(sql,obj.getCedula(),obj.getName(),obj.getFirstName(),obj.getSecondName(),obj.getEmail(),obj.getTelephone(),obj.getGender(),obj.getPhoto(),obj.getDateBirth(), id) > 0;
+            res = db.update(sql1, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getDateBirth(), id) > 0;
+        }else {     //con foto
+            String sql2 = " UPDATE persons " +
+                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,photo=?,date_birth=? " +
+                    " WHERE id = ?;";
+            res = db.update(sql2, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getPhoto(), obj.getDateBirth(), id) > 0;
+        }
+        return res;
     }
-//    @Query(value = "SELECT EXISTS(SELECT 1 FROM estudiantes WHERE ru = :ru)", nativeQuery = true)
-//    boolean existeEstudiantePorRuNativo(@Param("ru") Integer ru);
     @Override
     public boolean verificarCedula(String xcedula, int id) {
         String sql="";

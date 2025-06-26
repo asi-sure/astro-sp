@@ -11,6 +11,7 @@ public interface PersonsS {
 
 //    ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
     ResponseEntity<ApiResponse> findAll(boolean xstatus);
+    ResponseEntity<ApiResponse> findById(int id);
     ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
     ResponseEntity<ApiResponse> update(Persons obj, MultipartFile file, int id);
 

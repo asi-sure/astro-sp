@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface PersonC {
 
-    ResponseEntity<ApiResponse> findAll();
+//    ResponseEntity<ApiResponse> findAll();
 
 //    public ResponseEntity<ApiResponse> post(@RequestBody Person person);
 
-    ResponseEntity<ApiResponse> findById(@PathVariable Long id);
+//    ResponseEntity<ApiResponse> findById(@PathVariable Long id);
 
     /*  @PostMapping("create")
       ResponseEntity<ApiResponse> save(@RequestBody Person person);*/

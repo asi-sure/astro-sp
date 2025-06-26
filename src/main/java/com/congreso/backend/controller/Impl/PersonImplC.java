@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.*;
 public class PersonImplC implements PersonC {
     private final PersonS personS;
 
-    @Override
-    @GetMapping("get")
-    @PreAuthorize("permitAll()")
-    public ResponseEntity<ApiResponse> findAll() {
-        return personS.findAll();
-    }
+//    @Override
+//    @GetMapping("get")
+//    @PreAuthorize("permitAll()")
+//    public ResponseEntity<ApiResponse> findAll() {
+//        return personS.findAll();
+//    }
 
 /*    @PostMapping("post")
     @PreAuthorize("hasAuthority('CREATE')")
@@ -30,13 +30,13 @@ public class PersonImplC implements PersonC {
         return personS.save(person);
     }*/
 
-    @Override
-    @GetMapping("get/{id}")
-//    @PreAuthorize("hasAuthority('CREATE')")
-    @PreAuthorize("permitAll()")
-    public ResponseEntity<ApiResponse> findById(@PathVariable Long id) {
-        return personS.getById(id);
-    }
+//    @Override
+//    @GetMapping("get/{id}")
+////    @PreAuthorize("hasAuthority('CREATE')")
+//    @PreAuthorize("permitAll()")
+//    public ResponseEntity<ApiResponse> findById(@PathVariable Long id) {
+//        return personS.getById(id);
+//    }
 
 
 /*    @Override
