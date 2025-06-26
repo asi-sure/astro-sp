@@ -45,24 +45,30 @@ public class PersonsImplS implements PersonsS {
 
     @Override
     public ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file) {
-        if (file.isEmpty()) {
-            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Seleccione un archivo para subir.", 0);
+        if (personsR.verificarCedula(person.getCedula(),0)) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
         }
-        String fileName=generateUniqueFileName(file);
-        person.setPhoto(photoDir+fileName);
+
+        String fileName="user.png";
+        if (!file.isEmpty()) {  //si hay imagen
+            fileName = generateUniqueFileName(file);
+        }
+        person.setPhoto(photoDir + fileName);
 
         try {
             Long idper = personsR.savePersons(person);
 
-            // Crear el directorio de uploads si no existe
-            File uploadDir = new File(photoDirectory);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
+            if (!file.isEmpty()) {
+                // Crear el directorio de uploads si no existe
+                File uploadDir = new File(photoDirectory);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs();
+                }
+                // Definir la ruta completa donde se guardará el archivo
+                Path filePath = Paths.get(photoDirectory + fileName);
+                // Guardar el archivo en el sistema de archivos
+                Files.copy(file.getInputStream(), filePath);
             }
-            // Definir la ruta completa donde se guardará el archivo
-            Path filePath = Paths.get(photoDirectory + fileName);
-            // Guardar el archivo en el sistema de archivos
-            Files.copy(file.getInputStream(), filePath);
         } catch (IOException e) {
             e.printStackTrace();
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al subir archivo.", 0);

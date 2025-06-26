@@ -50,11 +50,21 @@ public class PersonsImplR implements PersonsR {
                     " WHERE id = ?;";
         return db.update(sql,obj.getCedula(),obj.getName(),obj.getFirstName(),obj.getSecondName(),obj.getEmail(),obj.getTelephone(),obj.getGender(),obj.getPhoto(),obj.getDateBirth(), id) > 0;
     }
-
+//    @Query(value = "SELECT EXISTS(SELECT 1 FROM estudiantes WHERE ru = :ru)", nativeQuery = true)
+//    boolean existeEstudiantePorRuNativo(@Param("ru") Integer ru);
     @Override
     public boolean verificarCedula(String xcedula, int id) {
-        return false;
+        String sql="";
+        Boolean existe;
+        if (id==0){ //solo busca cedula
+            sql="SELECT EXISTS(SELECT 1 FROM persons WHERE cedula = ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula);
+        }else{ //busca cedula e ID
+            sql="SELECT EXISTS(SELECT 1 FROM persons WHERE cedula = ? and id<> ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula, id);
+        }
+        return existe != null && existe;
     }
-
+//return db.query(sqlString, new BeanPropertyRowMapper<>(Persons.class),xstatus);
 
 }
