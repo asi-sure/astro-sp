@@ -27,22 +27,6 @@ public class PersonsImplR implements PersonsR {
         sqlString = "SELECT * FROM persons WHERE id = ?;";
         return db.queryForObject(sqlString, new BeanPropertyRowMapper<>(Persons.class), id);
     }
-
-    /*
-        public List<City> findCitiesByStatusBetween(int minStatus, int maxStatus) {
-            // Define the SQL query directly within the method or as a constant
-            sql = "SELECT * FROM city WHERE status BETWEEN ? AND ?";
-
-            // Pass the parameters as arguments to the query method
-            // The order of parameters matters: minStatus replaces the first ?, maxStatus replaces the second ?
-            return db.query(sql, new BeanPropertyRowMapper<>(City.class), minStatus, maxStatus);
-        }
-        @Override
-        public List<Departament> findAll() {
-            sql = "SELECT * FROM departament WHERE status = true;";
-            return db.query(sql, new BeanPropertyRowMapper<Departament>(Departament.class));
-        }
-     */
     @Override
     public Long savePersons(Persons person) {
         String sqlString = "  INSERT INTO persons (cedula,name,first_name,second_name,email,telephone,gender,photo,date_birth,status) "
@@ -67,6 +51,20 @@ public class PersonsImplR implements PersonsR {
         return res;
     }
     @Override
+    public boolean delete(int id) {
+        boolean status = verificaEstado(id);
+        String sql="";
+        Boolean res;
+        if (status){ //solo busca cedula
+            sql="UPDATE persons SET status=false WHERE id = ?";
+            res = db.update(sql, id) > 0;
+        }else{ //busca cedula e ID
+            sql="UPDATE persons SET status=true WHERE id = ?";
+            res = db.update(sql, id) > 0;
+        }
+        return !status;
+    }
+    @Override
     public boolean verificarCedula(String xcedula, int id) {
         String sql="";
         Boolean existe;
@@ -79,6 +77,24 @@ public class PersonsImplR implements PersonsR {
         }
         return existe != null && existe;
     }
-//return db.query(sqlString, new BeanPropertyRowMapper<>(Persons.class),xstatus);
+    public boolean verificaEstado(int id) {
+        String sql="SELECT status FROM persons WHERE id = ?";
+        return db.queryForObject(sql, Boolean.class, id);
+    }
+        /*
+        public List<City> findCitiesByStatusBetween(int minStatus, int maxStatus) {
+            // Define the SQL query directly within the method or as a constant
+            sql = "SELECT * FROM city WHERE status BETWEEN ? AND ?";
 
+            // Pass the parameters as arguments to the query method
+            // The order of parameters matters: minStatus replaces the first ?, maxStatus replaces the second ?
+            return db.query(sql, new BeanPropertyRowMapper<>(City.class), minStatus, maxStatus);
+        }
+        @Override
+        public List<Departament> findAll() {
+            sql = "SELECT * FROM departament WHERE status = true;";
+            return db.query(sql, new BeanPropertyRowMapper<Departament>(Departament.class));
+        }
+     */
+    //return db.query(sqlString, new BeanPropertyRowMapper<>(Persons.class),xstatus);
 }

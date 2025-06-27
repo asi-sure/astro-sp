@@ -50,6 +50,17 @@ public class PersonsImplS implements PersonsS {
     }
 
     @Override
+    public ResponseEntity<ApiResponse> delete(int id) {
+        boolean status = personsR.delete(id);
+        String mensaje="";
+        if (status) {
+            mensaje="Se habilitó satisfactoriamente.";
+        }else{
+            mensaje="Se eliminó satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+    @Override
     public ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file) {
         if (personsR.verificarCedula(person.getCedula(),0)) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);

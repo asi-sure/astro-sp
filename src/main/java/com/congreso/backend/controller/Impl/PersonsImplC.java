@@ -29,14 +29,17 @@ public class PersonsImplC implements PersonsC {
     public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xstatus) {
         return personsS.findAll(xstatus);
     }
-
     @Override
     @GetMapping("persons/id/{xid}")
     public ResponseEntity<ApiResponse> findById(@PathVariable int xid) {
 //        int id=Integer.parseInt(xid);
         return personsS.findById(xid);
     }
-
+    @Override
+    @DeleteMapping("persons/{xid}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
+        return personsS.delete(xid);
+    }
     @Override
     @PostMapping("persons")
     public ResponseEntity<ApiResponse> save(
@@ -44,7 +47,6 @@ public class PersonsImplC implements PersonsC {
             @RequestPart("file") MultipartFile file) {
         return personsS.savePersons(person, file);
     }
-
     @Override
     @PutMapping("persons/{id}")
     public ResponseEntity<ApiResponse> update(

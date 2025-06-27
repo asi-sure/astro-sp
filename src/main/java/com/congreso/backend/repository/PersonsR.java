@@ -13,7 +13,7 @@ public interface PersonsR {
     Persons findById(int id);
     Long savePersons(Persons person);
     boolean update(Persons obj, int id);
-
+    boolean delete(int id);
     boolean verificarCedula(String xcedula, int id);
 
 }

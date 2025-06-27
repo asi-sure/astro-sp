@@ -13,6 +13,7 @@ public interface PersonsC {
 
     ResponseEntity<ApiResponse> findAll(boolean xstatus);
     ResponseEntity<ApiResponse> findById(int id);
+    ResponseEntity<ApiResponse> delete(int id);
     ResponseEntity<ApiResponse> save(
             @RequestPart("person") Persons person,
             @RequestPart("file") MultipartFile file);
