@@ -19,13 +19,15 @@ import java.util.List;
 public class MenuImplR implements MenuR {
     public final JdbcTemplate db;
     private String sql;
-
     @Override
     public List<Menu> findAll() {
         sql = "SELECT * FROM menu WHERE status = true;";
         return db.query(sql, new BeanPropertyRowMapper<Menu>(Menu.class));
     }
-
+    public List<Menu> findAll_2(boolean xstatus) {
+        sql = "SELECT * FROM menu WHERE status = ?;";
+        return db.query(sql, new BeanPropertyRowMapper<Menu>(Menu.class),xstatus);
+    }
     @Override
     public List<MenuDto> findByPerson(Long id_person) {
         sql =   " select r.id_role,me.id_menu,me.description, me.name, su.name as name_subm, su.description as description_subm, su.link as link_subm "
@@ -38,7 +40,6 @@ public class MenuImplR implements MenuR {
                +" order by r.id_role,me.id_menu, me.name; ";
         return db.query(sql, new BeanPropertyRowMapper<MenuDto>(MenuDto.class),id_person);
     }
-
     @Override
     public List<MenusDto> findMenuByPerson(Long id_person) {
         sql =    " select r.id_role,me.id_menu,me.description,me.type_menu, me.name, me.icon "
@@ -49,7 +50,6 @@ public class MenuImplR implements MenuR {
                 +" order by r.id_role,me.id_menu, me.name; ";
         return db.query(sql, new BeanPropertyRowMapper<MenusDto>(MenusDto.class),id_person);
     }
-
     @Override
     public List<SubmenuDto> findSubmenuByPerson(Long id_person) {
         sql =    " select s.id_menu,su.id_subm,su.name, su.description,su.link "
@@ -60,5 +60,12 @@ public class MenuImplR implements MenuR {
                 +"        (s.id_subm=su.id_subm) "
                 +" order by s.id_menu,su.id_subm, su.name; ";
         return db.query(sql, new BeanPropertyRowMapper<SubmenuDto>(SubmenuDto.class),id_person);
+    }
+
+    @Override
+    public Long saveMenu(Menu me) {
+        String sql = "  INSERT INTO menu(description,name,status,icon, type_menu) "
+                + "   values (?,?,?,?,?) RETURNING id_menu;";
+        return db.queryForObject(sql, new Object[]{me.getDescription(),me.getName(),true,me.getIcon(),me.getType_menu()}, Long.class);
     }
 }

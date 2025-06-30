@@ -13,6 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Slf4j
@@ -26,5 +31,15 @@ public class MenuImplS implements MenuS {
     public ResponseEntity<ApiResponse> findAll() {
         List<Menu> menu = menuR.findAll();
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", menu);
+    }
+    @Override
+    public ResponseEntity<ApiResponse> findAll_2(boolean xstatus) {
+        List<Menu> menu = menuR.findAll_2(xstatus);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", menu);
+    }
+    @Override
+    public ResponseEntity<ApiResponse> saveMenu(Menu me) {
+        Long idmenu = menuR.saveMenu(me);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Los datos se Guardaron Satisfactoriamente .", null);
     }
 }
