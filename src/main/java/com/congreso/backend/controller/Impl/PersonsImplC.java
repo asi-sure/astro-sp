@@ -32,7 +32,6 @@ public class PersonsImplC implements PersonsC {
     @Override
     @GetMapping("persons/id/{xid}")
     public ResponseEntity<ApiResponse> findById(@PathVariable int xid) {
-//        int id=Integer.parseInt(xid);
         return personsS.findById(xid);
     }
     @Override

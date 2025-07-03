@@ -3,6 +3,8 @@ package com.congreso.backend.service.Impl;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.Role;
+import com.congreso.backend.model.dto.PersonsDto;
 import com.congreso.backend.repository.PersonsR;
 import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
@@ -39,14 +41,15 @@ public class PersonsImplS implements PersonsS {
 
     @Override
     public ResponseEntity<ApiResponse> findAll(boolean xstatus) {
-        List<Persons> persons = personsR.findAll(xstatus);
+        List<PersonsDto> persons = personsR.findAll(xstatus);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", persons);
     }
 
     @Override
     public ResponseEntity<ApiResponse> findById(int id) {
         Persons persons = personsR.findById(id);
-        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", persons);
+        List<Role> role = personsR.roleFindById(id);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", persons, role,null);
     }
 
     @Override

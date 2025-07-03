@@ -42,4 +42,21 @@ public class MenuImplS implements MenuS {
         Long idmenu = menuR.saveMenu(me);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Los datos se Guardaron Satisfactoriamente .", null);
     }
+    @Override
+    public ResponseEntity<ApiResponse> update(Menu me, int id_menu) {
+        boolean idmenu = menuR.update(me,id_menu);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Los datos se Modificaron Satisfactoriamente .", null);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> delete(int id) {
+        boolean status = menuR.deleteById(id);
+        String mensaje="";
+        if (status) {
+            mensaje="Se habilitó el Menu satisfactoriamente.";
+        }else{
+            mensaje="Se eliminó El Menu satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
 }

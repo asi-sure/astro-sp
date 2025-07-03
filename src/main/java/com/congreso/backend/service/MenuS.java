@@ -11,5 +11,7 @@ public interface MenuS {
     ResponseEntity<ApiResponse> findAll();
     ResponseEntity<ApiResponse> findAll_2(boolean xstatus);
     ResponseEntity<ApiResponse> saveMenu(Menu me);
+    ResponseEntity<ApiResponse> update(Menu me, int id_menu);
+    ResponseEntity<ApiResponse> delete(int id);
 
 }

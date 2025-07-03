@@ -14,4 +14,7 @@ public interface MenuC {
 
     ResponseEntity<ApiResponse> findAll_2(@PathVariable boolean xstatus);
     ResponseEntity<ApiResponse> save(@RequestBody Menu menu);
+    ResponseEntity<ApiResponse> update(@RequestBody Menu me, @PathVariable int id_menu);
+    ResponseEntity<ApiResponse> delete(@PathVariable int id_menu);
+
 }

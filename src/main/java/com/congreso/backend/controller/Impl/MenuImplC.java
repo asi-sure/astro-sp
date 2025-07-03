@@ -17,17 +17,26 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("hasAnyRole('ADMINISTRADOR')")
 public class MenuImplC implements MenuC {
     private final MenuS menuS;
-    @GetMapping("menu/{xstatus}")
     @Override
+    @GetMapping("menu/{xstatus}")
     public ResponseEntity<ApiResponse> findAll_2(@PathVariable boolean xstatus) {
         return menuS.findAll_2(xstatus);
     }
-    @PostMapping("menu")
     @Override
-    public ResponseEntity<ApiResponse> save(Menu menu) {
+    @PostMapping("menu")
+    public ResponseEntity<ApiResponse> save(@RequestBody Menu menu) {
         return menuS.saveMenu(menu);
     }
-
+    @Override
+    @PutMapping("menu/{id_menu}")
+    public ResponseEntity<ApiResponse> update(@RequestBody Menu me, @PathVariable int id_menu) {
+        return menuS.update(me,id_menu);
+    }
+    @Override
+    @DeleteMapping("menu/{id_menu}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable int id_menu) {
+        return menuS.delete(id_menu);
+    }
 
 
 }

@@ -9,8 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-
 @RequiredArgsConstructor
 @Repository
 public class PersonImplR implements PersonR {
@@ -36,6 +34,24 @@ public class PersonImplR implements PersonR {
                     +" WHERE (p.id=s.id_person)and(s.username= ? ) ";
         return (Persons) db.queryForObject(sqlString, BeanPropertyRowMapper.newInstance(Persons.class),username);
     }
+    @Override
+    public Long save(Person person) {
+        String sqlString = "INSERT INTO person (ci, first_lastename, gender, name, second_lastname) values (?, ?, ?, ?, ?) RETURNING id;";
+        return db.queryForObject(sqlString, new Object[]{person.getCi(), person.getFirstName(), person.getGender(), person.getName(), person.getSecondName()}, Long.class);
+    }
+
+    @Override
+    public boolean update(Person person, Long id) {
+        sqlString = "UPDATE person SET ci = ?, first_lastename = ?, gender = ?, name = ?, second_lastname = ?, id_system_user = ?, id_student = ? WHERE id = ?;";
+        return db.update(sqlString, person.getCi(), person.getFirstName(), person.getGender(), person.getName(), person.getSecondName(), id) > 0;
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        sqlString = "UPDATE person SET status = false WHERE id = ?;";
+        return db.update(sqlString) > 0;
+    }
+
 
     /*
     @Override
@@ -59,21 +75,4 @@ public class PersonImplR implements PersonR {
             return db.query(sql, BeanPropertyRowMapper.newInstance(Permission.class), roleId);
         }
      */
-    @Override
-    public Long save(Person person) {
-        String sqlString = "INSERT INTO person (ci, first_lastename, gender, name, second_lastname) values (?, ?, ?, ?, ?) RETURNING id;";
-        return db.queryForObject(sqlString, new Object[]{person.getCi(), person.getFirstName(), person.getGender(), person.getName(), person.getSecondName()}, Long.class);
-    }
-
-    @Override
-    public boolean update(Person person, Long id) {
-        sqlString = "UPDATE person SET ci = ?, first_lastename = ?, gender = ?, name = ?, second_lastname = ?, id_system_user = ?, id_student = ? WHERE id = ?;";
-        return db.update(sqlString, person.getCi(), person.getFirstName(), person.getGender(), person.getName(), person.getSecondName(), id) > 0;
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        sqlString = "UPDATE person SET status = false WHERE id = ?;";
-        return db.update(sqlString) > 0;
-    }
 }

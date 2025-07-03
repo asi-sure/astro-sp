@@ -2,7 +2,7 @@ package com.congreso.backend.repository.Impl;
 
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Menu;
-import com.congreso.backend.model.Submenu;
+//import com.congreso.backend.model.Submenu;
 import com.congreso.backend.model.dto.MenuDto;
 import com.congreso.backend.model.dto.MenusDto;
 import com.congreso.backend.model.dto.SubmenuDto;
@@ -61,11 +61,41 @@ public class MenuImplR implements MenuR {
                 +" order by s.id_menu,su.id_subm, su.name; ";
         return db.query(sql, new BeanPropertyRowMapper<SubmenuDto>(SubmenuDto.class),id_person);
     }
-
     @Override
     public Long saveMenu(Menu me) {
         String sql = "  INSERT INTO menu(description,name,status,icon, type_menu) "
-                + "   values (?,?,?,?,?) RETURNING id_menu;";
+                    +"   values (?,?,?,?,?) RETURNING id_menu;";
         return db.queryForObject(sql, new Object[]{me.getDescription(),me.getName(),true,me.getIcon(),me.getType_menu()}, Long.class);
     }
+
+    @Override
+    public boolean update(Menu me, int id_menu) {
+        Boolean res=false;
+        String sql = " UPDATE menu " +
+                     " SET description=?, name=?,icon=?,type_menu=? " +
+                     " WHERE id_menu = ?;";
+            res = db.update(sql, me.getDescription(),me.getName(),me.getIcon(),me.getType_menu(), id_menu) > 0;
+        return res;
+    }
+
+    @Override
+    public boolean deleteById(int id_menu) {
+        boolean status = verificaEstado(id_menu);
+        String sql="";
+        Boolean res;
+        if (status){ //solo busca cedula
+            sql="UPDATE menu SET status=false WHERE id_menu = ?";
+            res = db.update(sql, id_menu) > 0;
+        }else{ //busca cedula e ID
+            sql="UPDATE menu SET status=true WHERE id_menu = ?";
+            res = db.update(sql, id_menu) > 0;
+        }
+        return !status;
+    }
+    public boolean verificaEstado(int id) {
+        String sql="SELECT status FROM menu WHERE id_menu = ?";
+        return db.queryForObject(sql, Boolean.class, id);
+    }
+
+
 }

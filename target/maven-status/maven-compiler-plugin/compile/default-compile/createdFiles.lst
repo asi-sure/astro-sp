@@ -28,6 +28,7 @@ com\congreso\backend\service\MenuS.class
 com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
 com\congreso\backend\enumeration\RolSecurityEnum.class
 com\congreso\backend\model\Role$RoleBuilder.class
+com\congreso\backend\model\dto\PersonsDto$PersonsDtoBuilder.class
 com\congreso\backend\repository\TeamR.class
 com\congreso\backend\service\Impl\MenuImplS.class
 com\congreso\backend\model\SystemUser$SystemUserBuilder.class
@@ -119,6 +120,7 @@ com\congreso\backend\controller\MenuC.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\service\SystemsUserS.class
 com\congreso\backend\repository\Impl\MenuImplR.class
+com\congreso\backend\model\dto\PersonsDto.class
 com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class
 com\congreso\backend\model\City.class
