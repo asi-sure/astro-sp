@@ -24,6 +24,7 @@ com\congreso\backend\repository\Impl\RegionImplR.class
 com\congreso\backend\service\PermissionS.class
 com\congreso\backend\model\Role.class
 com\congreso\backend\controller\PersonC.class
+com\congreso\backend\service\InquilinosS.class
 com\congreso\backend\controller\PersonsC.class
 com\congreso\backend\controller\Impl\RoleImplC.class
 com\congreso\backend\service\MenuS.class
@@ -48,9 +49,13 @@ com\congreso\backend\model\Permission$PermissionBuilder.class
 com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenuDto$MenuDtoBuilder.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
+com\congreso\backend\model\Inquilinos$InquilinosBuilder.class
+com\congreso\backend\entities\InquilinosE$InquilinosEBuilder.class
 com\congreso\backend\service\Impl\TeamImplS.class
 com\congreso\backend\controller\Impl\RegionImplC.class
 com\congreso\backend\repository\Impl\PersonsImplR.class
+com\congreso\backend\service\Impl\InquilinosImplS.class
+com\congreso\backend\controller\Impl\InquilinosImplC.class
 com\congreso\backend\controller\Impl\TeamImplC.class
 com\congreso\backend\exception\util\ApiResponse.class
 com\congreso\backend\controller\Impl\SystemUserImplC.class
@@ -74,11 +79,17 @@ com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\model\Menu$MenuBuilder.class
 com\congreso\backend\service\Impl\UserDetailServiceImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
+com\congreso\backend\repository\Impl\InquilinosImplR.class
 com\congreso\backend\config\security\SwaggerConfig.class
 com\congreso\backend\model\Region$RegionBuilder.class
+com\congreso\backend\controller\InquilinosC.class
+com\congreso\backend\repository\InquilinosR.class
+com\congreso\backend\model\forms\InquilinosForm$InquilinosFormBuilder.class
 com\congreso\backend\model\SystemUsers$SystemUsersBuilder.class
+com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\SystemUsers.class
 com\congreso\backend\model\dto\MenusDto.class
+com\congreso\backend\entities\Inquilinos_datE$Inquilinos_datEBuilder.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\model\dto\SubmenuDto.class
 com\congreso\backend\service\Impl\SystemsUserImplS.class
@@ -97,9 +108,11 @@ com\congreso\backend\model\Permission.class
 com\congreso\backend\repository\Impl\RoleImplR$2.class
 com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\validator\EmailNameValidator.class
+com\congreso\backend\model\Inquilinos.class
 com\congreso\backend\model\dto\MenuDto.class
 com\congreso\backend\service\Impl\EmailService.class
 com\congreso\backend\repository\MenuR.class
+com\congreso\backend\model\Inquilinos_ubic.class
 com\congreso\backend\controller\Impl\AuthenticationImplC.class
 com\congreso\backend\controller\SystemUserC.class
 com\congreso\backend\exception\type\BadRequestException.class
@@ -112,6 +125,7 @@ com\congreso\backend\config\security\filters\JwtTokenValidator.class
 com\congreso\backend\repository\RegionR.class
 com\congreso\backend\validator\ValidEmail.class
 com\congreso\backend\model\dto\SystemUsersDto$SystemUsersDtoBuilder.class
+com\congreso\backend\entities\Inquilinos_datE.class
 com\congreso\backend\service\Impl\PersonImplS.class
 com\congreso\backend\controller\DepartamentC.class
 com\congreso\backend\controller\request\AuthCreateUserRequest.class
@@ -124,6 +138,7 @@ com\congreso\backend\model\dto\SubmenuDto$SubmenuDtoBuilder.class
 com\congreso\backend\controller\MenuC.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\service\SystemsUserS.class
+com\congreso\backend\entities\InquilinosE.class
 com\congreso\backend\repository\Impl\MenuImplR.class
 com\congreso\backend\model\dto\PersonsDto.class
 com\congreso\backend\service\Impl\PersonsImplS.class
@@ -134,6 +149,7 @@ com\congreso\backend\repository\CityR.class
 com\congreso\backend\repository\RoleR.class
 com\congreso\backend\controller\Impl\SystemUsersImplC.class
 com\congreso\backend\service\SystemUsersS.class
+com\congreso\backend\model\forms\InquilinosForm.class
 com\congreso\backend\utils\ApiResponse$ApiResponseBuilder.class
 com\congreso\backend\repository\PersonR.class
 com\congreso\backend\model\Persons.class
