@@ -53,14 +53,14 @@ public class PersonsImplR implements PersonsR {
         Boolean res=false;
         if (obj.getPhoto().equals("-")) {  //sin foto  atributo photo es "-"
             String sql1 = " UPDATE persons " +
-                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,date_birth=? " +
+                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,date_birth=?, tipoper=?::tipo_personal " +
                     " WHERE id = ?;";
-            res = db.update(sql1, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getDateBirth(), id) > 0;
+            res = db.update(sql1, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getDateBirth(),obj.getTipoper().name(), id) > 0;
         }else {     //con foto
             String sql2 = " UPDATE persons " +
-                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,photo=?,date_birth=? " +
+                    " SET cedula=?,name = ?,first_name=?, second_name=?,email=?,telephone=?,gender=?,photo=?,date_birth=?, tipoper=?::tipo_personal " +
                     " WHERE id = ?;";
-            res = db.update(sql2, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getPhoto(), obj.getDateBirth(), id) > 0;
+            res = db.update(sql2, obj.getCedula(), obj.getName(), obj.getFirstName(), obj.getSecondName(), obj.getEmail(), obj.getTelephone(), obj.getGender(), obj.getPhoto(), obj.getDateBirth(),obj.getTipoper().name(), id) > 0;
         }
         return res;
     }
