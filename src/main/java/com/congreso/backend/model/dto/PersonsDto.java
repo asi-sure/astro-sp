@@ -1,5 +1,6 @@
 package com.congreso.backend.model.dto;
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,4 +26,5 @@ public class PersonsDto {
     private String photo;
     private Date dateBirth;
     private Boolean status;
+    private Tipo_persons tipoper;
 }

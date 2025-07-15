@@ -1,6 +1,7 @@
 package com.congreso.backend.model;
 
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -50,4 +51,5 @@ public class Persons {
     private Date dateBirth;
 
     private Boolean status = true;
+    private Tipo_persons tipoper;
 }

@@ -20,8 +20,10 @@ import java.util.List;
 public class InquilinosImplS implements InquilinosS {
     private final InquilinosR inquilinosR;
     private final CustomResponseBuilder customResponseBuilder;
+
     @Value("${app.upload.photo-dir}")
     private String photoDirectory;
+
     @Value("${app.load.photo-dir}")
     private String photoDir;
 

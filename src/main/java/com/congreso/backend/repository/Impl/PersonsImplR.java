@@ -1,5 +1,6 @@
 package com.congreso.backend.repository.Impl;
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.Role;
@@ -19,13 +20,13 @@ public class PersonsImplR implements PersonsR {
     private String sqlString;
 
     @Override
-    public List<PersonsDto> findAll(boolean xstatus) {
+    public List<PersonsDto> findAll(boolean xstatus, Tipo_persons tipoper) {
 //        sqlString = "SELECT * FROM persons WHERE status = ?;";
-        sqlString= " SELECT p.id,s.username as usuario,p.cedula,p.name,p.first_name,p.second_name,p.email,p.photo,p.date_birth,p.status,p.gender,p.telephone " +
+        sqlString= " SELECT p.id,s.username as usuario,p.cedula,p.name,p.first_name,p.second_name,p.email,p.photo,p.date_birth,p.status,p.gender,p.telephone,p.tipoper " +
                    " FROM persons p LEFT JOIN system_users s " +
                    " ON p.id = s.id_person " +
-                   " WHERE p.status= ?";
-        return db.query(sqlString, new BeanPropertyRowMapper<>(PersonsDto.class),xstatus);
+                   " WHERE p.status= ? and p.tipoper= ?::tipo_personal ";
+        return db.query(sqlString, new BeanPropertyRowMapper<>(PersonsDto.class),xstatus, tipoper.name());
     }
 
     @Override
@@ -42,9 +43,9 @@ public class PersonsImplR implements PersonsR {
 
     @Override
     public Long savePersons(Persons person) {
-        String sqlString = "  INSERT INTO persons (cedula,name,first_name,second_name,email,telephone,gender,photo,date_birth,status) "
-                         + "   values (?,?,?,?,?,?,?,?,?,?) RETURNING id;";
-        return db.queryForObject(sqlString, new Object[]{person.getCedula(),person.getName(),person.getFirstName(),person.getSecondName(),person.getEmail(),person.getTelephone(),person.getGender(),person.getPhoto(),person.getDateBirth(),true}, Long.class);
+        String sqlString = "  INSERT INTO persons (cedula,name,first_name,second_name,email,telephone,gender,photo,date_birth,status, tipoper) "
+                         + "   values (?,?,?,?,?,?,?,?,?,?,?::tipo_personal) RETURNING id;";
+        return db.queryForObject(sqlString, new Object[]{person.getCedula(),person.getName(),person.getFirstName(),person.getSecondName(),person.getEmail(),person.getTelephone(),person.getGender(),person.getPhoto(),person.getDateBirth(),true, person.getTipoper().name()}, Long.class);
     }
 
     @Override

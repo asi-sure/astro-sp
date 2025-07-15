@@ -88,6 +88,7 @@ com\congreso\backend\model\forms\InquilinosForm$InquilinosFormBuilder.class
 com\congreso\backend\model\SystemUsers$SystemUsersBuilder.class
 com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\SystemUsers.class
+com\congreso\backend\enumeration\Tipo_persons.class
 com\congreso\backend\model\dto\MenusDto.class
 com\congreso\backend\entities\Inquilinos_datE$Inquilinos_datEBuilder.class
 com\congreso\backend\model\Persons$PersonsBuilder.class

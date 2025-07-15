@@ -1,6 +1,7 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.PersonsC;
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
@@ -25,9 +26,10 @@ public class PersonsImplC implements PersonsC {
     private final PersonsS personsS;
 
     @Override
-    @GetMapping("persons/{xstatus}")
-    public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xstatus) {
-        return personsS.findAll(xstatus);
+    @GetMapping("persons/{xstatus}/{xtipoper}")
+    public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xstatus, @PathVariable Tipo_persons xtipoper) {
+        System.out.println("sistem:"+xtipoper);
+        return personsS.findAll(xstatus, xtipoper);
     }
     @Override
     @GetMapping("persons/id/{xid}")

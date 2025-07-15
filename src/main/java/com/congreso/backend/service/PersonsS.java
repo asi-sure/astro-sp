@@ -1,5 +1,6 @@
 package com.congreso.backend.service;
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.Persons;
@@ -10,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface PersonsS {
 
 //    ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
-    ResponseEntity<ApiResponse> findAll(boolean xstatus);
+    ResponseEntity<ApiResponse> findAll(boolean xstatus, Tipo_persons tipoper);
     ResponseEntity<ApiResponse> findById(int id);
     ResponseEntity<ApiResponse> delete(int id);
     ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);

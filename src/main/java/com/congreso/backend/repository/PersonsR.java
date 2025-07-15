@@ -1,5 +1,6 @@
 package com.congreso.backend.repository;
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.Persons;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface PersonsR {
 
-    List<PersonsDto> findAll(boolean xstatus);
+    List<PersonsDto> findAll(boolean xstatus, Tipo_persons tipoper);
 
     Persons findById(int id);
     List<Role> roleFindById(int id);

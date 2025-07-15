@@ -1,5 +1,6 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.Persons;
@@ -40,8 +41,8 @@ public class PersonsImplS implements PersonsS {
     private String photoDir;
 
     @Override
-    public ResponseEntity<ApiResponse> findAll(boolean xstatus) {
-        List<PersonsDto> persons = personsR.findAll(xstatus);
+    public ResponseEntity<ApiResponse> findAll(boolean xstatus, Tipo_persons tipoper) {
+        List<PersonsDto> persons = personsR.findAll(xstatus, tipoper);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", persons);
     }
 
