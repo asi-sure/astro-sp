@@ -1,16 +1,17 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.InquilinosC;
+import com.congreso.backend.model.Inquilinos;
+import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.service.InquilinosS;
 import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,5 +25,21 @@ public class InquilinosImplC implements InquilinosC {
     public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xestado) {
         return inquilinosS.findAll(xestado);
     }
+    @Override
+    @PostMapping("inquilinos")
+    public ResponseEntity<ApiResponse> save(
+            @RequestPart("inquilinos") InquilinosForm obj,
+            @RequestPart("file") MultipartFile file) {
+        return inquilinosS.save(obj, file);
+    }
+    @Override
+    @PutMapping("inquilinos/{id}")
+    public ResponseEntity<ApiResponse> update(
+            @RequestPart("inquilinos") InquilinosForm obj,
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id
+    ) {
+        return inquilinosS.update(obj, file, id);
+    }
 
-}
+} //the end

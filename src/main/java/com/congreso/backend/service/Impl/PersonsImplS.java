@@ -35,10 +35,13 @@ public class PersonsImplS implements PersonsS {
 
     private final PersonsR personsR;
     private final CustomResponseBuilder customResponseBuilder;
+
     @Value("${app.upload.photo-dir}")
     private String photoDirectory;
     @Value("${app.load.photo-dir}")
     private String photoDir;
+    @Value("${app.default.photo}")
+    private String fileNameDefault;
 
     @Override
     public ResponseEntity<ApiResponse> findAll(boolean xstatus, Tipo_persons tipoper) {
@@ -69,8 +72,7 @@ public class PersonsImplS implements PersonsS {
         if (personsR.verificarCedula(person.getCedula(),0)) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
         }
-
-        String fileName="user.png";
+        String fileName=fileNameDefault;
         if (!file.isEmpty()) {  //si hay imagen
             fileName = generateUniqueFileName(file);
         }
@@ -98,7 +100,6 @@ public class PersonsImplS implements PersonsS {
     }
     @Override
     public ResponseEntity<ApiResponse> update(Persons obj, MultipartFile file, int id) {
-        System.out.println("llego"+id);
         if (personsR.verificarCedula(obj.getCedula(),id)) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
         }
@@ -109,10 +110,11 @@ public class PersonsImplS implements PersonsS {
         }else{
             obj.setPhoto(fileName);
         }
-        boolean updated = false;
+        boolean updated = personsR.update(obj, id);
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar los datos.", 0);
+        }
         try {
-            updated = personsR.update(obj, id);
-
             if (!file.isEmpty()) {
                 // Crear el directorio de uploads si no existe
                 File uploadDir = new File(photoDirectory);

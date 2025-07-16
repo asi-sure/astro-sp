@@ -22,4 +22,44 @@ public class InquilinosImplR implements InquilinosR {
               " FROM inquilinos WHERE estado = ? ;";
         return db.query(sql, BeanPropertyRowMapper.newInstance(InquilinosForm.class),xestado);
     }
+
+    @Override
+    public Long save(InquilinosForm obj) {
+        sql = " INSERT INTO inquilinos(cedula,nombre,ap,am,direc,celular,ubicacion,estado) "+
+              "      values(?,?,?,?,?,?,?,?) RETURNING id ";
+        return db.queryForObject(sql, new Object[]{obj.getCedula(),obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(),obj.getUbicacion(),true}, Long.class);
+    }
+
+    @Override
+    public boolean update(InquilinosForm obj, int id) {
+        Boolean res=false;
+        if (obj.getUbicacion().equals("-")) {  //sin foto  atributo photo es "-"
+            String sql1 = " UPDATE inquilinos "+
+                          " SET cedula=?,nombre = ?,ap=?, am=?,direc=?,celular=?  "+
+                          " WHERE id = ?; ";
+            res = db.update(sql1, obj.getCedula(), obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(), id) > 0;
+        }else {     //con foto
+            String sql2 = " UPDATE inquilinos " +
+                          " SET cedula=?,nombre = ?,ap=?, am=?,direc=?,celular=?,ubicacion=?  " +
+                          " WHERE id = ?;";
+            res = db.update(sql2, obj.getCedula(), obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(),obj.getUbicacion(), id) > 0;
+        }
+        return res;
+    }
+
+    @Override
+    public boolean verificarCedula(String xcedula, int id) {
+        String sql="";
+        Boolean existe;
+
+        if (id==0){ //solo busca cedula
+            sql="SELECT EXISTS(SELECT 1 FROM inquilinos WHERE cedula = ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula);
+            System.out.println("xcedula::"+xcedula+" id:"+id+" existe:"+existe);
+        }else{ //busca cedula e ID
+            sql="SELECT EXISTS(SELECT 1 FROM inquilinos WHERE cedula = ? and id<> ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula, id);
+        }
+        return existe != null && existe;
+    }
 }
