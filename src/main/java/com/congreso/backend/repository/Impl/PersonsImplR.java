@@ -64,6 +64,17 @@ public class PersonsImplR implements PersonsR {
         }
         return res;
     }
+
+    @Override
+    public boolean updateTipoper(Tipo_persons tipoper, int id) {
+        Boolean res=false;
+        String sql = " UPDATE persons " +
+                     " SET tipoper=?::tipo_personal " +
+                     " WHERE id = ?;";
+            res = db.update(sql, tipoper.name(), id) > 0;
+        return res;
+    }
+
     @Override
     public boolean delete(int id) {
         boolean status = verificaEstado(id);

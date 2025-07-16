@@ -132,6 +132,16 @@ public class PersonsImplS implements PersonsS {
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> updateTipoper(Tipo_persons tipoper, int id) {
+        boolean updated = personsR.updateTipoper(tipoper, id);
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar Tipo de Persona.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+    }
+
     public static String generateUniqueFileName(MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
         String fileExtension = "";

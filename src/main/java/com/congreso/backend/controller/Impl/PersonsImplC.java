@@ -1,10 +1,12 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.PersonsC;
+import com.congreso.backend.controller.request.AuthLoginRequest;
 import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -56,6 +58,13 @@ public class PersonsImplC implements PersonsC {
             @PathVariable int id
     ) {
         return personsS.update(person, file, id);
+    }
+    @Override
+    @PutMapping("persons/tipoper/{id}")
+    public ResponseEntity<ApiResponse> updateTipoper(
+            @RequestBody Tipo_persons tipoper,
+            @PathVariable int id) {
+        return personsS.updateTipoper(tipoper,id);
     }
 
 //    @Override

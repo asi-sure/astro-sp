@@ -17,6 +17,7 @@ public interface PersonsR {
     List<Role> roleFindById(int id);
     Long savePersons(Persons person);
     boolean update(Persons obj, int id);
+    boolean updateTipoper(Tipo_persons tipoper, int id);
     boolean delete(int id);
     boolean verificarCedula(String xcedula, int id);
 

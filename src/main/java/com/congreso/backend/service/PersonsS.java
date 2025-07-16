@@ -16,5 +16,6 @@ public interface PersonsS {
     ResponseEntity<ApiResponse> delete(int id);
     ResponseEntity<ApiResponse> savePersons(Persons person, MultipartFile file);
     ResponseEntity<ApiResponse> update(Persons obj, MultipartFile file, int id);
+    ResponseEntity<ApiResponse> updateTipoper(Tipo_persons tipoper, int id);
 
 }
