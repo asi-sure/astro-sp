@@ -30,7 +30,7 @@ public class PersonsImplC implements PersonsC {
     @Override
     @GetMapping("persons/{xstatus}/{xtipoper}")
     public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xstatus, @PathVariable Tipo_persons xtipoper) {
-        System.out.println("sistem:"+xtipoper);
+//        System.out.println("sistem:"+xtipoper);
         return personsS.findAll(xstatus, xtipoper);
     }
     @Override

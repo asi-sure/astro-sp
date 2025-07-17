@@ -1,8 +1,6 @@
 package com.congreso.backend.repository.Impl;
 
-import com.congreso.backend.model.Permission;
-import com.congreso.backend.model.Rol;
-import com.congreso.backend.model.Role;
+import com.congreso.backend.model.*;
 import com.congreso.backend.model.dto.RoleDto;
 import com.congreso.backend.repository.RoleR;
 import jakarta.transaction.Transactional;
@@ -24,12 +22,36 @@ public class RoleImplR implements RoleR {
     private final JdbcTemplate db;
     private String sql;
 
-   @Override
+    @Override
+    public List<Role> findAll(Boolean status) {
+        sql = "SELECT * FROM role WHERE status = ?;";
+        return db.query(sql, new BeanPropertyRowMapper<>(Role.class),status);
+    }
+//    @Override
+//    public boolean revokePersons(int idRol, int idPersons) {
+
+//    }
+    @Override
+    public Long grantPersons(Rolper role) {
+        String sql = "  INSERT INTO rolper (id_role, id_person) "
+                + "   values (?,?) RETURNING id_role;";
+        return db.queryForObject(sql, new Object[]{role.getId_role(), role.getId_person()}, Long.class);
+    }
+
+    @Override
+    public Boolean revokePersons(int idPerson, int idRol) {
+        Boolean res=false;
+        String sql = " DELETE FROM rolper " +
+                " WHERE id_role = ? and id_person= ?;";
+        res = db.update(sql, idRol, idPerson) > 0;
+        return res;
+    }
+
+    @Override
     public Role getById(Long id) {
         sql = "SELECT * FROM role WHERE id_role = ?;";
         return db.queryForObject(sql, BeanPropertyRowMapper.newInstance(Role.class),id);
     }
-
     @Override
     public List<RoleDto> findByPerson(Long id_person) {
         sql = " SELECT ro.id_role,ro.name "
@@ -38,6 +60,10 @@ public class RoleImplR implements RoleR {
              +" order by 1,2 ";
         return db.query(sql, BeanPropertyRowMapper.newInstance(RoleDto.class),id_person);
     }
+
+
+
+//ESTOS 3 DE ABAJO SON DEL ANTIGUO SISTEMA
     /*
         @Override
     public SystemUsers findSystemUserByUsername(String username) {
@@ -64,7 +90,6 @@ public class RoleImplR implements RoleR {
         sql = "UPDATE rol SET status = false  WHERE id = ?";
         return db.update(sql, id) > 0;
     }*/
-
     @Override
     public List<Rol> findByEntitiesByRole(List<String> roleNames) {
         String roleNamesCsv = roleNames.stream().map(name -> "'" + name + "'").collect(Collectors.joining(", "));

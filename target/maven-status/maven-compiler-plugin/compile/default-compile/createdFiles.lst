@@ -4,6 +4,7 @@ com\congreso\backend\repository\PersonsR.class
 com\congreso\backend\service\DepartamentS.class
 com\congreso\backend\service\Impl\PermissionImplS.class
 com\congreso\backend\model\Menu.class
+com\congreso\backend\model\Rolper$RolperBuilder.class
 com\congreso\backend\repository\Impl\DepartamentImplR.class
 com\congreso\backend\model\Rol$RolBuilder.class
 com\congreso\backend\repository\Impl\RoleImplR$1.class
@@ -16,6 +17,7 @@ com\congreso\backend\utils\ApiResponse.class
 com\congreso\backend\service\Impl\RegionImplS.class
 com\congreso\backend\validator\ValidPhoneNumber.class
 com\congreso\backend\controller\Impl\PermissionImplC.class
+com\congreso\backend\controller\RoleC.class
 com\congreso\backend\model\City$CityBuilder.class
 com\congreso\backend\service\Impl\RoleImplS.class
 com\congreso\backend\repository\Impl\CityImplR.class
@@ -151,6 +153,7 @@ com\congreso\backend\repository\RoleR.class
 com\congreso\backend\controller\Impl\SystemUsersImplC.class
 com\congreso\backend\service\SystemUsersS.class
 com\congreso\backend\model\forms\InquilinosForm.class
+com\congreso\backend\model\Rolper.class
 com\congreso\backend\utils\ApiResponse$ApiResponseBuilder.class
 com\congreso\backend\repository\PersonR.class
 com\congreso\backend\model\Persons.class

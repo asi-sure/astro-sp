@@ -90,6 +90,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\validator\EmailNameValidator.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Role.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\request\AuthCreateRoleRequest.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\RoleC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\PersonS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\PersonsR.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\SystemUserR.java
@@ -104,6 +105,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\Impl\RegionImplS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\Impl\SystemUsersImplS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Menu.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Rolper.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\DepartamentC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\dto\MenusDto.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\PersonsS.java
