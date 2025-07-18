@@ -10,4 +10,5 @@ public interface InquilinosS {
     ResponseEntity<ApiResponse> findAll(boolean xestado);
     ResponseEntity<ApiResponse> save(InquilinosForm obj, MultipartFile file);
     ResponseEntity<ApiResponse> update(InquilinosForm obj, MultipartFile file, int id);
+    ResponseEntity<ApiResponse> delete(int id);
 }

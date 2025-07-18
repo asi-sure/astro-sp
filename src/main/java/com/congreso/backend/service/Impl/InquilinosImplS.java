@@ -107,6 +107,18 @@ public class InquilinosImplS implements InquilinosS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> delete(int id) {
+        boolean status = inquilinosR.delete(id);
+        String mensaje="";
+        if (status) {
+            mensaje="Se habilitó satisfactoriamente.";
+        }else{
+            mensaje="Se eliminó satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
     public static String generateUniqueFileName(MultipartFile file) {
         String originalFileName = file.getOriginalFilename();
         String fileExtension = "";

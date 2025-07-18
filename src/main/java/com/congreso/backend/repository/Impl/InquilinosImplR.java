@@ -46,7 +46,24 @@ public class InquilinosImplR implements InquilinosR {
         }
         return res;
     }
-
+    @Override
+    public boolean delete(int id) {
+        boolean status = verificaEstado(id);
+        String sql="";
+        Boolean res;
+        if (status){
+            sql="UPDATE inquilinos SET estado=false WHERE id = ?";
+            res = db.update(sql, id) > 0;
+        }else{
+            sql="UPDATE inquilinos SET estado=true WHERE id = ?";
+            res = db.update(sql, id) > 0;
+        }
+        return !status;
+    }
+    public boolean verificaEstado(int id) {
+        String sql="SELECT estado FROM inquilinos WHERE id = ? ";
+        return db.queryForObject(sql, Boolean.class, id);
+    }
     @Override
     public boolean verificarCedula(String xcedula, int id) {
         String sql="";

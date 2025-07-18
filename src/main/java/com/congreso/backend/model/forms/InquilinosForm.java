@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class InquilinosForm implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    private int id;
+    private Long id;
     @Size(max = 20, min = 5)
     private String cedula;
     @Size(max = 50, min = 3)

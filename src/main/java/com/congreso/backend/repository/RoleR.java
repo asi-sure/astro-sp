@@ -12,7 +12,6 @@ public interface RoleR {
     Boolean revokePersons(int idPerson, int idRol);
 
 
-
     Role getById(Long id);
     List<RoleDto> findByPerson(Long id_person);
 

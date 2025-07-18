@@ -18,6 +18,6 @@ public interface InquilinosC {
             @RequestPart("inquilinos") InquilinosForm obj,
             @RequestPart("file") MultipartFile file,
             @PathVariable int id);
-
+    ResponseEntity<ApiResponse> delete(int id);
 
 } //the end

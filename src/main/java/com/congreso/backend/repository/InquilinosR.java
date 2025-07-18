@@ -11,7 +11,7 @@ public interface InquilinosR {
     List<InquilinosForm> findAll(boolean xestado);
     Long save(InquilinosForm obj);
     boolean update(InquilinosForm obj, int id);
-
+    boolean delete(int id);
 
     boolean verificarCedula(String xcedula, int id);
 

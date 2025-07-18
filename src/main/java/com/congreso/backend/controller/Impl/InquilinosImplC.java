@@ -41,5 +41,17 @@ public class InquilinosImplC implements InquilinosC {
     ) {
         return inquilinosS.update(obj, file, id);
     }
+    @Override
+    @DeleteMapping("inquilinos/{xid}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
+        return inquilinosS.delete(xid);
+    }
+
+    /*
+    @DeleteMapping("persons/{xid}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
+        return personsS.delete(xid);
+    }
+    * */
 
 } //the end
