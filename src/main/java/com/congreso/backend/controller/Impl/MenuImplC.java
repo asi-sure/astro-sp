@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-@PreAuthorize("hasAnyRole('ADMINISTRADOR')")
+//@PreAuthorize("hasAnyRole('ADMINISTRADOR')")
 public class MenuImplC implements MenuC {
     private final MenuS menuS;
     @Override

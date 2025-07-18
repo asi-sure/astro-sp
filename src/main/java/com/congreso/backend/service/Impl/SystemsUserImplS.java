@@ -59,9 +59,13 @@ public class SystemsUserImplS implements SystemsUserS {
     public AuthResponse loginUser(AuthLoginRequest authLoginRequest) {
         String username = authLoginRequest.username();
         String password = authLoginRequest.password();
+        System.out.println("paso 1..");
         Authentication authentication = this.authenticate(username, password);
+        System.out.println("paso 2..");
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        System.out.println("paso 3..");
         String accessToken = jwtUtils.createToken(authentication);
+        System.out.println("paso 4..");
         return new AuthResponse(username, "User loged success", accessToken, true);
     }
 

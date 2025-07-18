@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-@PreAuthorize("hasRole('ADMINISTRADOR')")
+//@PreAuthorize("hasRole('ADMINISTRADOR')")
 public class InquilinosImplC implements InquilinosC {
     private final InquilinosS inquilinosS;
 

@@ -22,7 +22,7 @@ import java.nio.file.Paths;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-@PreAuthorize("hasRole('ADMINISTRADOR')")
+//@PreAuthorize("hasRole('ADMINISTRADOR')")
 public class PersonsImplC implements PersonsC {
 
     private final PersonsS personsS;
