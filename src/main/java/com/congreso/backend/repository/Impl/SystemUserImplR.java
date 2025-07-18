@@ -2,6 +2,7 @@ package com.congreso.backend.repository.Impl;
 
 import com.congreso.backend.model.Permission;
 import com.congreso.backend.model.Rol;
+import com.congreso.backend.model.Role;
 import com.congreso.backend.model.SystemUser;
 import com.congreso.backend.model.SystemUsers;
 import com.congreso.backend.repository.SystemUserR;
@@ -28,10 +29,15 @@ public class SystemUserImplR implements SystemUserR {
         sql = "SELECT su.* FROM system_users su WHERE su.username = ? AND status = true;";
         return db.queryForObject(sql, BeanPropertyRowMapper.newInstance(SystemUsers.class), username);
     }
+//    @Override
+//    public List<Rol> findRolListByUser(Long systemUserId) {
+//        sql = "SELECT r.* FROM rol r INNER JOIN user_rol ur ON ur.rol_id = r.id AND ur.system_user_id = ? WHERE r.status = true;";
+//        return db.query(sql, BeanPropertyRowMapper.newInstance(Rol.class), systemUserId);
+//    }
     @Override
-    public List<Rol> findRolListByUser(Long systemUserId) {
-        sql = "SELECT r.* FROM rol r INNER JOIN user_rol ur ON ur.rol_id = r.id AND ur.system_user_id = ? WHERE r.status = true;";
-        return db.query(sql, BeanPropertyRowMapper.newInstance(Rol.class), systemUserId);
+    public List<Role> findRolListByUser(Long systemUserId) {
+        sql = "SELECT r.* FROM role r INNER JOIN rolper ur ON ur.id_role = r.id_role AND ur.id_person = ? WHERE r.status = true;";
+        return db.query(sql, BeanPropertyRowMapper.newInstance(Role.class), systemUserId);
     }
 
     @Override

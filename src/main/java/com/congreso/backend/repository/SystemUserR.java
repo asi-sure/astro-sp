@@ -1,9 +1,6 @@
 package com.congreso.backend.repository;
 
-import com.congreso.backend.model.Permission;
-import com.congreso.backend.model.Rol;
-import com.congreso.backend.model.SystemUser;
-import com.congreso.backend.model.SystemUsers;
+import com.congreso.backend.model.*;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ public interface SystemUserR {
 //    public SystemUser findSystemUserByUsername(String username);
     public SystemUsers findSystemUserByUsername(String username);
 
-    public List<Rol> findRolListByUser(Long systemUserId);
+    public List<Role> findRolListByUser(Long systemUserId);
 
     SystemUser update(SystemUser obj);
     SystemUsers updateChangePass(String username, String passwd);

@@ -1,9 +1,6 @@
 package com.congreso.backend.service.Impl;
 
-import com.congreso.backend.model.Permission;
-import com.congreso.backend.model.Rol;
-import com.congreso.backend.model.SystemUser;
-import com.congreso.backend.model.SystemUsers;
+import com.congreso.backend.model.*;
 import com.congreso.backend.repository.SystemUserR;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,10 +27,11 @@ public class UserDetailServiceImplS implements UserDetailsService {
 //        SystemUser user = systemUserR.findSystemUserByUsername(username);
         SystemUsers user = systemUserR.findSystemUserByUsername(username);
 //        List<Rol> rolList = systemUserR.findRolListByUser(user.getId());
-        List<Rol> rolList = systemUserR.findRolListByUser(user.getIdPerson());
+        List<Role> rolList = systemUserR.findRolListByUser(user.getIdPerson());
         List<Permission> permissionList = new ArrayList<>();
-        for (Rol rol : rolList) {
-            permissionList.addAll(systemUserR.findPermissionListByRol(Long.valueOf(rol.getId())));
+        for (Role rol : rolList) {
+            permissionList.addAll(systemUserR.findPermissionListByRol(Long.valueOf(rol.getId_role())));
+//            permissionList.addAll(systemUserR.findPermissionListByRol(Long.valueOf(rol.getId_role()  getId())));
         }
 
         Set<GrantedAuthority> authorities = new HashSet<>();
