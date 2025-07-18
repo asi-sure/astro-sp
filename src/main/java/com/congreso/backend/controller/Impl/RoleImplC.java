@@ -13,7 +13,7 @@ import com.congreso.backend.service.RoleS;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-@PreAuthorize("hasRole('ADMINISTRADOR')")
+//@PreAuthorize("hasRole('ADMINISTRADOR')")
 public class RoleImplC implements RoleC {
 
     private final RoleS roleS;
