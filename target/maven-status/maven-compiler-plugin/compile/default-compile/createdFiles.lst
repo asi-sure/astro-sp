@@ -19,6 +19,7 @@ com\congreso\backend\validator\ValidPhoneNumber.class
 com\congreso\backend\controller\Impl\PermissionImplC.class
 com\congreso\backend\controller\RoleC.class
 com\congreso\backend\model\City$CityBuilder.class
+com\congreso\backend\utils\PaginatedResponse.class
 com\congreso\backend\service\Impl\RoleImplS.class
 com\congreso\backend\repository\Impl\CityImplR.class
 com\congreso\backend\repository\Impl\TeamImplR.class
@@ -44,6 +45,7 @@ com\congreso\backend\controller\Impl\PersonsImplC.class
 com\congreso\backend\utils\CustomResponseBuilder.class
 com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
+com\congreso\backend\reposotoryE\InquilinosRepo.class
 com\congreso\backend\repository\PermissionR.class
 com\congreso\backend\model\Person$PersonBuilder.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
@@ -121,6 +123,7 @@ com\congreso\backend\controller\SystemUserC.class
 com\congreso\backend\exception\type\BadRequestException.class
 com\congreso\backend\exception\util\ApiException.class
 com\congreso\backend\repository\SystemUserR.class
+com\congreso\backend\utils\PaginationUtils.class
 com\congreso\backend\service\Impl\PasswordResetTokenImplS.class
 com\congreso\backend\model\Departament$DepartamentBuilder.class
 com\congreso\backend\service\PersonS.class

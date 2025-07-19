@@ -48,27 +48,19 @@ public class SystemsUserImplS implements SystemsUserS {
         List<SystemUser> systemUsers = systemUserR.findAll();
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", systemUsers);
     }
-
     @Override
     public SystemUser findById(Long id) {
       return systemUserR.findById(id);
-
     }
-
     @Override
     public AuthResponse loginUser(AuthLoginRequest authLoginRequest) {
         String username = authLoginRequest.username();
         String password = authLoginRequest.password();
-        System.out.println("paso 1..");
         Authentication authentication = this.authenticate(username, password);
-        System.out.println("paso 2..");
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        System.out.println("paso 3..");
         String accessToken = jwtUtils.createToken(authentication);
-        System.out.println("paso 4..");
         return new AuthResponse(username, "User loged success", accessToken, true);
     }
-
     @Override
     public Authentication authenticate(String username, String password) {
         UserDetails userDetails = userDetailServiceImplS.loadUserByUsername(username);
@@ -80,7 +72,6 @@ public class SystemsUserImplS implements SystemsUserS {
         }
         return new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
     }
-
     @Override
     public AuthResponse createUser(AuthCreateUserRequest authCreateUserRequest) {
         List<String> roleRequest = authCreateUserRequest.rolerequest().roleListName();

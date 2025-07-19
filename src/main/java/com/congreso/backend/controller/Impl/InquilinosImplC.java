@@ -1,13 +1,17 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.InquilinosC;
+import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.service.InquilinosS;
 import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
+import com.congreso.backend.utils.PaginatedResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +29,23 @@ public class InquilinosImplC implements InquilinosC {
     public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xestado) {
         return inquilinosS.findAll(xestado);
     }
+
+    @Override
+    @GetMapping("inquilinos2/{estado}")
+    public Page<InquilinosE> findAll_2(
+            @PathVariable boolean estado,
+            Pageable pageable ) {
+        return inquilinosS.findAll_2(estado,pageable);
+    }
+
+    @Override
+    @GetMapping("inquilinos3/{estado}")
+    public PaginatedResponse<InquilinosE> findAll_3(
+            @PathVariable boolean estado,
+            Pageable pageable ) {
+        return inquilinosS.findAll_3(estado,pageable);
+    }
+
     @Override
     @PostMapping("inquilinos")
     public ResponseEntity<ApiResponse> save(

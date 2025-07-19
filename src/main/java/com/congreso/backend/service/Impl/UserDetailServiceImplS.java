@@ -31,6 +31,7 @@ public class UserDetailServiceImplS implements UserDetailsService {
         List<Permission> permissionList = new ArrayList<>();
         for (Role rol : rolList) {
             permissionList.addAll(systemUserR.findPermissionListByRol(Long.valueOf(rol.getId_role())));
+//            System.out.println("rol ::"+rol.getName());
 //            permissionList.addAll(systemUserR.findPermissionListByRol(Long.valueOf(rol.getId_role()  getId())));
         }
 

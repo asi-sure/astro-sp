@@ -1,13 +1,19 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
+import com.congreso.backend.reposotoryE.InquilinosRepo;
 import com.congreso.backend.service.InquilinosS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
+import com.congreso.backend.utils.PaginatedResponse;
+import com.congreso.backend.utils.PaginationUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,6 +34,8 @@ import java.util.UUID;
 @Service
 public class InquilinosImplS implements InquilinosS {
     private final InquilinosR inquilinosR;
+    private final InquilinosRepo inquilinosRepo;
+
     private final CustomResponseBuilder customResponseBuilder;
     @Value("${app.upload.photo-dir}")
     private String photoDirectory;
@@ -41,6 +49,18 @@ public class InquilinosImplS implements InquilinosS {
         List<InquilinosForm> inquilinos = inquilinosR.findAll(xestado);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", inquilinos);
     }
+
+    @Override
+    public Page<InquilinosE> findAll_2(boolean xestado, Pageable pageable) {
+        return inquilinosRepo.listarInquilinos(xestado,pageable);
+    }
+
+    @Override
+    public PaginatedResponse<InquilinosE> findAll_3(boolean xestado, Pageable pageable) {
+        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
+        return PaginationUtils.toPaginatedResponse(page);
+    }
+
     @Override
     public ResponseEntity<ApiResponse> save(InquilinosForm obj, MultipartFile file) {
         if (inquilinosR.verificarCedula(obj.getCedula(),0)) {
