@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface InquilinosC {
-    ResponseEntity<ApiResponse> findAll(boolean xestado);
-    Page<InquilinosE> findAll_2(boolean xestado, Pageable pageable);
-    PaginatedResponse<InquilinosE> findAll_3(boolean xestado, Pageable pageable);
+    PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable);
     ResponseEntity<ApiResponse> save(
             @RequestPart("inquilinos") InquilinosForm obj,
             @RequestPart("file") MultipartFile file);

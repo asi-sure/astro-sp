@@ -23,27 +23,12 @@ import org.springframework.web.multipart.MultipartFile;
 //@PreAuthorize("hasRole('ADMINISTRADOR')")
 public class InquilinosImplC implements InquilinosC {
     private final InquilinosS inquilinosS;
-
     @Override
-    @GetMapping("inquilinos/{xestado}")
-    public ResponseEntity<ApiResponse> findAll(@PathVariable boolean xestado) {
-        return inquilinosS.findAll(xestado);
-    }
-
-    @Override
-    @GetMapping("inquilinos2/{estado}")
-    public Page<InquilinosE> findAll_2(
+    @GetMapping("inquilinos/{estado}")
+    public PaginatedResponse<InquilinosE> findAll(
             @PathVariable boolean estado,
             Pageable pageable ) {
-        return inquilinosS.findAll_2(estado,pageable);
-    }
-
-    @Override
-    @GetMapping("inquilinos3/{estado}")
-    public PaginatedResponse<InquilinosE> findAll_3(
-            @PathVariable boolean estado,
-            Pageable pageable ) {
-        return inquilinosS.findAll_3(estado,pageable);
+        return inquilinosS.findAll(estado,pageable);
     }
 
     @Override

@@ -43,20 +43,8 @@ public class InquilinosImplS implements InquilinosS {
     private String photoDir;
     @Value("${app.default.photo}")
     private String fileNameDefault;
-
     @Override
-    public ResponseEntity<ApiResponse> findAll(boolean xestado) {
-        List<InquilinosForm> inquilinos = inquilinosR.findAll(xestado);
-        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", inquilinos);
-    }
-
-    @Override
-    public Page<InquilinosE> findAll_2(boolean xestado, Pageable pageable) {
-        return inquilinosRepo.listarInquilinos(xestado,pageable);
-    }
-
-    @Override
-    public PaginatedResponse<InquilinosE> findAll_3(boolean xestado, Pageable pageable) {
+    public PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable) {
         Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
