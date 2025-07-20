@@ -17,5 +17,12 @@ public interface InquilinosRepo extends JpaRepository<InquilinosE, Long> {
             nativeQuery = true
     )
     Page<InquilinosE> listarInquilinos(@Param("estado") boolean estado, Pageable pageable);
+    @Query(
+            value = " SELECT * " +
+                    " FROM inquilinos WHERE id = :id ;",
+            nativeQuery = true
+    )
+    InquilinosE findById(@Param("id") int id);
+
 
 }

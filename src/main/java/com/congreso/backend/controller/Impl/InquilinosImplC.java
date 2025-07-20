@@ -31,6 +31,11 @@ public class InquilinosImplC implements InquilinosC {
             Pageable pageable ) {
         return inquilinosS.findAll(estado,pageable);
     }
+    @Override
+    @GetMapping("inquilinos/id/{xid}")
+    public ResponseEntity<ApiResponse> findById(@PathVariable int xid) {
+        return inquilinosS.findById(xid);
+    }
 
 //    @Override
 //    @GetMapping("inquilinos2/{estado}")

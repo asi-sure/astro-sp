@@ -51,7 +51,7 @@ public class InquilinosImplS implements InquilinosS {
     }
 
     @Override
-    public PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable) {
+    public PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable) {  //es un ejemplo DTO
         Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
         // Mapear InquilinosE a InquilinosEDto
         Page<InquilinosEDto> dtoPage = page.map(e ->
@@ -64,7 +64,11 @@ public class InquilinosImplS implements InquilinosS {
         );
         return PaginationUtils.toPaginatedResponse(dtoPage);
     }
-
+    @Override
+    public ResponseEntity<ApiResponse> findById(int id) {
+        InquilinosE inquilinos = inquilinosRepo.findById(id);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", inquilinos,null);
+    }
     @Override
     public ResponseEntity<ApiResponse> save(InquilinosForm obj, MultipartFile file) {
         if (inquilinosR.verificarCedula(obj.getCedula(),0)) {

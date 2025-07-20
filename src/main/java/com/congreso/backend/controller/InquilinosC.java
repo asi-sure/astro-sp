@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface InquilinosC {
     PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable);
+    ResponseEntity<ApiResponse> findById(int id);
 //    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable);
     ResponseEntity<ApiResponse> save(
             @RequestPart("inquilinos") InquilinosForm obj,
