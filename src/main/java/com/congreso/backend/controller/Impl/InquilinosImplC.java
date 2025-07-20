@@ -1,6 +1,7 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.InquilinosC;
+import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos;
 import com.congreso.backend.model.Persons;
@@ -30,6 +31,14 @@ public class InquilinosImplC implements InquilinosC {
             Pageable pageable ) {
         return inquilinosS.findAll(estado,pageable);
     }
+
+//    @Override
+//    @GetMapping("inquilinos2/{estado}")
+//    public PaginatedResponse<InquilinosEDto> findAll_2(
+//            @PathVariable boolean estado,
+//            Pageable pageable ) {
+//        return inquilinosS.findAll_2(estado,pageable);
+//    }
 
     @Override
     @PostMapping("inquilinos")

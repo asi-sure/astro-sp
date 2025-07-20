@@ -1,5 +1,6 @@
 package com.congreso.backend.service;
 
+import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.forms.InquilinosForm;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public interface InquilinosS {
     PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable);
+    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable);
     ResponseEntity<ApiResponse> save(InquilinosForm obj, MultipartFile file);
     ResponseEntity<ApiResponse> update(InquilinosForm obj, MultipartFile file, int id);
     ResponseEntity<ApiResponse> delete(int id);

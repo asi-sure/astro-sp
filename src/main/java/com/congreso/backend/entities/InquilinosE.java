@@ -1,5 +1,6 @@
 package com.congreso.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,9 +16,13 @@ import lombok.*;
 public class InquilinosE {
 
     @Id
-    @GeneratedValue(generator = "company_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "company_seq", sequenceName = "company_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Campo requerido")
+    @NotBlank
+    @Size(max = 20, min = 3)
+    private String cedula;
 
     @NotNull(message = "Campo requerido")
     @NotBlank
@@ -38,4 +43,10 @@ public class InquilinosE {
 
     @Size(max = 200)
     private String ubicacion;
+
+    private boolean estado;
+
+    @OneToOne(mappedBy = "inquilino", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    @JsonManagedReference
+    private Inquilinos_ubicE ubica;
 }

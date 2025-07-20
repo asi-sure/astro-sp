@@ -1,5 +1,6 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
@@ -47,6 +48,21 @@ public class InquilinosImplS implements InquilinosS {
     public PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable) {
         Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
         return PaginationUtils.toPaginatedResponse(page);
+    }
+
+    @Override
+    public PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable) {
+        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
+        // Mapear InquilinosE a InquilinosEDto
+        Page<InquilinosEDto> dtoPage = page.map(e ->
+                new InquilinosEDto(
+                        e.getId(),
+                        e.getNombre(),
+                        e.getAp(),
+                        e.getAm()
+                )
+        );
+        return PaginationUtils.toPaginatedResponse(dtoPage);
     }
 
     @Override
