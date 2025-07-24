@@ -10,7 +10,7 @@ public interface RoleR {
     List<Role> findAll(Boolean status);
     Long grantPersons(Rolper role);
     Boolean revokePersons(int idPerson, int idRol);
-
+    Long save(Role role);
 
     Role getById(Long id);
     List<RoleDto> findByPerson(Long id_person);

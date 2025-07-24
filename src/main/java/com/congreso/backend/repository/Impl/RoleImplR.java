@@ -27,17 +27,12 @@ public class RoleImplR implements RoleR {
         sql = "SELECT * FROM role WHERE status = ?;";
         return db.query(sql, new BeanPropertyRowMapper<>(Role.class),status);
     }
-//    @Override
-//    public boolean revokePersons(int idRol, int idPersons) {
-
-//    }
     @Override
     public Long grantPersons(Rolper role) {
         String sql = "  INSERT INTO rolper (id_role, id_person) "
                 + "   values (?,?) RETURNING id_role;";
         return db.queryForObject(sql, new Object[]{role.getId_role(), role.getId_person()}, Long.class);
     }
-
     @Override
     public Boolean revokePersons(int idPerson, int idRol) {
         Boolean res=false;
@@ -45,6 +40,12 @@ public class RoleImplR implements RoleR {
                 " WHERE id_role = ? and id_person= ?;";
         res = db.update(sql, idRol, idPerson) > 0;
         return res;
+    }
+    @Override
+    public Long save(Role role) {
+        sql = "  INSERT INTO role (description, name, status) "
+            + "   values (?,?,?) RETURNING id_role;";
+        return db.queryForObject(sql, new Object[]{role.getDescription(), role.getName(),true}, Long.class);
     }
 
     @Override

@@ -53,6 +53,17 @@ public class RoleImplS implements RoleS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", 0);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> save(Role role) {
+        try {
+            Long idrol = roleR.save(role);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al guardar Datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
+    }
+
 /*    @Override
     public ResponseEntity<ApiResponse> findById(long id) {
         Role role = roleR.getById(id);

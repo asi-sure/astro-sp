@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface InquilinosC {
-    PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable);
+    PaginatedResponse<InquilinosE> findAll(boolean xestado,String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> findById(int id);
 //    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable);
     ResponseEntity<ApiResponse> save(

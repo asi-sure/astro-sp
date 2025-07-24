@@ -25,11 +25,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class InquilinosImplC implements InquilinosC {
     private final InquilinosS inquilinosS;
     @Override
-    @GetMapping("inquilinos/{estado}")
+    @GetMapping("inquilinos/{estado}/{buscar}")
     public PaginatedResponse<InquilinosE> findAll(
             @PathVariable boolean estado,
+            @PathVariable String buscar,
             Pageable pageable ) {
-        return inquilinosS.findAll(estado,pageable);
+        return inquilinosS.findAll(estado,buscar,pageable);
     }
     @Override
     @GetMapping("inquilinos/id/{xid}")

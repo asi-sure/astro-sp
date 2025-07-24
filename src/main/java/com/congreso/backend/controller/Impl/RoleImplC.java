@@ -1,6 +1,8 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.RoleC;
+import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.Role;
 import com.congreso.backend.model.Rolper;
 import com.congreso.backend.service.RolS;
 import com.congreso.backend.utils.ApiResponse;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.congreso.backend.service.RoleS;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,6 +39,11 @@ public class RoleImplC implements RoleC {
         return roleS.revokePersons(idPerson,idRol);
     }
 
+    @Override
+    @PostMapping("role")
+    public ResponseEntity<ApiResponse> save(@RequestBody Role role) {
+        return roleS.save(role);
+    }
 
 /*    @GetMapping("{id}")
 //    @PreAuthorize("hasAuthority('CREATE')")

@@ -14,8 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface InquilinosS {
-    PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable);
-    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable); //ejemplo usando DTO
+    PaginatedResponse<InquilinosE> findAll(boolean xestado,String buscar, Pageable pageable);
+    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado,String buscar, Pageable pageable); //ejemplo usando DTO
     ResponseEntity<ApiResponse> findById(int id);
     ResponseEntity<ApiResponse> save(InquilinosForm obj, MultipartFile file);
     ResponseEntity<ApiResponse> update(InquilinosForm obj, MultipartFile file, int id);

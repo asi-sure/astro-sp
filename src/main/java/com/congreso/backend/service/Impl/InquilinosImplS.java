@@ -45,14 +45,13 @@ public class InquilinosImplS implements InquilinosS {
     @Value("${app.default.photo}")
     private String fileNameDefault;
     @Override
-    public PaginatedResponse<InquilinosE> findAll(boolean xestado, Pageable pageable) {
-        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
+    public PaginatedResponse<InquilinosE> findAll(boolean xestado,String buscar, Pageable pageable) {
+        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
-
     @Override
-    public PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable) {  //es un ejemplo DTO
-        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado, pageable);
+    public PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado,String buscar, Pageable pageable) {  //es un ejemplo DTO
+        Page<InquilinosE> page = inquilinosRepo.listarInquilinos(xestado,buscar, pageable);
         // Mapear InquilinosE a InquilinosEDto
         Page<InquilinosEDto> dtoPage = page.map(e ->
                 new InquilinosEDto(
