@@ -10,14 +10,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface InquilinosRepo extends JpaRepository<InquilinosE, Long> {
     @Query(
-            value = " SELECT id,cedula,nombre,ap,am,direc,celular,ubicacion,estado "+
-                    " FROM inquilinos "+
-                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
-            countQuery = " SELECT count(*) "+
-                    " FROM inquilinos "+
-                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
-            nativeQuery = true
-    )
+            value = " SELECT i "+
+                    " FROM InquilinosE i "+
+                    " WHERE i.estado = :estado AND " +
+                    " UPPER(CONCAT(i.cedula, i.nombre, COALESCE(i.ap, ''), COALESCE(i.am, ''), COALESCE(i.direc, ''), COALESCE(i.celular, ''))) LIKE UPPER(:buscar)")
     Page<InquilinosE> listarInquilinos(
             @Param("estado") boolean estado,
             @Param("buscar") String buscar,
@@ -28,6 +24,21 @@ public interface InquilinosRepo extends JpaRepository<InquilinosE, Long> {
             nativeQuery = true
     )
     InquilinosE findById(@Param("id") int id);
+
+
+//    @Query(
+//            value = " SELECT id,cedula,nombre,ap,am,direc,celular,ubicacion,estado "+
+//                    " FROM inquilinos "+
+//                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
+//            countQuery = " SELECT count(*) "+
+//                    " FROM inquilinos "+
+//                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
+//            nativeQuery = true
+//    )
+//    Page<InquilinosE> listarInquilinos(
+//            @Param("estado") boolean estado,
+//            @Param("buscar") String buscar,
+//            Pageable pageable);
 
 
 }
