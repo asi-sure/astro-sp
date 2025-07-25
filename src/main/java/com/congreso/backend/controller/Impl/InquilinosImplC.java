@@ -13,6 +13,8 @@ import com.congreso.backend.utils.PaginatedResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,7 @@ public class InquilinosImplC implements InquilinosC {
     public PaginatedResponse<InquilinosE> findAll(
             @PathVariable boolean estado,
             @PathVariable String buscar,
-            Pageable pageable ) {
+            @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
         return inquilinosS.findAll(estado,buscar,pageable);
     }
     @Override
