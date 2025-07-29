@@ -53,6 +53,7 @@ public class SecurityConfig {
 //                    corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                     corsConfig.setAllowedOrigins(Arrays.asList(
                             "http://localhost:4200", // Para desarrollo local
+                            "https://tokengru.netlify.app", // Para lo que hizo GUTY
                             "https://projecthardwarestore.onrender.com",
 //                            "https://tallerweb.uajms.edu.bo", // Para swagger
                             "https://astro-sp.onrender.com", // Para swagger
