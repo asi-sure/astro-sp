@@ -55,6 +55,16 @@ public class InquilinosImplR implements InquilinosR {
         return res;
     }
     @Override
+    public boolean updateUrlUbicacion(String urlImg, int id) {
+        Boolean res=false;
+        String sql2 = " UPDATE inquilinos " +
+                      " SET ubicacion=?  " +
+                      " WHERE id = ?;";
+        res = db.update(sql2, urlImg, id) > 0;
+        return res;
+    }
+
+    @Override
     public boolean updateGps(Inquilinos_ubic obj, int id) {
         Boolean res=false;
         String sql = " UPDATE inquilinos_ubic "+

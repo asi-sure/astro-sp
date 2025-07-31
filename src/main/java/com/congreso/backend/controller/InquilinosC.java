@@ -3,6 +3,7 @@ package com.congreso.backend.controller;
 import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos;
+import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.utils.ApiResponse;
@@ -23,6 +24,12 @@ public interface InquilinosC {
             @RequestPart("file") MultipartFile file);
     ResponseEntity<ApiResponse> update(
             @RequestPart("inquilinos") InquilinosForm obj,
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id);
+    ResponseEntity<ApiResponse> updateGPS(
+            @RequestPart("inquilinos") Inquilinos_ubic obj,
+            @PathVariable int id);
+    ResponseEntity<ApiResponse> updateUrlUbicacion(
             @RequestPart("file") MultipartFile file,
             @PathVariable int id);
     ResponseEntity<ApiResponse> delete(int id);

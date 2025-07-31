@@ -160,6 +160,59 @@ public class InquilinosImplS implements InquilinosS {
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
+    @Override
+    public ResponseEntity<ApiResponse> updateGPS(Inquilinos_ubic obj, int id) {
+        try {
+            boolean existe= inquilinosR.verificarExistIdInquilinosGPS(id);
+            Inquilinos_ubic inqui=new Inquilinos_ubic();
+            inqui.setId((long) id);
+            inqui.setLatitude(obj.getLatitude());
+            inqui.setLongitude(obj.getLongitude());
+            if (existe){
+                boolean ban = inquilinosR.updateGps(inqui,id);
+            }else{
+                Long ide = inquilinosR.saveGps(inqui);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al subir archivo.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", true);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> updateUrlUbicacion(MultipartFile file, int id) {
+        String fileName="-"; //si es '-' no actulizará foto
+        String fullName="";
+        if (!file.isEmpty()) {  //si hay imagen
+            fileName = generateUniqueFileName(file);
+            fullName=photoDir + fileName;
+        }else{
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "No existen datos para modificar.", 0);
+        }
+        boolean updated = inquilinosR.updateUrlUbicacion(fullName, id); //MODIFICA DATOS
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar los datos.", 0);
+        }
+
+        try {
+            if (!file.isEmpty()) {
+                // Crear el directorio de uploads si no existe
+                File uploadDir = new File(photoDirectory);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs();
+                }
+                // Definir la ruta completa donde se guardará el archivo
+                Path filePath = Paths.get(photoDirectory + fileName);
+                // Guardar el archivo en el sistema de archivos
+                Files.copy(file.getInputStream(), filePath);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al subir archivo.", updated);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+    }
 
     @Override
     public ResponseEntity<ApiResponse> delete(int id) {

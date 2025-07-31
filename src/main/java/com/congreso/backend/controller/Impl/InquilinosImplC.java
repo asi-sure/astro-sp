@@ -4,6 +4,7 @@ import com.congreso.backend.controller.InquilinosC;
 import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos;
+import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.service.InquilinosS;
@@ -64,6 +65,24 @@ public class InquilinosImplC implements InquilinosC {
     ) {
         return inquilinosS.update(obj, file, id);
     }
+    @Override
+    @PutMapping("inquilinos/gps8/{id}")
+    public ResponseEntity<ApiResponse> updateGPS(
+            @RequestPart("inquilinos") Inquilinos_ubic obj,
+            @PathVariable int id
+    ) {
+        return inquilinosS.updateGPS(obj, id);
+    }
+
+    @Override
+    @PutMapping("inquilinos/img/{id}")
+    public ResponseEntity<ApiResponse> updateUrlUbicacion(
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id
+    ) {
+        return inquilinosS.updateUrlUbicacion(file,id);
+    }
+
     @Override
     @DeleteMapping("inquilinos/{xid}")
     public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
