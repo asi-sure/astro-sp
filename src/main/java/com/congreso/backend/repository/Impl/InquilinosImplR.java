@@ -1,5 +1,6 @@
 package com.congreso.backend.repository.Impl;
 
+import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.Person;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
@@ -31,6 +32,13 @@ public class InquilinosImplR implements InquilinosR {
     }
 
     @Override
+    public Long saveGps(Inquilinos_ubic obj) {
+        sql = " INSERT INTO inquilinos_ubic(id, latitude, longitude) "+
+                "      values(?,?,?) RETURNING id ";
+        return db.queryForObject(sql, new Object[]{obj.getId(),obj.getLatitude(),obj.getLongitude()}, Long.class);
+    }
+
+    @Override
     public boolean update(InquilinosForm obj, int id) {
         Boolean res=false;
         if (obj.getUbicacion().equals("-")) {  //sin foto  atributo photo es "-"
@@ -44,6 +52,15 @@ public class InquilinosImplR implements InquilinosR {
                           " WHERE id = ?;";
             res = db.update(sql2, obj.getCedula(), obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(),obj.getUbicacion(), id) > 0;
         }
+        return res;
+    }
+    @Override
+    public boolean updateGps(Inquilinos_ubic obj, int id) {
+        Boolean res=false;
+        String sql = " UPDATE inquilinos_ubic "+
+                     " SET latitude=?, longitude=?  "+
+                     " WHERE id = ?; ";
+        res = db.update(sql, obj.getLatitude(), obj.getLongitude(), id) > 0;
         return res;
     }
     @Override
@@ -63,6 +80,13 @@ public class InquilinosImplR implements InquilinosR {
     public boolean verificaEstado(int id) {
         String sql="SELECT estado FROM inquilinos WHERE id = ? ";
         return db.queryForObject(sql, Boolean.class, id);
+    }
+    @Override
+    public boolean verificarExistIdInquilinosGPS(int id) {
+        Boolean existe;
+        String sql="SELECT EXISTS(SELECT 1 FROM inquilinos_ubic WHERE id= ?)";
+        existe = db.queryForObject(sql, Boolean.class, id);
+        return existe != null && existe;
     }
     @Override
     public boolean verificarCedula(String xcedula, int id) {

@@ -29,4 +29,6 @@ public class InquilinosForm implements Serializable {
     @Size(max = 200)
     private String ubicacion;
     private Boolean estado;
+    private double latitude;
+    private double longitude;
 }

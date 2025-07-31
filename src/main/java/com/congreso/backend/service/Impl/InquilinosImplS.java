@@ -2,6 +2,7 @@ package com.congreso.backend.service.Impl;
 
 import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
+import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
 import com.congreso.backend.reposotoryE.InquilinosRepo;
@@ -79,7 +80,19 @@ public class InquilinosImplS implements InquilinosS {
         }
         obj.setUbicacion(photoDir + fileName);
         try {
-            Long id = inquilinosR.save(obj);
+            Long id = inquilinosR.save(obj);//guarda inquilinos
+            if ((obj.getLatitude()!=0)&&(obj.getLongitude()!=0)){ //si llega cero los dos, no se guarda la Ubicacion GPS
+                boolean existe= inquilinosR.verificarExistIdInquilinosGPS(id.intValue());
+                Inquilinos_ubic inqui=new Inquilinos_ubic();
+                inqui.setId(id);
+                inqui.setLatitude(obj.getLatitude());
+                inqui.setLongitude(obj.getLongitude());
+                if (existe){
+                    boolean ban = inquilinosR.updateGps(inqui,id.intValue());
+                }else{
+                    Long ide = inquilinosR.saveGps(inqui);
+                }
+            }
 
             if (!file.isEmpty()) {
                 // Crear el directorio de uploads si no existe
@@ -111,10 +124,24 @@ public class InquilinosImplS implements InquilinosS {
         }else{
             obj.setUbicacion(fileName);
         }
-        boolean updated = inquilinosR.update(obj, id);
+        boolean updated = inquilinosR.update(obj, id);//MODIFICA DATOS
         if (!updated) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar los datos.", 0);
+        }else{ //si todo OK
+            if ((obj.getLatitude()!=0)&&(obj.getLongitude()!=0)){ //si llega cero los dos, no se guarda la Ubicacion GPS
+                boolean existe= inquilinosR.verificarExistIdInquilinosGPS(id);
+                Inquilinos_ubic inqui=new Inquilinos_ubic();
+                inqui.setId((long) id);
+                inqui.setLatitude(obj.getLatitude());
+                inqui.setLongitude(obj.getLongitude());
+                if (existe){
+                    boolean ban = inquilinosR.updateGps(inqui,id);
+                }else{
+                    Long ide = inquilinosR.saveGps(inqui);
+                }
+            }
         }
+
         try {
             if (!file.isEmpty()) {
                 // Crear el directorio de uploads si no existe
