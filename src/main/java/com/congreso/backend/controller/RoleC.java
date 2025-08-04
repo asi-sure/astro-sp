@@ -8,6 +8,7 @@ import com.congreso.backend.model.Rolper;
 import com.congreso.backend.utils.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,6 @@ public interface RoleC {
     ResponseEntity<ApiResponse> grantPersons(Rolper role);
     ResponseEntity<ApiResponse> revokePersons(int idPerson, int idRol);
     ResponseEntity<ApiResponse> save(@RequestBody Role role);
-
-
+    ResponseEntity<ApiResponse> update(Role role, int id);
+    ResponseEntity<ApiResponse> delete(int id);
 } //the end

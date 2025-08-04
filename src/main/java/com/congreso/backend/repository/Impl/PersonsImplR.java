@@ -65,6 +65,16 @@ public class PersonsImplR implements PersonsR {
         return res;
     }
 
+    @Override  //modificar foto usuario
+    public boolean update_foto(String foto, int id) {
+        Boolean res=false;
+        String sql = " UPDATE persons " +
+                     " SET photo=? " +
+                     " WHERE id = ?;";
+        res = db.update(sql, foto, id) > 0;
+        return res;
+    }
+
     @Override
     public boolean updateTipoper(Tipo_persons tipoper, int id) {
         Boolean res=false;

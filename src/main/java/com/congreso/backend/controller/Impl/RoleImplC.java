@@ -45,6 +45,21 @@ public class RoleImplC implements RoleC {
         return roleS.save(role);
     }
 
+    @Override
+    @PutMapping("role/{id}")
+    public ResponseEntity<ApiResponse> update(
+            @RequestBody Role role,
+            @PathVariable int id
+    ) {
+        return roleS.update(role,id);
+    }
+
+    @Override
+    @DeleteMapping("role/{xid}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
+        return roleS.delete(xid);
+    }
+
 /*    @GetMapping("{id}")
 //    @PreAuthorize("hasAuthority('CREATE')")
     public ResponseEntity<ApiResponse> findById(@PathVariable Long id) {

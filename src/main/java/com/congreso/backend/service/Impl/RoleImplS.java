@@ -64,6 +64,27 @@ public class RoleImplS implements RoleS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> delete(int id) {
+        boolean status = roleR.delete(id);
+        String mensaje="";
+        if (status) {
+            mensaje="Se habilitó satisfactoriamente.";
+        }else{
+            mensaje="Se eliminó satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> update(Role obj, int id) {
+        boolean updated = roleR.update(obj, id);
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar los datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+    }
+
 /*    @Override
     public ResponseEntity<ApiResponse> findById(long id) {
         Role role = roleR.getById(id);

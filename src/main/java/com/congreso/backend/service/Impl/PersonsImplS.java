@@ -134,6 +134,19 @@ public class PersonsImplS implements PersonsS {
     }
 
     @Override
+    public ResponseEntity<ApiResponse> update_foto(MultipartFile file, int id) {
+        String fileName="-";
+        if (!file.isEmpty()) {  //si hay imagen
+            fileName = generateUniqueFileName(file);
+        }
+        boolean updated = personsR.update_foto(fileName, id);
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+    }
+
+    @Override
     public ResponseEntity<ApiResponse> updateTipoper(Tipo_persons tipoper, int id) {
         boolean updated = personsR.updateTipoper(tipoper, id);
         if (!updated) {

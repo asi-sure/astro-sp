@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -42,8 +44,20 @@ public class GlobalExceptionHandler {
         ApiResponse response = new ApiResponse("Se produjo una excepción no manejada", request.getRequestURI());
         return response;
     }
-
-
+    @ExceptionHandler(HttpMessageNotReadableException.class) //by oam
+    @ResponseBody
+    public ApiResponse HttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        logger.error("Malformed or invalid JSON:", ex);
+        ApiResponse response = new ApiResponse("Malformed or invalid JSON", ex.getMostSpecificCause().getMessage());
+        return response;
+    }
+    @ExceptionHandler(BadSqlGrammarException.class) //by oam
+    @ResponseBody
+    public ApiResponse BadSqlGrammarException(BadSqlGrammarException ex) {
+        logger.error("Error de SQL mal escrita:", ex);
+        ApiResponse response = new ApiResponse("Error de SQL mal escrita", ex.getMostSpecificCause().getMessage());
+        return response;
+    }
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseBody
     public ApiResponse handleNoHandlerFoundException(NoHandlerFoundException ex, HttpServletRequest request) {

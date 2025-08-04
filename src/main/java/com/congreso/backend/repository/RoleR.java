@@ -11,13 +11,10 @@ public interface RoleR {
     Long grantPersons(Rolper role);
     Boolean revokePersons(int idPerson, int idRol);
     Long save(Role role);
-
+    boolean update(Role obj, int id); //modificar datos
+    boolean delete(int id); //Eliminar datos
     Role getById(Long id);
     List<RoleDto> findByPerson(Long id_person);
-
-
-
-
 
 //ESTOS 3 DE ABAJO SON DEL ANTIGUO SISTEMA
 //    Integer save(Rol obj);

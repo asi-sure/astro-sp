@@ -59,6 +59,16 @@ public class PersonsImplC implements PersonsC {
     ) {
         return personsS.update(person, file, id);
     }
+
+    @Override
+    @PutMapping("persons/foto/{id}")
+    public ResponseEntity<ApiResponse> update_foto(
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id
+    ) {
+        return personsS.update_foto(file,id);
+    }
+
     @Override
     @PutMapping("persons/tipoper/{id}")
     public ResponseEntity<ApiResponse> updateTipoper(

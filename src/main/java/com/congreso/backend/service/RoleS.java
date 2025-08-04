@@ -14,5 +14,7 @@ public interface RoleS {
     ResponseEntity<ApiResponse> grantPersons(Rolper role);
     ResponseEntity<ApiResponse> revokePersons(int idPerson, int idRol);
     ResponseEntity<ApiResponse> save(Role role);
+    ResponseEntity<ApiResponse> delete(int id);
+    ResponseEntity<ApiResponse> update(Role obj, int id);
 
 }

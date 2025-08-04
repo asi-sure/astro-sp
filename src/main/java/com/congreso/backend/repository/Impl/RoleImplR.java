@@ -48,6 +48,30 @@ public class RoleImplR implements RoleR {
         return db.queryForObject(sql, new Object[]{role.getDescription(), role.getName(),true}, Long.class);
     }
 
+    @Override   //Modificar roles
+    public boolean update(Role obj, int id) {
+        Boolean res=false;
+        sql = "  UPDATE role "+
+              "  SET description=?, name=? "+
+              "  WHERE id_role=? ;";
+        res = db.update(sql, obj.getDescription(),obj.getName() , id) > 0;
+        return res;
+    }
+    @Override
+    public boolean delete(int id) {
+        boolean status = verificaEstado(id);
+        String sql="";
+        Boolean res;
+        if (status){
+            sql="UPDATE role SET status=false WHERE id_role = ?";
+            res = db.update(sql, id) > 0;
+        }else{
+            sql="UPDATE role SET status=true WHERE id_role = ?";
+            res = db.update(sql, id) > 0;
+        }
+        return !status;
+    }
+
     @Override
     public Role getById(Long id) {
         sql = "SELECT * FROM role WHERE id_role = ?;";
@@ -61,7 +85,10 @@ public class RoleImplR implements RoleR {
              +" order by 1,2 ";
         return db.query(sql, BeanPropertyRowMapper.newInstance(RoleDto.class),id_person);
     }
-
+    public boolean verificaEstado(int id) {
+        String sql="SELECT status FROM role WHERE id_role = ?";
+        return db.queryForObject(sql, Boolean.class, id);
+    }
 
 
 //ESTOS 3 DE ABAJO SON DEL ANTIGUO SISTEMA

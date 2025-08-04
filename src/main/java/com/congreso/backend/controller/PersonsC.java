@@ -22,6 +22,9 @@ public interface PersonsC {
             @RequestPart("person") Persons person,
             @RequestPart("file") MultipartFile file,
             @PathVariable int id);
+    ResponseEntity<ApiResponse> update_foto(  //modificar foto del usuario
+            @RequestPart("file") MultipartFile file,
+            @PathVariable int id);
     ResponseEntity<ApiResponse> updateTipoper(
             @RequestBody Tipo_persons tipoper,
             @PathVariable int id);

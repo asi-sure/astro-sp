@@ -17,28 +17,28 @@ public class InquilinosImplR implements InquilinosR {
     private final JdbcTemplate db;
     private String sql;
 
-    @Override
+    @Override  //listar todos
     public List<InquilinosForm> findAll(boolean xestado) {
         sql = " SELECT id,cedula,nombre,ap,am,direc,celular,ubicacion,estado "+
               " FROM inquilinos WHERE estado = ? ;";
         return db.query(sql, BeanPropertyRowMapper.newInstance(InquilinosForm.class),xestado);
     }
 
-    @Override
+    @Override  //guardar datos inquilinos
     public Long save(InquilinosForm obj) {
         sql = " INSERT INTO inquilinos(cedula,nombre,ap,am,direc,celular,ubicacion,estado) "+
               "      values(?,?,?,?,?,?,?,?) RETURNING id ";
         return db.queryForObject(sql, new Object[]{obj.getCedula(),obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(),obj.getUbicacion(),true}, Long.class);
     }
 
-    @Override
+    @Override  //guardar ubicacion GPS
     public Long saveGps(Inquilinos_ubic obj) {
         sql = " INSERT INTO inquilinos_ubic(id, latitude, longitude) "+
                 "      values(?,?,?) RETURNING id ";
         return db.queryForObject(sql, new Object[]{obj.getId(),obj.getLatitude(),obj.getLongitude()}, Long.class);
     }
 
-    @Override
+    @Override  //modificar datos con/sin fotos
     public boolean update(InquilinosForm obj, int id) {
         Boolean res=false;
         if (obj.getUbicacion().equals("-")) {  //sin foto  atributo photo es "-"
@@ -54,7 +54,7 @@ public class InquilinosImplR implements InquilinosR {
         }
         return res;
     }
-    @Override
+    @Override  //modificar ubicacion de imagen_url
     public boolean updateUrlUbicacion(String urlImg, int id) {
         Boolean res=false;
         String sql2 = " UPDATE inquilinos " +
@@ -64,7 +64,7 @@ public class InquilinosImplR implements InquilinosR {
         return res;
     }
 
-    @Override
+    @Override //modificar ubicacion GPS
     public boolean updateGps(Inquilinos_ubic obj, int id) {
         Boolean res=false;
         String sql = " UPDATE inquilinos_ubic "+
@@ -73,7 +73,7 @@ public class InquilinosImplR implements InquilinosR {
         res = db.update(sql, obj.getLatitude(), obj.getLongitude(), id) > 0;
         return res;
     }
-    @Override
+    @Override   //  elimiar/habilitar
     public boolean delete(int id) {
         boolean status = verificaEstado(id);
         String sql="";
@@ -87,18 +87,19 @@ public class InquilinosImplR implements InquilinosR {
         }
         return !status;
     }
+    //veririficar estado del atributo estado
     public boolean verificaEstado(int id) {
         String sql="SELECT estado FROM inquilinos WHERE id = ? ";
         return db.queryForObject(sql, Boolean.class, id);
     }
-    @Override
+    @Override  //verificar si existe datos en inquilinos_ubic
     public boolean verificarExistIdInquilinosGPS(int id) {
         Boolean existe;
         String sql="SELECT EXISTS(SELECT 1 FROM inquilinos_ubic WHERE id= ?)";
         existe = db.queryForObject(sql, Boolean.class, id);
         return existe != null && existe;
     }
-    @Override
+    @Override  //verificar si existe CEDULA
     public boolean verificarCedula(String xcedula, int id) {
         String sql="";
         Boolean existe;
