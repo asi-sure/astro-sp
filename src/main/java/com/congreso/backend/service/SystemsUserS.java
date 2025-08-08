@@ -17,7 +17,7 @@ public interface SystemsUserS {
 
     Authentication authenticate(String username, String password);
 
-    AuthResponse createUser(AuthCreateUserRequest authCreateUserRequest);
+    AuthResponse createUser1(AuthCreateUserRequest authCreateUserRequest);
 
     ResponseEntity<ApiResponse> update(SystemUser obj);
 

@@ -73,7 +73,7 @@ public class SystemsUserImplS implements SystemsUserS {
         return new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
     }
     @Override
-    public AuthResponse createUser(AuthCreateUserRequest authCreateUserRequest) {
+    public AuthResponse createUser1(AuthCreateUserRequest authCreateUserRequest) {
         List<String> roleRequest = authCreateUserRequest.rolerequest().roleListName();
         Set<Rol> rolSet = roleR.findByEntitiesByRole(roleRequest).stream().collect(Collectors.toSet());
         if (rolSet.isEmpty()) {

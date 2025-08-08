@@ -65,6 +65,7 @@ public class AuthenticationImplC implements AuthenticacionC {
         List<MenuDto> menu = menuR.findByPerson(person.getId());
 
         Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("id", person.getId());
         hashMap.put("token", ar.jwt());
         hashMap.put("username", ar.username());
         hashMap.put("user", person.getName()+" "+person.getFirstName()+" "+person.getSecondName());
