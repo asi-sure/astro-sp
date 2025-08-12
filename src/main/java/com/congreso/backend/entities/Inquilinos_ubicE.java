@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "inquilinos_ubic")
 public class Inquilinos_ubicE {
     @Id
-    private Long id; // Suponiendo que tienes un ID
+    private Long id;
 
     @Column(name = "longitude", nullable = false)
     private double longitude;

@@ -2,6 +2,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\DepartamentImplR.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\MenuImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\RoleS.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\reposotoryE\SeccionesRepo.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\Impl\PasswordResetTokenImplS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\RolImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\CityImplR.java
@@ -10,6 +11,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\InquilinosR.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\DepartamentImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\EmailServiceS.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\entities\SectoresE.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\MenuImplR.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\dto\SystemUsersDto.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Person.java
@@ -25,6 +27,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\PersonImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\TeamC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Departament.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\SectoresC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\AuthenticationImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\InquilinosC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\RegionC.java
@@ -40,6 +43,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\SystemUser.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\MenuC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\InquilinosImplR.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\SectoresS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\Impl\PermissionImplS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\dto\MenuDto.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\PersonImplR.java
@@ -87,6 +91,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Team.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\PersonC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\config\security\jwt\JwtUtils.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\SectoresImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\validator\EmailNameValidator.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Role.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\request\AuthCreateRoleRequest.java
@@ -108,6 +113,7 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\Rolper.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\DepartamentC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\dto\MenusDto.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\entities\SeccionesE.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\PersonsS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\model\dto\SubmenuDto.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\CongresoBackendApplication.java
@@ -115,11 +121,13 @@ D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\RolS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\SystemUsersImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\Impl\RegionImplR.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\service\Impl\SectoresImplS.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\reposotoryE\InquilinosRepo.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\request\AuthLoginRequest.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\entities\Inquilinos_ubicE.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\TeamR.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\repository\RoleR.java
+D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\reposotoryE\SectoresRepo.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\Impl\RoleImplC.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\entities\Dto\InquilinosEDto.java
 D:\gestion_2022\octavio_\DIS_\gestion2025_\proyectos_\congreso_\congreso01-main\src\main\java\com\congreso\backend\controller\AuthenticacionC.java
