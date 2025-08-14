@@ -1,5 +1,6 @@
 package com.congreso.backend.reposotoryE;
 
+import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.SectoresE;
 import org.springframework.data.domain.Page;
@@ -18,4 +19,16 @@ public interface SectoresRepo extends JpaRepository<SectoresE, Long> {
             @Param("estado") int estado,
             @Param("buscar") String buscar,
             Pageable pageable);
-}
+
+    @Query(
+            value = "SELECT new com.congreso.backend.entities.Dto.SectoresEDto(i.cods, i.nombre, i.estado) " +
+                    "FROM SectoresE i " +
+                    "WHERE i.estado = :estado " +
+                    "AND UPPER(i.nombre) LIKE UPPER(:buscar)"
+    )
+    Page<SectoresEDto> listarSectoresDto(
+            @Param("estado") int estado,
+            @Param("buscar") String buscar,
+            Pageable pageable
+    );
+}  //the end

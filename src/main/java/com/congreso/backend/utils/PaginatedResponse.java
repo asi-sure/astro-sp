@@ -1,11 +1,14 @@
 package com.congreso.backend.utils;
 
+import com.congreso.backend.entities.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 public class PaginatedResponse<T> {
+    @JsonView({JsonViews.Public.class, JsonViews.Internal.class})
     private List<T> content;
     private int currentPage;
     private int totalPages;
