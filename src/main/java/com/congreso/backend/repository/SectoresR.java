@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SectoresR {
     Long save(Sectores obj);
+    boolean update(Sectores obj, int id);
 
-
-    public boolean verificarNombre(String nombre);
+    public boolean verificarNombre(String nombre, int id);
 }

@@ -46,7 +46,7 @@ public class SectoresImplS implements SectoresS {
     }
     @Override
     public ResponseEntity<ApiResponse> save(Sectores obj) {
-        if (sectoresR.verificarNombre(obj.getNombre())) {
+        if (sectoresR.verificarNombre(obj.getNombre(),0)) {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Sector ya Existe.", 0);
         }
         try {
@@ -57,4 +57,18 @@ public class SectoresImplS implements SectoresS {
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
-}
+
+    @Override
+    public ResponseEntity<ApiResponse> update(Sectores obj, int id) {
+        if (sectoresR.verificarNombre(obj.getNombre(),id)) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Sector ya Existe.", 0);
+        }
+        boolean updated = sectoresR.update(obj, id);//MODIFICA DATOS
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar los datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
+    }
+
+
+}  //the end

@@ -24,12 +24,28 @@ public class SectoresImplR implements SectoresR {
     }
 
     @Override
-    public boolean verificarNombre(String nombre) {
+    public boolean update(Sectores obj, int id) {
+        Boolean res=false;
+        String sql1 = " UPDATE sectores "+
+                " SET nombre = ? "+
+                " WHERE cods = ?; ";
+        res = db.update(sql1, obj.getNombre(),id) > 0;
+        return res;
+    }
+
+    @Override
+    public boolean verificarNombre(String nombre, int id) {
         Boolean existe;
-        String sql="SELECT EXISTS(SELECT 1 FROM sectores WHERE upper(nombre) = upper(?))";
-        existe = db.queryForObject(sql, Boolean.class, nombre);
+        if (id == 0) {
+            String sql = "SELECT EXISTS(SELECT 1 FROM sectores WHERE upper(nombre) = upper(?))";
+            existe = db.queryForObject(sql, Boolean.class, nombre);
+        }else{
+            String sql = "SELECT EXISTS(SELECT 1 FROM sectores WHERE upper(nombre) = upper(?) and (cods <> ?))";
+            existe = db.queryForObject(sql, Boolean.class, nombre, id);
+        }
         return existe != null && existe;
     }
+
 
 //    @Override
 //    public List<Sectores> findAll(int xestado) {

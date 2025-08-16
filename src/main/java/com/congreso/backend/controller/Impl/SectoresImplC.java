@@ -46,4 +46,10 @@ public class SectoresImplC implements SectoresC {
         return sectoresS.save(obj);
     }
 
+    @Override
+    @PutMapping("sectores/{cods}")
+    public ResponseEntity<ApiResponse> update(@RequestBody Sectores obj, @PathVariable int cods) {
+        return sectoresS.update(obj,cods);
+    }
+
 }
