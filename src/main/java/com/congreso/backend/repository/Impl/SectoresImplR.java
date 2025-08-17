@@ -32,6 +32,13 @@ public class SectoresImplR implements SectoresR {
         res = db.update(sql1, obj.getNombre(),id) > 0;
         return res;
     }
+    @Override
+    public boolean delete(int estado,int id) {
+        Boolean res;
+        String sql="UPDATE sectores SET estado=1 - ? WHERE cods = ?";
+        res = db.update(sql,estado, id) > 0;
+        return !res;
+    }
 
     @Override
     public boolean verificarNombre(String nombre, int id) {

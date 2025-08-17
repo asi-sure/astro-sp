@@ -16,4 +16,5 @@ public interface SectoresS {
     PaginatedResponse<SectoresEDto> findAll_dto(int xestado, String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> save(Sectores obj);
     ResponseEntity<ApiResponse> update(Sectores obj, int id);
+    ResponseEntity<ApiResponse> delete(int estado, int id);
 }

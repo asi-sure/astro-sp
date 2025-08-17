@@ -52,4 +52,13 @@ public class SectoresImplC implements SectoresC {
         return sectoresS.update(obj,cods);
     }
 
+    @Override
+    @DeleteMapping("sectores/{estadoactual}/{cods}")
+    public ResponseEntity<ApiResponse> delete(
+            @PathVariable int estadoactual,
+            @PathVariable int cods
+    ) {
+        return sectoresS.delete(estadoactual,cods);
+    }
+
 }

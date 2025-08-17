@@ -85,7 +85,9 @@ public class InquilinosImplC implements InquilinosC {
 
     @Override
     @DeleteMapping("inquilinos/{xid}")
-    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
+    public ResponseEntity<ApiResponse> delete(
+            @PathVariable int xid
+    ) {
         return inquilinosS.delete(xid);
     }
 
