@@ -1,5 +1,7 @@
 package com.congreso.backend.reposotoryE;
 
+import com.congreso.backend.entities.Dto.SeccionesEDto;
+import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.SeccionesE;
 import com.congreso.backend.entities.SectoresE;
@@ -19,4 +21,16 @@ public interface SeccionesRepo extends JpaRepository<SeccionesE, Long> {
             @Param("estado") int estado,
             @Param("buscar") String buscar,
             Pageable pageable);
+
+    @Query(
+            value = "SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
+                    "FROM SeccionesE i " +
+                    "WHERE i.estado = :estado " +
+                    "AND UPPER(i.nombre) LIKE UPPER(:buscar)"
+    )
+    Page<SeccionesEDto> listarSeccionesDto(
+            @Param("estado") int estado,
+            @Param("buscar") String buscar,
+            Pageable pageable
+    );
 }

@@ -1,5 +1,7 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.entities.Dto.SeccionesEDto;
+import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.SeccionesE;
 import com.congreso.backend.entities.SectoresE;
 import com.congreso.backend.repository.SectoresR;
@@ -26,6 +28,12 @@ public class SeccionesImplS implements SeccionesS {
     @Override
     public PaginatedResponse<SeccionesE> findAll(int xestado, String buscar, Pageable pageable) {
         Page<SeccionesE> page = seccionesRepo.listarSecciones(xestado,"%"+buscar.trim()+"%", pageable);
+        return PaginationUtils.toPaginatedResponse(page);
+    }
+
+    @Override
+    public PaginatedResponse<SeccionesEDto> findAll_dto(int xestado, String buscar, Pageable pageable) {
+        Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
 }

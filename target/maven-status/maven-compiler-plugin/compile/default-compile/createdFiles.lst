@@ -137,6 +137,7 @@ com\congreso\backend\repository\Impl\PermissionImplR.class
 com\congreso\backend\exception\GlobalExceptionHandler.class
 com\congreso\backend\controller\Impl\PersonImplC.class
 com\congreso\backend\model\Team$TeamBuilder.class
+com\congreso\backend\entities\Dto\SeccionesEDto.class
 com\congreso\backend\service\CityS.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class

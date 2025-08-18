@@ -1,6 +1,7 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.SeccionesC;
+import com.congreso.backend.entities.Dto.SeccionesEDto;
 import com.congreso.backend.entities.SeccionesE;
 import com.congreso.backend.service.SeccionesS;
 import com.congreso.backend.service.SectoresS;
@@ -27,5 +28,13 @@ public class SeccionesImplC implements SeccionesC {
             @PathVariable String buscar,
             @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
         return seccionesS.findAll(estado, buscar, pageable);
+    }
+    @Override
+    @GetMapping("secciones/dto/{estado}/{buscar}")
+    public PaginatedResponse<SeccionesEDto> findAll_dto(
+            @PathVariable int estado,
+            @PathVariable String buscar,
+            @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
+        return seccionesS.findAll_dto(estado, buscar, pageable);
     }
 }
