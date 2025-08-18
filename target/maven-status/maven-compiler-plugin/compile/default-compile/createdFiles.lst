@@ -34,11 +34,14 @@ com\congreso\backend\exception\util\ApiResponse.class
 com\congreso\backend\controller\Impl\RolImplC.class
 com\congreso\backend\model\Departament.class
 com\congreso\backend\repository\Impl\RoleImplR.class
+com\congreso\backend\controller\SeccionesC.class
 com\congreso\backend\service\RoleS.class
 com\congreso\backend\repository\Impl\PersonImplR.class
 com\congreso\backend\controller\Impl\CityImplC.class
 com\congreso\backend\entities\Inquilinos_ubicE.class
+com\congreso\backend\service\SeccionesS.class
 com\congreso\backend\repository\Impl\SystemUserImplR.class
+com\congreso\backend\service\Impl\SeccionesImplS.class
 com\congreso\backend\controller\RegionC.class
 com\congreso\backend\service\PersonsS.class
 com\congreso\backend\model\Region.class
@@ -56,6 +59,7 @@ com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\entities\JsonViews.class
 com\congreso\backend\model\dto\SubmenuDto.class
 com\congreso\backend\controller\AuthenticacionC.class
+com\congreso\backend\controller\Impl\SeccionesImplC.class
 com\congreso\backend\exception\type\ResourceNotFoundException.class
 com\congreso\backend\repository\PasswordResetTokenR.class
 com\congreso\backend\model\Rol.class
@@ -80,6 +84,7 @@ com\congreso\backend\controller\DepartamentC.class
 com\congreso\backend\config\security\SecurityConfig.class
 com\congreso\backend\controller\TeamC.class
 com\congreso\backend\service\SystemsUserS.class
+com\congreso\backend\entities\PrediosE$PrediosEBuilder.class
 com\congreso\backend\entities\InquilinosE.class
 com\congreso\backend\model\dto\PersonsDto.class
 com\congreso\backend\model\City.class
@@ -167,6 +172,7 @@ com\congreso\backend\repository\DepartamentR.class
 com\congreso\backend\model\dto\SubmenuDto$SubmenuDtoBuilder.class
 com\congreso\backend\controller\MenuC.class
 com\congreso\backend\CongresoBackendApplication.class
+com\congreso\backend\entities\PrediosE.class
 com\congreso\backend\repository\Impl\MenuImplR.class
 com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class

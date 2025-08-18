@@ -2,8 +2,11 @@ package com.congreso.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -30,4 +33,8 @@ public class SeccionesE {
     @JoinColumn(name = "cods")
     @JsonBackReference
     SectoresE sectores;
+
+    @OneToMany(mappedBy = "secciones")
+    @JsonManagedReference
+    Set<PrediosE> predios;
 }

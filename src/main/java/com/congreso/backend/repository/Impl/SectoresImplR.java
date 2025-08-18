@@ -15,14 +15,12 @@ import java.util.List;
 public class SectoresImplR implements SectoresR {
     private final JdbcTemplate db;
     private String sql;
-
     @Override
     public Long save(Sectores obj) {
         sql = " INSERT INTO sectores(nombre,estado) "+
                 "  values(?,?) RETURNING cods ";
         return db.queryForObject(sql, new Object[]{obj.getNombre(),1}, Long.class);
     }
-
     @Override
     public boolean update(Sectores obj, int id) {
         Boolean res=false;
@@ -39,7 +37,6 @@ public class SectoresImplR implements SectoresR {
         res = db.update(sql,estado, id) > 0;
         return !res;
     }
-
     @Override
     public boolean verificarNombre(String nombre, int id) {
         Boolean existe;
