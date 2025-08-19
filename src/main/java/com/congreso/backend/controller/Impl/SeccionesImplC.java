@@ -58,4 +58,13 @@ public class SeccionesImplC implements SeccionesC {
     public ResponseEntity<ApiResponse> update(@RequestBody Secciones obj, @PathVariable int codsec) {
         return seccionesS.update(obj,codsec);
     }
+
+    @Override
+    @DeleteMapping("secciones/{estadoactual}/{codsec}")
+    public ResponseEntity<ApiResponse> delete(
+            @PathVariable int estadoactual,
+            @PathVariable int codsec
+    ) {
+        return seccionesS.delete(estadoactual,codsec);
+    }
 }

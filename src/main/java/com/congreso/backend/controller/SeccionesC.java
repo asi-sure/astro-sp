@@ -18,4 +18,5 @@ public interface SeccionesC {
     ResponseEntity<ApiResponse> seccionesPorSectores(int estado, int cods);
     ResponseEntity<ApiResponse> save(Secciones obj);
     ResponseEntity<ApiResponse> update(Secciones obj, int codsec);
+    ResponseEntity<ApiResponse> delete(int estadoactual, int id);
 }

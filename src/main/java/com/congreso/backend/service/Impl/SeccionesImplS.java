@@ -74,4 +74,19 @@ public class SeccionesImplS implements SeccionesS {
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> delete(int estado, int id) {
+        if (estado>1) {//si estado es diferente a 1 o 0
+            return customResponseBuilder.buildResponse(HttpStatus.BAD_REQUEST.value(), "El valor ESTADO ACTUAL no es válido. Por favor, revise la información.", 0);
+        }
+        boolean status = seccionesR.delete(estado, id);
+        String mensaje="";
+        if (estado==1) {
+            mensaje="Se eliminó satisfactoriamente.";
+        }else{
+            mensaje="Se habilitó satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
 }
