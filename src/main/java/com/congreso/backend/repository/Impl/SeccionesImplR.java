@@ -19,6 +19,23 @@ public class SeccionesImplR implements SeccionesR {
                 "  values(?,?,?) RETURNING cods ";
         return db.queryForObject(sql, new Object[]{obj.getCods(),obj.getNombre(),1}, Long.class);
     }
+    @Override
+    public boolean update(Secciones obj, int id) {
+        Boolean res=false;
+        String sql1 = " UPDATE secciones "+
+                " SET nombre = ?, cods= ? "+
+                " WHERE codsec = ?; ";
+        res = db.update(sql1, obj.getNombre(), obj.getCods(),id) > 0;
+        return res;
+    }
+
+    @Override
+    public boolean delete(int estado, int id) {
+        Boolean res;
+        String sql="UPDATE secciones SET estado=1 - ? WHERE codsec = ?";
+        res = db.update(sql,estado, id) > 0;
+        return !res;
+    }
 
     @Override
     public boolean verificarNombre(String nombre, int id) {

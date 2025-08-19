@@ -15,4 +15,5 @@ public interface SeccionesS {
     PaginatedResponse<SeccionesE> findAll(int xestado, String buscar, Pageable pageable);
     PaginatedResponse<SeccionesEDto> findAll_dto(int xestado, String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> save(Secciones obj);
+    ResponseEntity<ApiResponse> update(Secciones obj, int id);
 }

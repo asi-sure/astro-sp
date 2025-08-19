@@ -43,4 +43,10 @@ public class SeccionesImplC implements SeccionesC {
     public ResponseEntity<ApiResponse> save(@RequestBody Secciones obj){
         return seccionesS.save(obj);
     }
+
+    @Override
+    @PutMapping("secciones/{codsec}")
+    public ResponseEntity<ApiResponse> update(@RequestBody Secciones obj, @PathVariable int codsec) {
+        return seccionesS.update(obj,codsec);
+    }
 }

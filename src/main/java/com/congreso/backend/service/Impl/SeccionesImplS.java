@@ -35,13 +35,11 @@ public class SeccionesImplS implements SeccionesS {
         Page<SeccionesE> page = seccionesRepo.listarSecciones(xestado,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
-
     @Override
     public PaginatedResponse<SeccionesEDto> findAll_dto(int xestado, String buscar, Pageable pageable) {
         Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
-
     @Override
     public ResponseEntity<ApiResponse> save(Secciones obj) {
         if (seccionesR.verificarNombre(obj.getNombre(),0)) {
@@ -54,5 +52,16 @@ public class SeccionesImplS implements SeccionesS {
             return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar los Datos.", 0);
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
+    }
+    @Override
+    public ResponseEntity<ApiResponse> update(Secciones obj, int id) {
+        if (seccionesR.verificarNombre(obj.getNombre(),id)) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Sección ya Existe.", 0);
+        }
+        boolean updated = seccionesR.update(obj, id);//MODIFICA DATOS
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar los datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 }
