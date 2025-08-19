@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface SeccionesRepo extends JpaRepository<SeccionesE, Long> {
     @Query(
             value = " SELECT i "+
@@ -32,5 +34,12 @@ public interface SeccionesRepo extends JpaRepository<SeccionesE, Long> {
             @Param("estado") int estado,
             @Param("buscar") String buscar,
             Pageable pageable
+    );
+    @Query( value = " SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
+                    " FROM SeccionesE i " +
+                    " WHERE i.estado = :estado AND i.cods = :xcods ")
+    List<SeccionesEDto> listarSeccionesPorSectoresDto(
+            @Param("estado") int estado,
+            @Param("xcods") int xcods
     );
 }

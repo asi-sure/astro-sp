@@ -5,6 +5,7 @@ import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.SeccionesE;
 import com.congreso.backend.entities.SectoresE;
 import com.congreso.backend.model.Secciones;
+import com.congreso.backend.model.dto.PersonsDto;
 import com.congreso.backend.repository.SeccionesR;
 import com.congreso.backend.repository.SectoresR;
 import com.congreso.backend.reposotoryE.SeccionesRepo;
@@ -21,6 +22,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -40,6 +43,13 @@ public class SeccionesImplS implements SeccionesS {
         Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> listarSeccionesPorSectoresDto(int estado, int cods) {
+        List<SeccionesEDto> secciones = seccionesRepo.listarSeccionesPorSectoresDto(estado,cods);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", secciones);
+    }
+
     @Override
     public ResponseEntity<ApiResponse> save(Secciones obj) {
         if (seccionesR.verificarNombre(obj.getNombre(),0)) {

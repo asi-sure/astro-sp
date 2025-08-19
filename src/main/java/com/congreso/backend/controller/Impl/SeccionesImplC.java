@@ -38,6 +38,15 @@ public class SeccionesImplC implements SeccionesC {
             @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
         return seccionesS.findAll_dto(estado, buscar, pageable);
     }
+
+    @Override
+    @GetMapping("secciones/porsector/{estado}/{cods}")
+    public ResponseEntity<ApiResponse> seccionesPorSectores(
+            @PathVariable int estado,
+            @PathVariable int cods ) {
+        return seccionesS.listarSeccionesPorSectoresDto(estado,cods);
+    }
+
     @Override
     @PostMapping("secciones")
     public ResponseEntity<ApiResponse> save(@RequestBody Secciones obj){
