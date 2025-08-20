@@ -25,10 +25,10 @@ public interface SeccionesRepo extends JpaRepository<SeccionesE, Long> {
             Pageable pageable);
 
     @Query(
-            value = "SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
-                    "FROM SeccionesE i " +
-                    "WHERE i.estado = :estado " +
-                    "AND UPPER(i.nombre) LIKE UPPER(:buscar)"
+            value = " SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
+                    " FROM SeccionesE i " +
+                    " WHERE i.estado = :estado " +
+                    " AND UPPER(i.nombre) LIKE UPPER(:buscar)"
     )
     Page<SeccionesEDto> listarSeccionesDto(
             @Param("estado") int estado,

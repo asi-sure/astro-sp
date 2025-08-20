@@ -2,13 +2,11 @@ package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.SectoresC;
 import com.congreso.backend.entities.Dto.SectoresEDto;
-import com.congreso.backend.entities.JsonViews;
 import com.congreso.backend.entities.SectoresE;
 import com.congreso.backend.model.Sectores;
 import com.congreso.backend.service.SectoresS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.PaginatedResponse;
-import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
