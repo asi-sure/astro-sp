@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class SeccionesEDto {
     private Long codsec;
     private Long cods;
+    private String nombresector;
     private String nombre;
     private int estado;
 }
