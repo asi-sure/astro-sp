@@ -31,20 +31,13 @@ public class SeccionesImplC implements SeccionesC {
         return seccionesS.findAll(estado, buscar, pageable);
     }
     @Override
-    @GetMapping("secciones/dto/{estado}/{buscar}")
+    @GetMapping("secciones/dto/{estado}/{codSector}/{buscar}")
     public PaginatedResponse<SeccionesEDto> findAll_dto(
             @PathVariable int estado,
+            @PathVariable int codSector,
             @PathVariable String buscar,
             @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
-        return seccionesS.findAll_dto(estado, buscar, pageable);
-    }
-
-    @Override
-    @GetMapping("secciones/porsector/{estado}/{cods}")
-    public ResponseEntity<ApiResponse> seccionesPorSectores(
-            @PathVariable int estado,
-            @PathVariable int cods ) {
-        return seccionesS.listarSeccionesPorSectoresDto(estado,cods);
+        return seccionesS.findAll_dto(estado,codSector,buscar,pageable);
     }
 
     @Override

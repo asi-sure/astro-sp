@@ -39,17 +39,12 @@ public class SeccionesImplS implements SeccionesS {
         return PaginationUtils.toPaginatedResponse(page);
     }
     @Override
-    public PaginatedResponse<SeccionesEDto> findAll_dto(int xestado, String buscar, Pageable pageable) {
-        Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,"%"+buscar.trim()+"%", pageable);
+    public PaginatedResponse<SeccionesEDto> findAll_dto(int xestado,int xcods,String buscar, Pageable pageable) {
+        int xcod1=0; int xcod2=99999;
+        if (xcods != 0) { xcod1=xcods; xcod2=xcod2; }
+        Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,xcod1,xcod2,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
-
-    @Override
-    public ResponseEntity<ApiResponse> listarSeccionesPorSectoresDto(int estado, int cods) {
-        List<SeccionesEDto> secciones = seccionesRepo.listarSeccionesPorSectoresDto(estado,cods);
-        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", secciones);
-    }
-
     @Override
     public ResponseEntity<ApiResponse> save(Secciones obj) {
         if (seccionesR.verificarNombre(obj.getNombre(),0)) {

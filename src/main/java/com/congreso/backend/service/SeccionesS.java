@@ -14,8 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface SeccionesS {
     PaginatedResponse<SeccionesE> findAll(int xestado, String buscar, Pageable pageable);
-    PaginatedResponse<SeccionesEDto> findAll_dto(int xestado, String buscar, Pageable pageable);
-    ResponseEntity<ApiResponse> listarSeccionesPorSectoresDto(int estado, int cods);
+    PaginatedResponse<SeccionesEDto> findAll_dto(int xestado,int xcods,String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> save(Secciones obj);
     ResponseEntity<ApiResponse> update(Secciones obj, int id);
     ResponseEntity<ApiResponse> delete(int estado, int id);

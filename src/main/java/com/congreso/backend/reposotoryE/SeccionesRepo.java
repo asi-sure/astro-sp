@@ -27,19 +27,16 @@ public interface SeccionesRepo extends JpaRepository<SeccionesE, Long> {
     @Query(
             value = " SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
                     " FROM SeccionesE i " +
-                    " WHERE i.estado = :estado " +
-                    " AND UPPER(i.nombre) LIKE UPPER(:buscar)"
+                    " WHERE (i.estado = :estado)AND(i.cods between :xcods1 and :xcods2)" +
+                    " AND(UPPER(i.nombre) LIKE UPPER(:buscar))"
     )
     Page<SeccionesEDto> listarSeccionesDto(
             @Param("estado") int estado,
+            @Param("xcods1") int xcods1,
+            @Param("xcods2") int xcods2,
             @Param("buscar") String buscar,
             Pageable pageable
     );
-    @Query( value = " SELECT new com.congreso.backend.entities.Dto.SeccionesEDto(i.codsec,i.cods, i.nombre, i.estado) " +
-                    " FROM SeccionesE i " +
-                    " WHERE i.estado = :estado AND i.cods = :xcods ")
-    List<SeccionesEDto> listarSeccionesPorSectoresDto(
-            @Param("estado") int estado,
-            @Param("xcods") int xcods
-    );
-}
+
+
+} //End of the Class
