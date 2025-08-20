@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 public interface PrediosC {
-    PaginatedResponse<PrediosE> findAll(int xestado, String buscar, Pageable pageable);
-    ResponseEntity<ApiResponse> prediosPorSector(int estado, int codsec);
+    PaginatedResponse<PrediosE> findAll(int estado, int codSeccion,String buscar, Pageable pageable);
+//    ResponseEntity<ApiResponse> prediosPorSector(int estado, int codsec);
 }

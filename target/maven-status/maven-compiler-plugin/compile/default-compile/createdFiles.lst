@@ -67,6 +67,7 @@ com\congreso\backend\model\Submenu.class
 com\congreso\backend\service\EmailServiceS.class
 com\congreso\backend\entities\Dto\InquilinosEDto.class
 com\congreso\backend\controller\Impl\MenuImplC.class
+com\congreso\backend\entities\Dto\PrediosEDto.class
 com\congreso\backend\service\TeamS.class
 com\congreso\backend\reposotoryE\PrediosRepo.class
 com\congreso\backend\controller\Impl\PasswordResetImplC.class

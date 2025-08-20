@@ -28,16 +28,18 @@ public class PrediosImplS implements PrediosS {
     private final CustomResponseBuilder customResponseBuilder;
 
     @Override
-    public PaginatedResponse<PrediosE> findAll(int xestado, String buscar, Pageable pageable) {
-        Page<PrediosE> page = prediosRepo.listarPredios(xestado,"%"+buscar.trim()+"%", pageable);
+    public PaginatedResponse<PrediosE> findAll(int xestado,int codsec,String buscar, Pageable pageable) {
+        int xcod1=0; int xcod2=99999;
+        if (codsec != 0) { xcod1=codsec; xcod2=codsec; }
+        Page<PrediosE> page = prediosRepo.listarPredios(xestado,xcod1,xcod2,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
 
-    @Override
-    public ResponseEntity<ApiResponse> listarPrediosPorSeccion(int estado, int codsec) {
-        List<PrediosE> predios = prediosRepo.listarPrediosPorSecciones(estado,codsec);
-        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", predios);
-    }
+//    @Override
+//    public ResponseEntity<ApiResponse> listarPrediosPorSeccion(int estado, int codsec) {
+//        List<PrediosE> predios = prediosRepo.listarPrediosPorSecciones(estado,codsec);
+//        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", predios);
+//    }
 
 
 

@@ -41,7 +41,7 @@ public class SeccionesImplS implements SeccionesS {
     @Override
     public PaginatedResponse<SeccionesEDto> findAll_dto(int xestado,int xcods,String buscar, Pageable pageable) {
         int xcod1=0; int xcod2=99999;
-        if (xcods != 0) { xcod1=xcods; xcod2=xcod2; }
+        if (xcods != 0) { xcod1=xcods; xcod2=xcods; }
         Page<SeccionesEDto> page = seccionesRepo.listarSeccionesDto(xestado,xcod1,xcod2,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }

@@ -24,20 +24,21 @@ public class PrediosImplC implements PrediosC {
     private final PrediosS prediosS;
 
     @Override
-    @GetMapping("predios/{estado}/{buscar}")
+    @GetMapping("predios/{estado}/{codSeccion}/{buscar}")
     public PaginatedResponse<PrediosE> findAll(
             @PathVariable int estado,
+            @PathVariable int codSeccion,
             @PathVariable String buscar,
             @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
-        return prediosS.findAll(estado,buscar,pageable);
+        return prediosS.findAll(estado,codSeccion,buscar,pageable);
     }
 
-    @Override
-    @GetMapping("predios/porseccion/{estado}/{codsec}")
-    public ResponseEntity<ApiResponse> prediosPorSector(
-            @PathVariable int estado,
-            @PathVariable int codsec ) {
-        return prediosS.listarPrediosPorSeccion(estado,codsec);
-    }
+//    @Override
+//    @GetMapping("predios/porseccion/{estado}/{codsec}")
+//    public ResponseEntity<ApiResponse> prediosPorSector(
+//            @PathVariable int estado,
+//            @PathVariable int codsec ) {
+//        return prediosS.listarPrediosPorSeccion(estado,codsec);
+//    }
 
 } //End of the function
