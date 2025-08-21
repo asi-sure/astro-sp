@@ -12,5 +12,6 @@ public interface PrediosC {
     PaginatedResponse<PrediosE> findAll(int estado, int codSeccion,String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> save(Predios obj);
     ResponseEntity<ApiResponse> update(Predios obj, String codpre);
+    ResponseEntity<ApiResponse> delete(int estadoactual, String id);
 //    ResponseEntity<ApiResponse> prediosPorSector(int estado, int codsec);
 }

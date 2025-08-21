@@ -59,6 +59,21 @@ public class PrediosImplS implements PrediosS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> delete(int estado,String id) {
+        if (estado!=0 && estado!=1) {//si estado es diferente a 1 o 0
+            return customResponseBuilder.buildResponse(HttpStatus.BAD_REQUEST.value(), "El valor ESTADO ACTUAL no es válido. Por favor, revise la información.", 0);
+        }
+        boolean status = prediosR.delete(estado, id);
+        String mensaje="";
+        if (estado==1) {
+            mensaje="Se eliminó satisfactoriamente.";
+        }else{
+            mensaje="Se habilitó satisfactoriamente.";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
 //    @Override
 //    public ResponseEntity<ApiResponse> listarPrediosPorSeccion(int estado, int codsec) {
 //        List<PrediosE> predios = prediosRepo.listarPrediosPorSecciones(estado,codsec);

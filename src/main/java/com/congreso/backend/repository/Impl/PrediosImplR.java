@@ -30,6 +30,14 @@ public class PrediosImplR implements PrediosR {
     }
 
     @Override
+    public boolean delete(int estado,String id) {
+        Boolean res;
+        String sql="UPDATE predios SET estado=1 - ? WHERE codpre = ?";
+        res = db.update(sql,estado,id) > 0;
+        return !res;
+    }
+
+    @Override
     public boolean verificarNombre(String nombre, String id) {
         Boolean existe;
         if (id.equals("0") || id.equals(" ") || id.isEmpty()) {

@@ -44,5 +44,14 @@ public class PrediosImplC implements PrediosC {
         return prediosS.update(obj,codpre);
     }
 
+    @Override
+    @DeleteMapping("predios/{estadoactual}/{codpre}")
+    public ResponseEntity<ApiResponse> delete(
+            @PathVariable int estadoactual,
+            @PathVariable String codpre
+    ) {
+        return prediosS.delete(estadoactual,codpre);
+    }
+
 
 } //End of the function
