@@ -1,9 +1,9 @@
 package com.congreso.backend.service.Impl;
 
-import com.congreso.backend.entities.Dto.SeccionesEDto;
 import com.congreso.backend.entities.PrediosE;
-import com.congreso.backend.entities.SeccionesE;
-import com.congreso.backend.reposotoryE.PrediosRepo;
+import com.congreso.backend.model.Predios;
+import com.congreso.backend.repository.PrediosR;
+import com.congreso.backend.repositoryE.PrediosRepo;
 import com.congreso.backend.service.PrediosS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -17,14 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class PrediosImplS implements PrediosS {
     private final PrediosRepo prediosRepo;
-//    private final PrediosR prediosR;
+    private final PrediosR prediosR;
     private final CustomResponseBuilder customResponseBuilder;
 
     @Override
@@ -33,6 +31,32 @@ public class PrediosImplS implements PrediosS {
         if (codsec != 0) { xcod1=codsec; xcod2=codsec; }
         Page<PrediosE> page = prediosRepo.listarPredios(xestado,xcod1,xcod2,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> save(Predios obj) {
+        if (prediosR.verificarNombre(obj.getNombre(),"0")) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Predio ya Existe.", 0);
+        }
+        try {
+            String id = prediosR.save(obj);//guarda inquilin
+        } catch (Exception e) {
+            e.printStackTrace();
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Guardar los Datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> update(Predios obj, String id) {
+        if (prediosR.verificarNombre(obj.getNombre(),id)) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Predio ya Existe.", 0);
+        }
+        boolean updated = prediosR.update(obj, id);//MODIFICA DATOS
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar los datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 
 //    @Override

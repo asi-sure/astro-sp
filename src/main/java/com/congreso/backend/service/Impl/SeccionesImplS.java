@@ -1,15 +1,10 @@
 package com.congreso.backend.service.Impl;
 
 import com.congreso.backend.entities.Dto.SeccionesEDto;
-import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.SeccionesE;
-import com.congreso.backend.entities.SectoresE;
 import com.congreso.backend.model.Secciones;
-import com.congreso.backend.model.dto.PersonsDto;
 import com.congreso.backend.repository.SeccionesR;
-import com.congreso.backend.repository.SectoresR;
-import com.congreso.backend.reposotoryE.SeccionesRepo;
-import com.congreso.backend.reposotoryE.SectoresRepo;
+import com.congreso.backend.repositoryE.SeccionesRepo;
 import com.congreso.backend.service.SeccionesS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -22,8 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor

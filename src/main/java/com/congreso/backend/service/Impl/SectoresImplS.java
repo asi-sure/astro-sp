@@ -3,10 +3,9 @@ package com.congreso.backend.service.Impl;
 
 import com.congreso.backend.entities.Dto.SectoresEDto;
 import com.congreso.backend.entities.SectoresE;
-import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.Sectores;
 import com.congreso.backend.repository.SectoresR;
-import com.congreso.backend.reposotoryE.SectoresRepo;
+import com.congreso.backend.repositoryE.SectoresRepo;
 import com.congreso.backend.service.SectoresS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -19,12 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Slf4j
 @RequiredArgsConstructor

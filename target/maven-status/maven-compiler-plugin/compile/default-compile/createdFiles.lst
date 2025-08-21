@@ -20,10 +20,11 @@ com\congreso\backend\service\InquilinosS.class
 com\congreso\backend\controller\PersonsC.class
 com\congreso\backend\service\MenuS.class
 com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
-com\congreso\backend\reposotoryE\SectoresRepo.class
+com\congreso\backend\repository\PrediosR.class
 com\congreso\backend\model\Role$RoleBuilder.class
 com\congreso\backend\repository\TeamR.class
 com\congreso\backend\controller\SectoresC.class
+com\congreso\backend\repository\Impl\PrediosImplR.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
 com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
@@ -52,10 +53,10 @@ com\congreso\backend\repository\Impl\InquilinosImplR.class
 com\congreso\backend\model\Region$RegionBuilder.class
 com\congreso\backend\controller\InquilinosC.class
 com\congreso\backend\repository\InquilinosR.class
-com\congreso\backend\reposotoryE\SeccionesRepo.class
 com\congreso\backend\model\SystemUsers$SystemUsersBuilder.class
 com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\dto\MenusDto.class
+com\congreso\backend\repositoryE\PrediosRepo.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\model\dto\SubmenuDto.class
 com\congreso\backend\controller\AuthenticacionC.class
@@ -69,7 +70,6 @@ com\congreso\backend\entities\Dto\InquilinosEDto.class
 com\congreso\backend\controller\Impl\MenuImplC.class
 com\congreso\backend\entities\Dto\PrediosEDto.class
 com\congreso\backend\service\TeamS.class
-com\congreso\backend\reposotoryE\PrediosRepo.class
 com\congreso\backend\controller\Impl\PasswordResetImplC.class
 com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\model\Inquilinos.class
@@ -88,8 +88,10 @@ com\congreso\backend\config\security\SecurityConfig.class
 com\congreso\backend\controller\TeamC.class
 com\congreso\backend\service\SystemsUserS.class
 com\congreso\backend\entities\PrediosE$PrediosEBuilder.class
+com\congreso\backend\repositoryE\SeccionesRepo.class
 com\congreso\backend\entities\InquilinosE.class
 com\congreso\backend\model\dto\PersonsDto.class
+com\congreso\backend\repositoryE\InquilinosRepo.class
 com\congreso\backend\model\City.class
 com\congreso\backend\entities\SeccionesE$SeccionesEBuilder.class
 com\congreso\backend\controller\Impl\SystemUsersImplC.class
@@ -124,7 +126,6 @@ com\congreso\backend\controller\Impl\PersonsImplC.class
 com\congreso\backend\utils\CustomResponseBuilder.class
 com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
-com\congreso\backend\reposotoryE\InquilinosRepo.class
 com\congreso\backend\repository\PermissionR.class
 com\congreso\backend\model\Person$PersonBuilder.class
 com\congreso\backend\model\Permission$PermissionBuilder.class
@@ -136,12 +137,15 @@ com\congreso\backend\repository\Impl\PersonsImplR.class
 com\congreso\backend\service\Impl\InquilinosImplS.class
 com\congreso\backend\controller\Impl\InquilinosImplC.class
 com\congreso\backend\controller\Impl\SystemUserImplC.class
+com\congreso\backend\repositoryE\SectoresRepo.class
+com\congreso\backend\model\Predios$PrediosBuilder.class
 com\congreso\backend\model\dto\SystemUsersDto.class
 com\congreso\backend\repository\Impl\PermissionImplR.class
 com\congreso\backend\exception\GlobalExceptionHandler.class
 com\congreso\backend\controller\Impl\PersonImplC.class
 com\congreso\backend\model\Team$TeamBuilder.class
 com\congreso\backend\entities\Dto\SeccionesEDto.class
+com\congreso\backend\model\Predios.class
 com\congreso\backend\service\CityS.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class

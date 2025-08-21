@@ -2,6 +2,8 @@ package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.PrediosC;
 import com.congreso.backend.entities.PrediosE;
+import com.congreso.backend.model.Predios;
+import com.congreso.backend.model.Secciones;
 import com.congreso.backend.service.PrediosS;
 import com.congreso.backend.service.SeccionesS;
 import com.congreso.backend.service.SectoresS;
@@ -12,10 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,12 +32,17 @@ public class PrediosImplC implements PrediosC {
         return prediosS.findAll(estado,codSeccion,buscar,pageable);
     }
 
-//    @Override
-//    @GetMapping("predios/porseccion/{estado}/{codsec}")
-//    public ResponseEntity<ApiResponse> prediosPorSector(
-//            @PathVariable int estado,
-//            @PathVariable int codsec ) {
-//        return prediosS.listarPrediosPorSeccion(estado,codsec);
-//    }
+    @Override
+    @PostMapping("predios")
+    public ResponseEntity<ApiResponse> save(@RequestBody Predios obj){
+        return prediosS.save(obj);
+    }
+
+    @Override
+    @PutMapping("predios/{codpre}")
+    public ResponseEntity<ApiResponse> update(@RequestBody Predios obj,  @PathVariable String codpre){
+        return prediosS.update(obj,codpre);
+    }
+
 
 } //End of the function

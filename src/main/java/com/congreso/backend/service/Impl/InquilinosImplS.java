@@ -5,7 +5,7 @@ import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
-import com.congreso.backend.reposotoryE.InquilinosRepo;
+import com.congreso.backend.repositoryE.InquilinosRepo;
 import com.congreso.backend.service.InquilinosS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -28,7 +28,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
 import java.util.UUID;
 
 @Slf4j
