@@ -17,4 +17,5 @@ public class PaginatedResponse<T> {
     private boolean first;
     private boolean hasNext;
     private boolean hasPrevious;
+    
 }
