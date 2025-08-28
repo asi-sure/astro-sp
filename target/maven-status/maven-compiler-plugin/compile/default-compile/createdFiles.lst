@@ -21,10 +21,12 @@ com\congreso\backend\controller\PersonsC.class
 com\congreso\backend\service\MenuS.class
 com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
 com\congreso\backend\repository\PrediosR.class
+com\congreso\backend\controller\RubrosC.class
 com\congreso\backend\model\Role$RoleBuilder.class
 com\congreso\backend\repository\TeamR.class
 com\congreso\backend\controller\SectoresC.class
 com\congreso\backend\repository\Impl\PrediosImplR.class
+com\congreso\backend\entities\RubrosE.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
 com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
@@ -71,6 +73,7 @@ com\congreso\backend\controller\Impl\MenuImplC.class
 com\congreso\backend\entities\Dto\PrediosEDto.class
 com\congreso\backend\service\TeamS.class
 com\congreso\backend\controller\Impl\PasswordResetImplC.class
+com\congreso\backend\service\RubrosS.class
 com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\model\Inquilinos.class
 com\congreso\backend\service\Impl\EmailService.class
@@ -81,6 +84,7 @@ com\congreso\backend\model\Secciones.class
 com\congreso\backend\service\Impl\PasswordResetTokenImplS.class
 com\congreso\backend\model\Departament$DepartamentBuilder.class
 com\congreso\backend\config\security\filters\JwtTokenValidator.class
+com\congreso\backend\repositoryE\RubrosRepo.class
 com\congreso\backend\model\dto\SystemUsersDto$SystemUsersDtoBuilder.class
 com\congreso\backend\service\Impl\PersonImplS.class
 com\congreso\backend\controller\DepartamentC.class
@@ -105,6 +109,7 @@ com\congreso\backend\controller\request\AuthLoginRequest.class
 com\congreso\backend\service\Impl\SectoresImplS.class
 com\congreso\backend\validator\ValidPhoneNumber.class
 com\congreso\backend\controller\Impl\PermissionImplC.class
+com\congreso\backend\service\Impl\RubrosImplS.class
 com\congreso\backend\model\City$CityBuilder.class
 com\congreso\backend\utils\PaginatedResponse.class
 com\congreso\backend\repository\Impl\CityImplR.class
@@ -128,6 +133,7 @@ com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
 com\congreso\backend\repository\PermissionR.class
 com\congreso\backend\model\Person$PersonBuilder.class
+com\congreso\backend\entities\RubrosE$RubrosEBuilder.class
 com\congreso\backend\model\Permission$PermissionBuilder.class
 com\congreso\backend\entities\Dto\SectoresEDto.class
 com\congreso\backend\model\dto\MenuDto$MenuDtoBuilder.class
@@ -174,6 +180,7 @@ com\congreso\backend\entities\SectoresE$SectoresEBuilder.class
 com\congreso\backend\repository\RegionR.class
 com\congreso\backend\validator\ValidEmail.class
 com\congreso\backend\controller\Impl\SectoresImplC.class
+com\congreso\backend\controller\Impl\RubrosImplC.class
 com\congreso\backend\controller\request\AuthCreateUserRequest.class
 com\congreso\backend\controller\Impl\DepartamentImplC.class
 com\congreso\backend\repository\SeccionesR.class
