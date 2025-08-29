@@ -1,7 +1,9 @@
 package com.congreso.backend.service.Impl;
 
 import com.congreso.backend.entities.PrediosE;
+import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.Predios;
+import com.congreso.backend.model.Role;
 import com.congreso.backend.repository.PrediosR;
 import com.congreso.backend.repositoryE.PrediosRepo;
 import com.congreso.backend.service.PrediosS;
@@ -17,6 +19,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -31,6 +35,12 @@ public class PrediosImplS implements PrediosS {
         if (codsec != 0) { xcod1=codsec; xcod2=codsec; }
         Page<PrediosE> page = prediosRepo.listarPredios(xestado,xcod1,xcod2,"%"+buscar.trim()+"%", pageable);
         return PaginationUtils.toPaginatedResponse(page);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> findById(String codpre) {
+        Predios predios = prediosR.findById(codpre);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", predios,null);
     }
 
     @Override

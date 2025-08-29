@@ -33,6 +33,12 @@ public class PrediosImplC implements PrediosC {
     }
 
     @Override
+    @GetMapping("predios/{codpre}")
+    public ResponseEntity<ApiResponse> findById(@PathVariable String codpre){
+        return prediosS.findById(codpre);
+    }
+
+    @Override
     @PostMapping("predios")
     public ResponseEntity<ApiResponse> save(@RequestBody Predios obj){
         return prediosS.save(obj);

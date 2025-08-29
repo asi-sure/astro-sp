@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface PrediosS {
     PaginatedResponse<PrediosE> findAll(int xestado,int codsec, String buscar, Pageable pageable);
+    ResponseEntity<ApiResponse> findById(String codpre);
     ResponseEntity<ApiResponse> save(Predios obj);
     ResponseEntity<ApiResponse> update(Predios obj, String id);
     ResponseEntity<ApiResponse> delete(int estado,String id);

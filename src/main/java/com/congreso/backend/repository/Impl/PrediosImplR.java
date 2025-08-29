@@ -1,8 +1,10 @@
 package com.congreso.backend.repository.Impl;
 
+import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.Predios;
 import com.congreso.backend.repository.PrediosR;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +13,12 @@ import org.springframework.stereotype.Repository;
 public class PrediosImplR implements PrediosR {
     private final JdbcTemplate db;
     private String sql;
+
+    @Override
+    public Predios findById(String codpre) {
+        sql = "SELECT * FROM predios WHERE codpre = ?;";
+        return db.queryForObject(sql, new BeanPropertyRowMapper<>(Predios.class), codpre);
+    }
 
     @Override
     public String save(Predios obj) {
