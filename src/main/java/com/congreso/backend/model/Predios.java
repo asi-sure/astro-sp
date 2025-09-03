@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Builder
 public class Predios implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     private String codpre;
     private Long codsec;
