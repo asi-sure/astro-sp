@@ -38,8 +38,8 @@ public class RubrosImplC implements RubrosC {
     }
     @Override
     @GetMapping("rubros")
-    public ResponseEntity<ApiResponse> findAllPadre() {
-        return rubrosS.findByPadre();
+    public ResponseEntity<ApiResponse> findSoloPadre() {
+        return rubrosS.findSoloPadre();
     }
     @Override
     @PostMapping("rubros")

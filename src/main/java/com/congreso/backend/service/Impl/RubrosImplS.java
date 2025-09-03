@@ -48,8 +48,8 @@ public class RubrosImplS implements RubrosS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", rubros,null);
     }
     @Override
-    public ResponseEntity<ApiResponse> findByPadre() {
-        List<RubrosForm> rubros = rubrosR.findAllPadre();
+    public ResponseEntity<ApiResponse> findSoloPadre() {
+        List<RubrosForm> rubros = rubrosR.findSoloPadre();
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", rubros,null);
     }
     @Override

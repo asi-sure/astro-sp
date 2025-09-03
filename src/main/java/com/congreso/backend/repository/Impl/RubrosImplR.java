@@ -24,12 +24,11 @@ public class RubrosImplR implements RubrosR {
         return db.queryForObject(sql, new BeanPropertyRowMapper<>(RubrosForm.class), codc);
     }
     @Override
-    public List<RubrosForm> findAllPadre() {
+    public List<RubrosForm> findSoloPadre() {
         sql = " SELECT codc, nombre,estado, padre "+
                 " FROM rubros WHERE estado = 1 and deta ='G' ;";
         return db.query(sql, BeanPropertyRowMapper.newInstance(RubrosForm.class));
     }
-
     @Override
     public String save(RubrosForm obj) {
         String cadd=obj.getPadre().trim();
@@ -45,5 +44,18 @@ public class RubrosImplR implements RubrosR {
         }
         return res;
     }
-
-}
+//    @Override  //verificar si existe CODC
+//    public boolean verificarExistenciaCodc(String xcodc) {
+//        String sql="";
+//        Boolean existe;
+//        if (id==0){ //solo busca cedula
+//            sql="SELECT EXISTS(SELECT 1 FROM inquilinos WHERE cedula = ?)";
+//            existe = db.queryForObject(sql, Boolean.class, xcedula);
+//            System.out.println("xcedula::"+xcedula+" id:"+id+" existe:"+existe);
+//        }else{ //busca cedula e ID
+//            sql="SELECT EXISTS(SELECT 1 FROM inquilinos WHERE cedula = ? and id<> ?)";
+//            existe = db.queryForObject(sql, Boolean.class, xcedula, id);
+//        }
+//        return existe != null && existe;
+//    }
+}//end of class

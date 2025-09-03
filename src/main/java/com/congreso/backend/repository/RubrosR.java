@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface RubrosR {
     RubrosForm findByCodc(String codc);
-    List<RubrosForm> findAllPadre();
-
+    List<RubrosForm> findSoloPadre();
     String save(RubrosForm obj);
 
 }

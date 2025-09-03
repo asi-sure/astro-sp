@@ -13,6 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface RubrosS {
     PaginatedResponse<RubrosE> findAll(int xestado, String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> findByCodc(String codc);
-    ResponseEntity<ApiResponse> findByPadre();
+    ResponseEntity<ApiResponse> findSoloPadre();
     ResponseEntity<ApiResponse> save(RubrosForm obj);
 }

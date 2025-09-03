@@ -12,7 +12,7 @@ public interface RubrosRepo extends JpaRepository<RubrosE,String> {
     @Query(
             value = " SELECT i "+
                     " FROM RubrosE i "+
-                    " WHERE i.estado = :estado AND " +
+                    " WHERE i.estado = :estado AND i.deta='G' AND " +
                     " UPPER(CONCAT(i.codc, i.nombre,COALESCE(i.deta, ''))) LIKE UPPER(:buscar)")
     Page<RubrosE> listarRubros(
             @Param("estado") int estado,

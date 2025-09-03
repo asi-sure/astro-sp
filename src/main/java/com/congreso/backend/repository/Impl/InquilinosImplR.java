@@ -114,4 +114,5 @@ public class InquilinosImplR implements InquilinosR {
         }
         return existe != null && existe;
     }
-}
+
+} //end of class
