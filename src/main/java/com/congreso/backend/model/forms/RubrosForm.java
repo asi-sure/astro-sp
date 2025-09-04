@@ -5,9 +5,8 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
+//@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class RubrosForm implements Serializable {
@@ -18,4 +17,11 @@ public class RubrosForm implements Serializable {
     private String nombre;
     private int estado;
     private String padre;
+    // Explicit constructor to match the query order
+    public RubrosForm(String codc, String nombre, int estado, String padre) {
+        this.codc = codc;
+        this.nombre = nombre;
+        this.estado = estado;
+        this.padre = padre;
+    }
 }

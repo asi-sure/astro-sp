@@ -16,6 +16,7 @@ import com.congreso.backend.utils.PaginationUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -42,6 +44,18 @@ public class RubrosImplS implements RubrosS {
         return PaginationUtils.toPaginatedResponse(page);
     }
 
+    @Override
+    public PaginatedResponse<RubrosForm> findAllByPadre(String codpadre, int xestado, String buscar, Pageable pageable) {
+        Page<Object[]> page = rubrosRepo.listarRubrosByPadre(codpadre, xestado,"%"+buscar.trim()+"%", pageable);
+
+        List<RubrosForm> forms = page.getContent().stream()
+                .map(tuple -> new RubrosForm((String) tuple[0], (String) tuple[1], (int) tuple[2], (String) tuple[3]))
+                .collect(Collectors.toList());
+        // You would then have to re-create the Page object
+        Page<RubrosForm> pageOfForms = new PageImpl<>(forms, pageable, page.getTotalElements());
+
+        return PaginationUtils.toPaginatedResponse(pageOfForms);
+    }
     @Override
     public ResponseEntity<ApiResponse> findByCodc(String codc) {
         RubrosForm rubros = rubrosR.findByCodc(codc);

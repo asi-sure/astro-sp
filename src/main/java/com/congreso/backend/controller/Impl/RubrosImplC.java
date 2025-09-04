@@ -32,12 +32,22 @@ public class RubrosImplC implements RubrosC {
     }
 
     @Override
+    @GetMapping("rubros/{codpadre}/{estado}/{buscar}")
+    public PaginatedResponse<RubrosForm> findAllByPadre(
+            @PathVariable String codpadre,
+            @PathVariable int estado,
+            @PathVariable String buscar,
+            @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
+        return rubrosS.findAllByPadre(codpadre,estado,buscar,pageable);
+    }
+
+    @Override
     @GetMapping("rubros/{codc}")
     public ResponseEntity<ApiResponse> findByCodc_C(@PathVariable String codc) {
         return rubrosS.findByCodc(codc);
     }
     @Override
-    @GetMapping("rubros")
+    @GetMapping("/padres/rubros")
     public ResponseEntity<ApiResponse> findSoloPadre() {
         return rubrosS.findSoloPadre();
     }

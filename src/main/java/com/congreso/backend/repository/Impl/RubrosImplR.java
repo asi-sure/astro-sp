@@ -16,7 +16,6 @@ import java.util.List;
 public class RubrosImplR implements RubrosR {
     private final JdbcTemplate db;
     private String sql;
-
     @Override
     public RubrosForm findByCodc(String codc) {
         sql = " SELECT codc, nombre,estado, padre "+
