@@ -75,7 +75,7 @@ public class RubrosImplR implements RubrosR {
             res = db.update(sql, codc) > 0;
             status=0;
         }else{
-            sql="UPDATE rubros SET status=1 WHERE codc = ?";
+            sql="UPDATE rubros SET estado=1 WHERE codc = ?";
             res = db.update(sql, codc) > 0;
             status=1;
         }
