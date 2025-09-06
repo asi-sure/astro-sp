@@ -43,6 +43,49 @@ public class RubrosImplR implements RubrosR {
         }
         return res;
     }
+
+    @Override  //DEBO CONTROLAR A QUIEN SE MODIFICA, SI PADRE O HIJO
+    public boolean update(RubrosForm obj, String codc) {
+        String padre = obj.getPadre().trim();
+        String sql;
+        Boolean res=false;
+        if (padre.equals("0") || padre == null){ //si es padre
+            sql = " UPDATE rubros "+
+                  " SET nombre=? "+
+                  " WHERE codc = ? and deta='G'; ";
+            res = db.update(sql, obj.getNombre(), codc) > 0;
+        }else {  //si es hijo.
+            sql = " UPDATE rubros " +
+                  " SET nombre=?, padre=?  " +
+                  " WHERE codc = ? and deta='D'; ";
+            res = db.update(sql, obj.getNombre(), obj.getPadre(), codc) > 0;
+        }
+        return res;
+    }
+////////// EXTRAS
+    @Override
+    public boolean verificarKey(String codc) {
+        Boolean existe;
+        String sql="SELECT EXISTS(SELECT 1 FROM rubros WHERE codc = ?)";
+        existe = db.queryForObject(sql, Boolean.class, codc);
+        return existe != null && existe;
+    }
+    @Override
+    public boolean verificarNombre(String codc, String nombre) {
+        String sql="";
+        Boolean existe;
+        if (codc.equals("0")){ //si es adicinar ADD
+            sql="SELECT EXISTS(SELECT 1 FROM rubros WHERE nombre=?)";
+            existe = db.queryForObject(sql, Boolean.class, nombre);
+        }else{ //si es modificar MOD
+            sql="SELECT EXISTS(SELECT 1 FROM rubros WHERE nombre = ? and codc<> ?)";
+            existe = db.queryForObject(sql, Boolean.class, nombre, codc);
+        }
+        return existe != null && existe;
+    }
+
+
+
 //    @Override  //verificar si existe CODC
 //    public boolean verificarExistenciaCodc(String xcodc) {
 //        String sql="";

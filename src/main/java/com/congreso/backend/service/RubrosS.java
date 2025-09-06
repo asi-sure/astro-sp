@@ -16,4 +16,5 @@ public interface RubrosS {
     ResponseEntity<ApiResponse> findByCodc(String codc);
     ResponseEntity<ApiResponse> findSoloPadre();
     ResponseEntity<ApiResponse> save(RubrosForm obj);
+    ResponseEntity<ApiResponse> update(RubrosForm obj, String codc);
 }

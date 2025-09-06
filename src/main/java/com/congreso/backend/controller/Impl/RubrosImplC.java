@@ -58,4 +58,13 @@ public class RubrosImplC implements RubrosC {
         return rubrosS.save(obj);
     }
 
+    @Override
+    @PutMapping("rubros/{codc}")
+    public ResponseEntity<ApiResponse> update(
+            @RequestBody RubrosForm obj,
+            @PathVariable String codc
+    ) {
+        return rubrosS.update(obj,codc);
+    }
+
 } //end of class

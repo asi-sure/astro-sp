@@ -9,5 +9,10 @@ public interface RubrosR {
     RubrosForm findByCodc(String codc);
     List<RubrosForm> findSoloPadre();
     String save(RubrosForm obj);
+    boolean update(RubrosForm obj, String codc);
+
+//////////// EXTRAS
+    boolean verificarKey(String codc);
+    boolean verificarNombre(String codc, String nombre);
 
 }

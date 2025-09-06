@@ -2,6 +2,7 @@ package com.congreso.backend.controller;
 
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.RubrosE;
+import com.congreso.backend.model.Role;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.model.forms.RubrosForm;
 import com.congreso.backend.utils.ApiResponse;
@@ -17,4 +18,5 @@ public interface RubrosC {
     ResponseEntity<ApiResponse> findByCodc_C(String codc);
     ResponseEntity<ApiResponse> findSoloPadre();
     ResponseEntity<ApiResponse> save(RubrosForm obj);
+    ResponseEntity<ApiResponse> update(RubrosForm obj, String codc);
 }

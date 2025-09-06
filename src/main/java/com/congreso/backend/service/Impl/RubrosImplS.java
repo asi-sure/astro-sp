@@ -68,12 +68,26 @@ public class RubrosImplS implements RubrosS {
     }
     @Override
     public ResponseEntity<ApiResponse> save(RubrosForm obj) {
-/*        if (inquilinosR.verificarCedula(obj.getCedula(),0)) {
-            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "La Cédula ya Existe.", 0);
+        if (rubrosR.verificarKey(obj.getCodc())) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Código Rubro ya Existe.", 0);
         }
- */
+        if (rubrosR.verificarNombre("0",obj.getNombre())) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Nombre del Rubro ya Existe.", 0);
+        }
         String id = rubrosR.save(obj);//guarda rubros
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> update(RubrosForm obj, String codc) {
+        if (rubrosR.verificarNombre(codc, obj.getNombre())) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "El Nombre del Rubro ya Existe.", 0);
+        }
+        boolean updated = rubrosR.update(obj,codc);  //updating
+        if (!updated) {
+            return customResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error al Modificar los datos.", 0);
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 
 }
