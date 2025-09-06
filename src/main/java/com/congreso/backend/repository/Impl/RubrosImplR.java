@@ -62,7 +62,27 @@ public class RubrosImplR implements RubrosR {
         }
         return res;
     }
-////////// EXTRAS
+
+    @Override
+    public int delete(String codc) {
+        int status = verificaEstado(codc);
+        boolean tieneHijos = verificaPadreSinHijos(codc);
+        if (tieneHijos) { return 2; } //si tiene hijos activos retorna 2
+        String sql="";
+        Boolean res;
+        if (status==1){
+            sql="UPDATE rubros SET estado=0 WHERE codc = ?";
+            res = db.update(sql, codc) > 0;
+            status=0;
+        }else{
+            sql="UPDATE rubros SET status=1 WHERE codc = ?";
+            res = db.update(sql, codc) > 0;
+            status=1;
+        }
+        return status;
+    }
+
+    ////////// EXTRAS
     @Override
     public boolean verificarKey(String codc) {
         Boolean existe;
@@ -83,8 +103,14 @@ public class RubrosImplR implements RubrosR {
         }
         return existe != null && existe;
     }
-
-
+    public int verificaEstado(String codc) {
+        String sql="SELECT estado FROM rubros WHERE codc = ?";
+        return db.queryForObject(sql, Integer.class, codc);
+    }
+    public Boolean verificaPadreSinHijos(String codc) {
+        String sql="SELECT count(*)>0 FROM rubros WHERE padre = ? and estado=1 and deta='D'";
+        return db.queryForObject(sql, Boolean.class, codc);
+    }
 
 //    @Override  //verificar si existe CODC
 //    public boolean verificarExistenciaCodc(String xcodc) {

@@ -10,7 +10,7 @@ public interface RubrosR {
     List<RubrosForm> findSoloPadre();
     String save(RubrosForm obj);
     boolean update(RubrosForm obj, String codc);
-
+    int delete(String codc); //Eliminar datos
 //////////// EXTRAS
     boolean verificarKey(String codc);
     boolean verificarNombre(String codc, String nombre);

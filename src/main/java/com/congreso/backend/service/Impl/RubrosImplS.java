@@ -90,4 +90,20 @@ public class RubrosImplS implements RubrosS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Actualizacion exitosa.", updated);
     }
 
-}
+    @Override
+    public ResponseEntity<ApiResponse> delete(String codc) {
+        int status = rubrosR.delete(codc);
+        String mensaje="";
+        if (status == 2) {
+            mensaje="Cuenta PADRE tiene HIJOS activos";
+        }else {
+            if (status==1) {
+                mensaje = "Se habilitó satisfactoriamente.";
+            } else {
+                mensaje = "Se eliminó satisfactoriamente.";
+            }
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
+} // end of class

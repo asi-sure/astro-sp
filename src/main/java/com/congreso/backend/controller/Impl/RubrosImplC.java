@@ -67,4 +67,10 @@ public class RubrosImplC implements RubrosC {
         return rubrosS.update(obj,codc);
     }
 
+    @Override
+    @DeleteMapping("rubros/{codc}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable String codc) {
+        return rubrosS.delete(codc);
+    }
+
 } //end of class
