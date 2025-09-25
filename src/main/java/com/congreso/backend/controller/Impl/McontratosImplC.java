@@ -6,9 +6,13 @@ import com.congreso.backend.service.McontratosS;
 import com.congreso.backend.utils.PaginatedResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,12 +21,14 @@ public class McontratosImplC implements McontratosC {
     private final McontratosS mcontratosS;
 
     @Override
-    @GetMapping("mcontratos/{estado}")
+    @GetMapping("mcontratos")
     public PaginatedResponse<McontratosE> findAll(
-            @PathVariable int estado,
-            Pageable pageable ) {
-        //return inquilinosS.findAll(estado,buscar,pageable);
-        return mcontratosS.findAll(estado,pageable);
+            @RequestParam(name = "estado", required = true) int estado,
+            @RequestParam(name = "buscar", required = true) String buscar,
+            @RequestParam(name = "fechaini", required = true) Date fechaini,
+            @RequestParam(name = "fechafin", required = true) Date fechafin,
+            @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
+        return mcontratosS.findAll(estado,buscar,fechaini,fechafin,pageable);
     }
 
     /*

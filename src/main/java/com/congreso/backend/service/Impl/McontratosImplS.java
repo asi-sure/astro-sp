@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -19,8 +21,8 @@ public class McontratosImplS implements McontratosS {
     private final McontratosRepo mcontratosRepo;
 
     @Override
-    public PaginatedResponse<McontratosE> findAll(int xestado, Pageable pageable) {
-        Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,pageable);
+    public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable) {
+        Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
 }

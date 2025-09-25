@@ -57,4 +57,8 @@ public class InquilinosE {
     @OneToOne(mappedBy = "inquilino", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JsonManagedReference
     private Inquilinos_ubicE ubicacion_gps;
+
+    public String datos(){
+        return this.nombre+" "+this.ap+" "+this.am;
+    }
 }

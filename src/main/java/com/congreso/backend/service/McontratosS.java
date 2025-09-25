@@ -5,7 +5,9 @@ import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.utils.PaginatedResponse;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Date;
+
 public interface McontratosS {
-    PaginatedResponse<McontratosE> findAll(int xestado, Pageable pageable);
+    PaginatedResponse<McontratosE> findAll(int xestado, String buscar,Date fechaini,Date fechafin, Pageable pageable);
 
 }

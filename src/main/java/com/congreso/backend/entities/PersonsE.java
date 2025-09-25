@@ -48,4 +48,8 @@ public class PersonsE {
     @OneToMany(mappedBy="persona_resp")
     @JsonBackReference
     private List<McontratosE> contratos;
+
+    private String datos(){
+        return this.name+" "+this.firstName+" "+this.secondName;
+    }
 }
