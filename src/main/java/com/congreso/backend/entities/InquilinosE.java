@@ -1,11 +1,15 @@
 package com.congreso.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -45,6 +49,10 @@ public class InquilinosE {
     private String ubicacion;
 
     private boolean estado;
+
+    @OneToMany(mappedBy="inquilino")
+    @JsonBackReference
+    private List<McontratosE> contratos;
 
     @OneToOne(mappedBy = "inquilino", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JsonManagedReference

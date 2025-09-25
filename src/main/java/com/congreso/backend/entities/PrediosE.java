@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -29,5 +31,9 @@ public class PrediosE {
     @JoinColumn(name = "codsec")
     @JsonBackReference
     SeccionesE secciones;
+
+    @OneToMany(mappedBy = "predios")
+    @JsonBackReference
+    Set<DcontratosE> dcontratos;
 
 }

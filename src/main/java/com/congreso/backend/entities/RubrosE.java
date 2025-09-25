@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,9 +34,6 @@ public class RubrosE {
 
     private int tipo;
 
-//    @Size(max = 20, min = 3)
-//    private String padre;
-
     @Size(max = 1)
     private String deta;
 
@@ -47,4 +45,8 @@ public class RubrosE {
     @OneToMany(mappedBy = "padre", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<RubrosE> hijos;
+
+    @OneToMany(mappedBy = "rubros")
+    @JsonBackReference
+    Set<DcontratosE> dcontratos;
 }

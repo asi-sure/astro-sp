@@ -1,23 +1,17 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.InquilinosC;
-import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
-import com.congreso.backend.model.Inquilinos;
 import com.congreso.backend.model.Inquilinos_ubic;
-import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.service.InquilinosS;
-import com.congreso.backend.service.PersonsS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.PaginatedResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
