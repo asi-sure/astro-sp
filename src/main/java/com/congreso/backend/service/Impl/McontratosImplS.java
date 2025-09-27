@@ -1,7 +1,9 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.McontratosE;
+import com.congreso.backend.mapper.McontratosMapper;
 import com.congreso.backend.repositoryE.McontratosRepo;
 import com.congreso.backend.service.McontratosS;
 import com.congreso.backend.utils.PaginatedResponse;
@@ -23,6 +25,13 @@ public class McontratosImplS implements McontratosS {
     @Override
     public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable) {
         Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
+        return PaginationUtils.toPaginatedResponse(page);
+    }
+
+    @Override
+    public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable) {
+        Page<McontratosE> page2 = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
+        Page<McontratosEDto> page =  page2.map(McontratosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }
 }

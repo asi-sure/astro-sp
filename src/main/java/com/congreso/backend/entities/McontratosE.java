@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -74,5 +74,5 @@ public class McontratosE {
 
     @OneToMany(mappedBy = "mcontratos")
     @JsonManagedReference
-    Set<DcontratosE> dcontratos;
+    List<DcontratosE> dcontratos;
 }

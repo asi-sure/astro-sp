@@ -1,6 +1,7 @@
 package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.McontratosC;
+import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.service.McontratosS;
 import com.congreso.backend.utils.PaginatedResponse;
@@ -21,7 +22,7 @@ public class McontratosImplC implements McontratosC {
     private final McontratosS mcontratosS;
 
     @Override
-    @GetMapping("mcontratos")
+    @GetMapping("mcontratos/todo")
     public PaginatedResponse<McontratosE> findAll(
             @RequestParam(name = "estado", required = true) int estado,
             @RequestParam(name = "buscar", required = true) String buscar,
@@ -30,15 +31,16 @@ public class McontratosImplC implements McontratosC {
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
         return mcontratosS.findAll(estado,buscar,fechaini,fechafin,pageable);
     }
-
-    /*
-        @Override
-    @GetMapping("inquilinos/{estado}/{buscar}")
-    public PaginatedResponse<InquilinosE> findAll(
-            @PathVariable boolean estado,
-            @PathVariable String buscar,
-            @PageableDefault(size = 10, sort = "nombre", direction = Sort.Direction.ASC) Pageable pageable ) {
-        return inquilinosS.findAll(estado,buscar,pageable);
+    @Override
+    @GetMapping("mcontratos")
+    public PaginatedResponse<McontratosEDto> findAll_2(
+            @RequestParam(name = "estado", required = true) int estado,
+            @RequestParam(name = "buscar", required = true) String buscar,
+            @RequestParam(name = "fechaini", required = true) Date fechaini,
+            @RequestParam(name = "fechafin", required = true) Date fechafin,
+            @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
+        return mcontratosS.findAll_2(estado,buscar,fechaini,fechafin,pageable);
     }
-     */
-}
+
+
+}//end of class

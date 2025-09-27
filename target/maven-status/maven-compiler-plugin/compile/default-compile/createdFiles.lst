@@ -118,6 +118,7 @@ com\congreso\backend\service\Impl\RubrosImplS.class
 com\congreso\backend\model\City$CityBuilder.class
 com\congreso\backend\utils\PaginatedResponse.class
 com\congreso\backend\controller\Impl\McontratosImplC.class
+com\congreso\backend\entities\Dto\DcontratosEDto.class
 com\congreso\backend\repository\Impl\CityImplR.class
 com\congreso\backend\repository\Impl\TeamImplR.class
 com\congreso\backend\repository\Impl\RegionImplR.class
@@ -179,6 +180,7 @@ com\congreso\backend\controller\McontratosC.class
 com\congreso\backend\model\forms\RubrosForm$RubrosFormBuilder.class
 com\congreso\backend\service\Impl\SystemUsersImplS.class
 com\congreso\backend\model\Permission.class
+com\congreso\backend\mapper\McontratosMapper.class
 com\congreso\backend\repository\Impl\RoleImplR$2.class
 com\congreso\backend\validator\EmailNameValidator.class
 com\congreso\backend\model\dto\MenuDto.class

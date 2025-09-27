@@ -1,19 +1,9 @@
 package com.congreso.backend.entities.Dto;
-
-import com.congreso.backend.entities.DcontratosE;
-import com.congreso.backend.entities.InquilinosE;
-import com.congreso.backend.entities.PersonsE;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +22,5 @@ public class McontratosEDto {
     private Date fechareg;
     private String inquilino;
     private String persona_resp;
-    Set<DcontratosE> dcontratos;
+    List<DcontratosEDto> dcontratos;
 }
