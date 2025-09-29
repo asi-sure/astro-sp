@@ -51,6 +51,13 @@ public class RubrosImplC implements RubrosC {
     public ResponseEntity<ApiResponse> findSoloPadre() {
         return rubrosS.findSoloPadre();
     }
+
+    @Override
+    @GetMapping("/rubros/hijos")
+    public ResponseEntity<ApiResponse> findSoloHijos() {
+        return rubrosS.findSoloHijos();
+    }
+
     @Override
     @PostMapping("rubros")
     public ResponseEntity<ApiResponse> save(

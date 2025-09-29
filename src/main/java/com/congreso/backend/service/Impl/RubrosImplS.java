@@ -66,6 +66,13 @@ public class RubrosImplS implements RubrosS {
         List<RubrosForm> rubros = rubrosR.findSoloPadre();
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", rubros,null);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> findSoloHijos() {
+        List<RubrosForm> rubros = rubrosR.findSoloHijos();
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", rubros,null);
+    }
+
     @Override
     public ResponseEntity<ApiResponse> save(RubrosForm obj) {
         if (rubrosR.verificarKey(obj.getCodc())) {

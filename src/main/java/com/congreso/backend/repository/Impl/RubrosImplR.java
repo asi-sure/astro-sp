@@ -29,6 +29,12 @@ public class RubrosImplR implements RubrosR {
         return db.query(sql, BeanPropertyRowMapper.newInstance(RubrosForm.class));
     }
     @Override
+    public List<RubrosForm> findSoloHijos() {
+        sql = " SELECT codc, nombre,estado, padre "+
+                " FROM rubros WHERE estado = 1 and deta ='D' ;";
+        return db.query(sql, BeanPropertyRowMapper.newInstance(RubrosForm.class));
+    }
+    @Override
     public String save(RubrosForm obj) {
         String cadd=obj.getPadre().trim();
         String res="";

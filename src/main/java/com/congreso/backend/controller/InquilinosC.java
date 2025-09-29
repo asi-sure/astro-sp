@@ -2,6 +2,7 @@ package com.congreso.backend.controller;
 
 import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
+import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Inquilinos;
 import com.congreso.backend.model.Inquilinos_ubic;
 import com.congreso.backend.model.Persons;
@@ -18,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface InquilinosC {
     PaginatedResponse<InquilinosE> findAll(boolean xestado,String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> findById(int id);
-//    PaginatedResponse<InquilinosEDto> findAll_2(boolean xestado, Pageable pageable);
+    ResponseEntity<ApiResponse> findAll_3(boolean xstatus);
     ResponseEntity<ApiResponse> save(
             @RequestPart("inquilinos") InquilinosForm obj,
             @RequestPart("file") MultipartFile file);

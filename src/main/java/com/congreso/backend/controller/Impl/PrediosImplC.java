@@ -39,6 +39,12 @@ public class PrediosImplC implements PrediosC {
     }
 
     @Override
+    @GetMapping("predios/libres")
+    public ResponseEntity<ApiResponse> listaPrediosLibres() {
+        return prediosS.listarPrediosLibres();
+    }
+
+    @Override
     @PostMapping("predios")
     public ResponseEntity<ApiResponse> save(@RequestBody Predios obj){
         return prediosS.save(obj);

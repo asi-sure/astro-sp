@@ -8,6 +8,7 @@ import java.util.List;
 public interface RubrosR {
     RubrosForm findByCodc(String codc);
     List<RubrosForm> findSoloPadre();
+    List<RubrosForm> findSoloHijos();
     String save(RubrosForm obj);
     boolean update(RubrosForm obj, String codc);
     int delete(String codc); //Eliminar datos

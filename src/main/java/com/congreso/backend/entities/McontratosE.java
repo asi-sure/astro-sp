@@ -34,10 +34,6 @@ public class McontratosE {
 
     private int estado;
 
-//    private int cicli;
-
-//    private int ciresp;
-
     private String tipoper;
 
     private float monto;

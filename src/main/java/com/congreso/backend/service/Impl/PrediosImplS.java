@@ -4,6 +4,7 @@ import com.congreso.backend.entities.PrediosE;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.model.Predios;
 import com.congreso.backend.model.Role;
+import com.congreso.backend.model.dto.PrediosDto;
 import com.congreso.backend.repository.PrediosR;
 import com.congreso.backend.repositoryE.PrediosRepo;
 import com.congreso.backend.service.PrediosS;
@@ -41,6 +42,12 @@ public class PrediosImplS implements PrediosS {
     public ResponseEntity<ApiResponse> findById(String codpre) {
         Predios predios = prediosR.findById(codpre);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", predios,null);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> listarPrediosLibres() {
+        List<PrediosDto> predios = prediosR.listarPrediosLibres();
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Lista exitosa.", predios,null);
     }
 
     @Override

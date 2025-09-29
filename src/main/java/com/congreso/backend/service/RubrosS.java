@@ -15,6 +15,7 @@ public interface RubrosS {
     PaginatedResponse<RubrosForm> findAllByPadre(String codpadre, int xestado, String buscar, Pageable pageable);
     ResponseEntity<ApiResponse> findByCodc(String codc);
     ResponseEntity<ApiResponse> findSoloPadre();
+    ResponseEntity<ApiResponse> findSoloHijos();
     ResponseEntity<ApiResponse> save(RubrosForm obj);
     ResponseEntity<ApiResponse> update(RubrosForm obj, String codc);
     ResponseEntity<ApiResponse> delete(String codc);

@@ -23,14 +23,12 @@ public class InquilinosImplR implements InquilinosR {
               " FROM inquilinos WHERE estado = ? ;";
         return db.query(sql, BeanPropertyRowMapper.newInstance(InquilinosForm.class),xestado);
     }
-
     @Override  //guardar datos inquilinos
     public Long save(InquilinosForm obj) {
         sql = " INSERT INTO inquilinos(cedula,nombre,ap,am,direc,celular,ubicacion,estado) "+
               "      values(?,?,?,?,?,?,?,?) RETURNING id ";
         return db.queryForObject(sql, new Object[]{obj.getCedula(),obj.getNombre(),obj.getAp(),obj.getAm(),obj.getDirec(),obj.getCelular(),obj.getUbicacion(),true}, Long.class);
     }
-
     @Override  //guardar ubicacion GPS
     public Long saveGps(Inquilinos_ubic obj) {
         sql = " INSERT INTO inquilinos_ubic(id, latitude, longitude) "+

@@ -27,6 +27,7 @@ com\congreso\backend\controller\RubrosC.class
 com\congreso\backend\model\Role$RoleBuilder.class
 com\congreso\backend\repository\TeamR.class
 com\congreso\backend\controller\SectoresC.class
+com\congreso\backend\model\dto\PrediosDto$PrediosDtoBuilder.class
 com\congreso\backend\repository\Impl\PrediosImplR.class
 com\congreso\backend\entities\RubrosE.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
@@ -76,6 +77,7 @@ com\congreso\backend\entities\Dto\PrediosEDto.class
 com\congreso\backend\service\TeamS.class
 com\congreso\backend\controller\Impl\PasswordResetImplC.class
 com\congreso\backend\service\RubrosS.class
+com\congreso\backend\model\dto\PrediosDto.class
 com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\model\Inquilinos.class
 com\congreso\backend\service\Impl\EmailService.class
@@ -125,7 +127,9 @@ com\congreso\backend\repository\Impl\RegionImplR.class
 com\congreso\backend\model\Role.class
 com\congreso\backend\repository\SectoresR.class
 com\congreso\backend\controller\PersonC.class
+com\congreso\backend\entities\forms\DcontratosForms.class
 com\congreso\backend\controller\Impl\RoleImplC.class
+com\congreso\backend\model\dto\McontratosDto.class
 com\congreso\backend\service\Impl\McontratosImplS.class
 com\congreso\backend\enumeration\RolSecurityEnum.class
 com\congreso\backend\model\dto\PersonsDto$PersonsDtoBuilder.class
@@ -142,6 +146,7 @@ com\congreso\backend\utils\CustomResponseBuilder.class
 com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
 com\congreso\backend\repository\PermissionR.class
+com\congreso\backend\entities\forms\McontratosForms.class
 com\congreso\backend\model\Person$PersonBuilder.class
 com\congreso\backend\entities\RubrosE$RubrosEBuilder.class
 com\congreso\backend\model\Permission$PermissionBuilder.class
@@ -178,11 +183,13 @@ com\congreso\backend\config\security\jwt\JwtUtils.class
 com\congreso\backend\model\Rubros$RubrosBuilder.class
 com\congreso\backend\controller\McontratosC.class
 com\congreso\backend\model\forms\RubrosForm$RubrosFormBuilder.class
+com\congreso\backend\repository\McontratosR.class
 com\congreso\backend\service\Impl\SystemUsersImplS.class
 com\congreso\backend\model\Permission.class
 com\congreso\backend\mapper\McontratosMapper.class
 com\congreso\backend\repository\Impl\RoleImplR$2.class
 com\congreso\backend\validator\EmailNameValidator.class
+com\congreso\backend\repository\Impl\McontratosImplR.class
 com\congreso\backend\model\dto\MenuDto.class
 com\congreso\backend\repository\MenuR.class
 com\congreso\backend\model\Inquilinos_ubic.class
@@ -216,6 +223,7 @@ com\congreso\backend\service\RegionS.class
 com\congreso\backend\entities\McontratosE.class
 com\congreso\backend\controller\SystemUsersC.class
 com\congreso\backend\service\SectoresS.class
+com\congreso\backend\model\dto\McontratosDto$McontratosDtoBuilder.class
 com\congreso\backend\repository\CityR.class
 com\congreso\backend\repository\RoleR.class
 com\congreso\backend\service\PrediosS.class

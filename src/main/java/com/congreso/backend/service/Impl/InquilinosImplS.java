@@ -3,6 +3,7 @@ package com.congreso.backend.service.Impl;
 import com.congreso.backend.entities.Dto.InquilinosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.model.Inquilinos_ubic;
+import com.congreso.backend.model.dto.PersonsDto;
 import com.congreso.backend.model.forms.InquilinosForm;
 import com.congreso.backend.repository.InquilinosR;
 import com.congreso.backend.repositoryE.InquilinosRepo;
@@ -28,6 +29,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -63,6 +65,13 @@ public class InquilinosImplS implements InquilinosS {
         );
         return PaginationUtils.toPaginatedResponse(dtoPage);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> findAll_3(boolean xestado) {
+        List<InquilinosForm> inquilinos = inquilinosR.findAll(xestado);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", inquilinos);
+    }
+
     @Override
     public ResponseEntity<ApiResponse> findById(int id) {
         InquilinosE inquilinos = inquilinosRepo.findById(id);

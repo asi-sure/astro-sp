@@ -24,20 +24,4 @@ public interface InquilinosRepo extends JpaRepository<InquilinosE, Long> {
     )
     InquilinosE findById(@Param("id") int id);
 
-
-//    @Query(
-//            value = " SELECT id,cedula,nombre,ap,am,direc,celular,ubicacion,estado "+
-//                    " FROM inquilinos "+
-//                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
-//            countQuery = " SELECT count(*) "+
-//                    " FROM inquilinos "+
-//                    " WHERE (estado = :estado )and(upper(cedula||nombre||COALESCE(ap, '')||COALESCE(am, '')||COALESCE(direc, '')||COALESCE(celular, '')) like upper(:buscar) ) ;",
-//            nativeQuery = true
-//    )
-//    Page<InquilinosE> listarInquilinos(
-//            @Param("estado") boolean estado,
-//            @Param("buscar") String buscar,
-//            Pageable pageable);
-
-
 }

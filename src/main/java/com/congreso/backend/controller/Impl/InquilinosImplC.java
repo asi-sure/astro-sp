@@ -34,14 +34,11 @@ public class InquilinosImplC implements InquilinosC {
     public ResponseEntity<ApiResponse> findById(@PathVariable int xid) {
         return inquilinosS.findById(xid);
     }
-
-//    @Override
-//    @GetMapping("inquilinos2/{estado}")
-//    public PaginatedResponse<InquilinosEDto> findAll_2(
-//            @PathVariable boolean estado,
-//            Pageable pageable ) {
-//        return inquilinosS.findAll_2(estado,pageable);
-//    }
+    @Override
+    @GetMapping("inquilinos/{status}")
+    public ResponseEntity<ApiResponse> findAll_3(@PathVariable boolean status) {
+        return inquilinosS.findAll_3(status);
+    }
 
     @Override
     @PostMapping("inquilinos")
@@ -84,12 +81,5 @@ public class InquilinosImplC implements InquilinosC {
     ) {
         return inquilinosS.delete(xid);
     }
-
-    /*
-    @DeleteMapping("persons/{xid}")
-    public ResponseEntity<ApiResponse> delete(@PathVariable int xid) {
-        return personsS.delete(xid);
-    }
-    * */
 
 } //the end
