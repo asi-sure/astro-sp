@@ -3,15 +3,20 @@ package com.congreso.backend.controller.Impl;
 import com.congreso.backend.controller.McontratosC;
 import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.McontratosE;
+import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.model.Persons;
 import com.congreso.backend.service.McontratosS;
+import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.PaginatedResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -40,6 +45,12 @@ public class McontratosImplC implements McontratosC {
             @RequestParam(name = "fechafin", required = true) Date fechafin,
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
         return mcontratosS.findAll_2(estado,buscar,fechaini,fechafin,pageable);
+    }
+
+    @Override
+    @PostMapping("mcontratos")
+    public ResponseEntity<ApiResponse> save(@RequestBody McontratosForms in) {
+        return mcontratosS.save(in);
     }
 
 

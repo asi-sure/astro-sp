@@ -22,5 +22,6 @@ public class McontratosForms {
     private Date fecha;
     private Long codcliente;
     private Long codresponsable;
+    private int indefinido;
     private List<DcontratosForms> dcontratos;
 }

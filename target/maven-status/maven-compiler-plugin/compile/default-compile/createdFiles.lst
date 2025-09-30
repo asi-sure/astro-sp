@@ -61,6 +61,7 @@ com\congreso\backend\repository\InquilinosR.class
 com\congreso\backend\model\SystemUsers$SystemUsersBuilder.class
 com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\dto\MenusDto.class
+com\congreso\backend\repository\GeneralR.class
 com\congreso\backend\repositoryE\PrediosRepo.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\model\dto\SubmenuDto.class
@@ -101,8 +102,10 @@ com\congreso\backend\entities\PrediosE$PrediosEBuilder.class
 com\congreso\backend\repositoryE\SeccionesRepo.class
 com\congreso\backend\entities\InquilinosE.class
 com\congreso\backend\model\dto\PersonsDto.class
+com\congreso\backend\repository\Impl\GeneralmplR.class
 com\congreso\backend\repositoryE\InquilinosRepo.class
 com\congreso\backend\model\City.class
+com\congreso\backend\model\General$GeneralBuilder.class
 com\congreso\backend\entities\SeccionesE$SeccionesEBuilder.class
 com\congreso\backend\controller\Impl\SystemUsersImplC.class
 com\congreso\backend\model\forms\InquilinosForm.class
@@ -140,6 +143,7 @@ com\congreso\backend\model\Team.class
 com\congreso\backend\model\SystemUser.class
 com\congreso\backend\service\RolS.class
 com\congreso\backend\entities\DcontratosEPK.class
+com\congreso\backend\libs\GeneradorCodigos.class
 com\congreso\backend\repository\Impl\SeccionesImplR.class
 com\congreso\backend\controller\Impl\PersonsImplC.class
 com\congreso\backend\utils\CustomResponseBuilder.class
@@ -169,6 +173,7 @@ com\congreso\backend\model\Team$TeamBuilder.class
 com\congreso\backend\entities\Dto\SeccionesEDto.class
 com\congreso\backend\model\Predios.class
 com\congreso\backend\service\CityS.class
+com\congreso\backend\model\General.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
 com\congreso\backend\config\security\SwaggerConfig.class
