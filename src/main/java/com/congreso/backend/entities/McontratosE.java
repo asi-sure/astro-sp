@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -26,11 +27,11 @@ public class McontratosE {
 
     @NotNull(message = "Campo requerido")
     @NotBlank
-    private Date fechaini;
+    private LocalDate fechaini;
 
     @NotNull(message = "Campo requerido")
     @NotBlank
-    private Date fechafin;
+    private LocalDate fechafin;
 
     private int estado;
 
@@ -44,19 +45,19 @@ public class McontratosE {
 
     private int cf;
 
-    private Date fecha;
+    private LocalDate fecha;
 
     private int indefinido;
 
     private int stop;
 
-    private Date fechareg;
+    private LocalDate fechareg;
 
     private Integer actualizado_por;
-    private Date actualizado_en;
+    private LocalDate actualizado_en;
 
     private Integer eliminado_por;
-    private Date eliminado_en;
+    private LocalDate eliminado_en;
 
     @ManyToOne
     @JoinColumn(name="cicli")

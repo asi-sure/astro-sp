@@ -26,6 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +73,7 @@ public class AuthenticationImplC implements AuthenticacionC {
         hashMap.put("cedula", person.getCedula());
         hashMap.put("email", person.getEmail());
         hashMap.put("photo", urlServer+person.getPhoto());
+        hashMap.put("fecha", LocalDate.now());
 //        hashMap.put("rol", role.getName());
 //        MenusDto = obtenerMenuSubmenu(person.getId());
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), ar.message(),obtenerMenuSubmenu(person.getId()),role,hashMap);

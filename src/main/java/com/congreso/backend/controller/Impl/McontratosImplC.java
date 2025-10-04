@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @RestController
@@ -31,8 +32,8 @@ public class McontratosImplC implements McontratosC {
     public PaginatedResponse<McontratosE> findAll(
             @RequestParam(name = "estado", required = true) int estado,
             @RequestParam(name = "buscar", required = true) String buscar,
-            @RequestParam(name = "fechaini", required = true) Date fechaini,
-            @RequestParam(name = "fechafin", required = true) Date fechafin,
+            @RequestParam(name = "fechaini", required = true) LocalDate fechaini,
+            @RequestParam(name = "fechafin", required = true) LocalDate fechafin,
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
         return mcontratosS.findAll(estado,buscar,fechaini,fechafin,pageable);
     }
@@ -41,8 +42,8 @@ public class McontratosImplC implements McontratosC {
     public PaginatedResponse<McontratosEDto> findAll_2(
             @RequestParam(name = "estado", required = true) int estado,
             @RequestParam(name = "buscar", required = true) String buscar,
-            @RequestParam(name = "fechaini", required = true) Date fechaini,
-            @RequestParam(name = "fechafin", required = true) Date fechafin,
+            @RequestParam(name = "fechaini", required = true) LocalDate fechaini,
+            @RequestParam(name = "fechafin", required = true) LocalDate fechafin,
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
         return mcontratosS.findAll_2(estado,buscar,fechaini,fechafin,pageable);
     }

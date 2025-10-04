@@ -4,9 +4,13 @@ import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.libs.FormatoNumeros;
 import com.congreso.backend.libs.GeneradorCodigos;
+import com.congreso.backend.libs.ObtenerFechas;
 import com.congreso.backend.mapper.McontratosMapper;
+import com.congreso.backend.model.BoletasContratos;
 import com.congreso.backend.model.dto.McontratosDto;
+import com.congreso.backend.repository.BoletasContratosR;
 import com.congreso.backend.repository.GeneralR;
 import com.congreso.backend.repository.McontratosR;
 import com.congreso.backend.repositoryE.McontratosRepo;
@@ -25,6 +29,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.congreso.backend.model.General;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Slf4j
@@ -35,15 +40,16 @@ public class McontratosImplS implements McontratosS {
     private final McontratosRepo mcontratosRepo;
     private final McontratosR mcontratosR;
     private final GeneralR generalR;
+    private final BoletasContratosR boletasContratosR;
 
     @Override
-    public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable) {
+    public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable) {
         Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
 
     @Override
-    public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable) {
+    public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable) {
         Page<McontratosE> page2 = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
         Page<McontratosEDto> page =  page2.map(McontratosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
@@ -53,9 +59,9 @@ public class McontratosImplS implements McontratosS {
     @Transactional
     public ResponseEntity<ApiResponse> save(McontratosForms in) {
         General general = generalR.findById(1); // recover data from General
-        McontratosDto obj = new McontratosDto();
-        String codigo= GeneradorCodigos.generarCodigo("B",general.getContratos(),general.getAnio());
+        String codigo= GeneradorCodigos.generarCodigo("C",general.getContratos(),general.getAnio());
         //loading data to McontratosDto
+        McontratosDto obj = new McontratosDto();
         obj.setCodcon(codigo);
         obj.setGestion(general.getGestion());
         obj.setFechaini(in.getFechaini());
@@ -70,8 +76,18 @@ public class McontratosImplS implements McontratosS {
         obj.setFecha(in.getFecha());
         obj.setIndefinido(in.getIndefinido());
         obj.setStop(0);
+        //loading data of Boletas
+        BoletasContratos bol = new BoletasContratos();
+        bol.setMes(ObtenerFechas.getMonth(in.getFechaini()));
+        bol.setAnio(ObtenerFechas.getYear(in.getFechaini()));
+        bol.setGestion(general.getGestion());
+        bol.setCreado_por(in.getCodresponsable());
+
+//INSERT INTO boletas_contratos(codcon,codc,codpre,   mes,anio,gestion,monto,creado_por)
+
         String res1 = mcontratosR.save_Mcontratos(obj);
-        mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);
+        mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//add mcontratos
+        boletasContratosR.save_boletasContratos(in.getDcontratos(),codigo,bol,obj.getFechaini()); //generar boletas
         boolean res3=generalR.update_contratos();//contador de contratos
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }

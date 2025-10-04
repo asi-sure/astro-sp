@@ -1,5 +1,6 @@
 com\congreso\backend\model\dto\RoleDto.class
 com\congreso\backend\repository\Impl\SystemUsersImplR.class
+com\congreso\backend\libs\FormatoNumeros.class
 com\congreso\backend\repository\PersonsR.class
 com\congreso\backend\service\DepartamentS.class
 com\congreso\backend\model\Rolper$RolperBuilder.class
@@ -63,6 +64,7 @@ com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\dto\MenusDto.class
 com\congreso\backend\repository\GeneralR.class
 com\congreso\backend\repositoryE\PrediosRepo.class
+com\congreso\backend\model\BoletasContratos.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\model\dto\SubmenuDto.class
 com\congreso\backend\controller\AuthenticacionC.class
@@ -117,6 +119,7 @@ com\congreso\backend\repository\Impl\DepartamentImplR.class
 com\congreso\backend\validator\PhoneNumberValidator.class
 com\congreso\backend\controller\request\AuthLoginRequest.class
 com\congreso\backend\service\Impl\SectoresImplS.class
+com\congreso\backend\entities\BoletasContratosE.class
 com\congreso\backend\validator\ValidPhoneNumber.class
 com\congreso\backend\controller\Impl\PermissionImplC.class
 com\congreso\backend\service\Impl\RubrosImplS.class
@@ -141,6 +144,7 @@ com\congreso\backend\service\Impl\MenuImplS.class
 com\congreso\backend\model\SystemUser$SystemUserBuilder.class
 com\congreso\backend\model\Team.class
 com\congreso\backend\model\SystemUser.class
+com\congreso\backend\entities\BoletasContratosEPK.class
 com\congreso\backend\service\RolS.class
 com\congreso\backend\entities\DcontratosEPK.class
 com\congreso\backend\libs\GeneradorCodigos.class
@@ -154,6 +158,7 @@ com\congreso\backend\entities\forms\McontratosForms.class
 com\congreso\backend\model\Person$PersonBuilder.class
 com\congreso\backend\entities\RubrosE$RubrosEBuilder.class
 com\congreso\backend\model\Permission$PermissionBuilder.class
+com\congreso\backend\model\BoletasContratos$BoletasContratosBuilder.class
 com\congreso\backend\entities\Dto\SectoresEDto.class
 com\congreso\backend\model\dto\MenuDto$MenuDtoBuilder.class
 com\congreso\backend\entities\McontratosE$McontratosEBuilder.class
@@ -183,6 +188,7 @@ com\congreso\backend\model\SystemUsers.class
 com\congreso\backend\enumeration\Tipo_persons.class
 com\congreso\backend\entities\PersonsE.class
 com\congreso\backend\service\Impl\PrediosImplS.class
+com\congreso\backend\repository\Impl\BoletasContratosImplR.class
 com\congreso\backend\service\Impl\SystemsUserImplS.class
 com\congreso\backend\config\security\jwt\JwtUtils.class
 com\congreso\backend\model\Rubros$RubrosBuilder.class
@@ -202,6 +208,7 @@ com\congreso\backend\controller\Impl\AuthenticationImplC.class
 com\congreso\backend\controller\SystemUserC.class
 com\congreso\backend\repository\Impl\SectoresImplR.class
 com\congreso\backend\repository\SystemUserR.class
+com\congreso\backend\libs\ObtenerFechas.class
 com\congreso\backend\entities\Dto\McontratosEDto.class
 com\congreso\backend\model\Secciones$SeccionesBuilder.class
 com\congreso\backend\service\PersonS.class
@@ -219,6 +226,7 @@ com\congreso\backend\model\dto\SubmenuDto$SubmenuDtoBuilder.class
 com\congreso\backend\controller\MenuC.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\controller\Impl\PrediosImplC.class
+com\congreso\backend\entities\BoletasContratosE$BoletasContratosEBuilder.class
 com\congreso\backend\repository\Impl\RubrosImplR.class
 com\congreso\backend\entities\DcontratosE.class
 com\congreso\backend\entities\PrediosE.class
@@ -227,6 +235,7 @@ com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class
 com\congreso\backend\entities\McontratosE.class
 com\congreso\backend\controller\SystemUsersC.class
+com\congreso\backend\repository\BoletasContratosR.class
 com\congreso\backend\service\SectoresS.class
 com\congreso\backend\model\dto\McontratosDto$McontratosDtoBuilder.class
 com\congreso\backend\repository\CityR.class

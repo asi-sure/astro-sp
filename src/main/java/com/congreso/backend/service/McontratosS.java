@@ -11,10 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public interface McontratosS {
-    PaginatedResponse<McontratosE> findAll(int xestado, String buscar,Date fechaini,Date fechafin, Pageable pageable);
-    PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, Date fechaini, Date fechafin, Pageable pageable);
+    PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable);
+    PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable);
     ResponseEntity<ApiResponse> save(McontratosForms in);
 }

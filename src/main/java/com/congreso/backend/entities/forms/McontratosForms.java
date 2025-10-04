@@ -6,6 +6,7 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,12 +15,12 @@ import java.util.List;
 public class McontratosForms {
     private String codcon;
     private int gestion;
-    private Date fechaini;
-    private Date fechafin;
+    private LocalDate fechaini;
+    private LocalDate fechafin;
     private int estado;
     private float monto;
     private String obs;
-    private Date fecha;
+    private LocalDate fecha;
     private Long codcliente;
     private Long codresponsable;
     private int indefinido;

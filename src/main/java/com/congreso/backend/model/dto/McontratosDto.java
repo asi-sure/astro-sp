@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,22 +23,22 @@ import java.util.List;
 public class McontratosDto {
     private String codcon;
     private int gestion;
-    private Date fechaini;
-    private Date fechafin;
+    private LocalDate fechaini;
+    private LocalDate fechafin;
     private int estado;
     private String tipoper;
     private float monto;
     private String obs;
     private int contador;
     private int cf;
-    private Date fecha;
+    private LocalDate fecha;
     private int indefinido;
     private int stop;
-    private Date fechareg;
+    private LocalDate fechareg;
     private Integer actualizado_por;
-    private Date actualizado_en;
+    private LocalDate actualizado_en;
     private Integer eliminado_por;
-    private Date eliminado_en;
+    private LocalDate eliminado_en;
     private Long ciresp;
     private Long cicli;
 //    List<DcontratosE> dcontratos;
