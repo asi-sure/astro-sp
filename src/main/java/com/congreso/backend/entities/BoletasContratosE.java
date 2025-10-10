@@ -19,8 +19,11 @@ import java.util.Date;
 @Builder
 @Table(name = "boletas_contratos")
 public class BoletasContratosE {
-    @EmbeddedId
-    private BoletasContratosEPK id;
+    @Id
+    private long id_boleta_con;
+    private long id_dcon;
+    private int mes;
+    private int anio;
     private int gestion;
     private float monto;
     private float pagado;

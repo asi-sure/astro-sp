@@ -15,8 +15,14 @@ import lombok.*;
 @Table(name = "dcontratos")
 public class DcontratosE {
 
-    @EmbeddedId
-    private DcontratosEPK id;
+//    @EmbeddedId
+//    private DcontratosEPK id;
+    @Id
+    private long id_dcon;
+
+    protected String codcon;
+    protected String codc;
+    protected String codpre;
 
     private float importe;
 

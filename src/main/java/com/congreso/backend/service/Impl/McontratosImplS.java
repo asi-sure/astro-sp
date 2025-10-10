@@ -9,8 +9,10 @@ import com.congreso.backend.libs.GeneradorCodigos;
 import com.congreso.backend.libs.ObtenerFechas;
 import com.congreso.backend.mapper.McontratosMapper;
 import com.congreso.backend.model.BoletasContratos;
+import com.congreso.backend.model.Dcontratos;
 import com.congreso.backend.model.dto.McontratosDto;
 import com.congreso.backend.repository.BoletasContratosR;
+import com.congreso.backend.repository.DcontratosR;
 import com.congreso.backend.repository.GeneralR;
 import com.congreso.backend.repository.McontratosR;
 import com.congreso.backend.repositoryE.McontratosRepo;
@@ -31,6 +33,7 @@ import com.congreso.backend.model.General;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -39,6 +42,7 @@ public class McontratosImplS implements McontratosS {
     private final CustomResponseBuilder customResponseBuilder;
     private final McontratosRepo mcontratosRepo;
     private final McontratosR mcontratosR;
+    private final DcontratosR dcontratosR;
     private final GeneralR generalR;
     private final BoletasContratosR boletasContratosR;
 
@@ -85,9 +89,14 @@ public class McontratosImplS implements McontratosS {
 
 //INSERT INTO boletas_contratos(codcon,codc,codpre,   mes,anio,gestion,monto,creado_por)
 
-        String res1 = mcontratosR.save_Mcontratos(obj);
-        mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//add mcontratos
-        boletasContratosR.save_boletasContratos(in.getDcontratos(),codigo,bol,obj.getFechaini()); //generar boletas
+        String res1 = mcontratosR.save_Mcontratos(obj);  //save Mcontratos
+        mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//save mcontratos
+        List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
+        dcontratos.forEach(det ->{
+            boletasContratosR.save_boletasContratos(det,bol,obj.getFechaini()); //generar boletas
+        });
+
+
         boolean res3=generalR.update_contratos();//contador de contratos
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }

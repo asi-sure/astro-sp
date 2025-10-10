@@ -1,11 +1,9 @@
 package com.congreso.backend.model;
 
-import com.congreso.backend.entities.BoletasContratosEPK;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -15,9 +13,8 @@ import java.util.Date;
 public class BoletasContratos implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    protected String codcon;
-    protected String codc;
-    protected String codpre;
+    protected long id_boleta_con;
+    protected long id_dcon;;
     protected int mes;
     protected int anio;
     private int gestion;

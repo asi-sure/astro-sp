@@ -77,12 +77,14 @@ com\congreso\backend\service\EmailServiceS.class
 com\congreso\backend\entities\Dto\InquilinosEDto.class
 com\congreso\backend\controller\Impl\MenuImplC.class
 com\congreso\backend\entities\Dto\PrediosEDto.class
+com\congreso\backend\model\Dcontratos.class
 com\congreso\backend\service\TeamS.class
 com\congreso\backend\controller\Impl\PasswordResetImplC.class
 com\congreso\backend\service\RubrosS.class
 com\congreso\backend\model\dto\PrediosDto.class
 com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\model\Inquilinos.class
+com\congreso\backend\repository\Impl\DcontratosImplR.class
 com\congreso\backend\service\Impl\EmailService.class
 com\congreso\backend\exception\type\BadRequestException.class
 com\congreso\backend\exception\util\ApiException.class
@@ -144,7 +146,6 @@ com\congreso\backend\service\Impl\MenuImplS.class
 com\congreso\backend\model\SystemUser$SystemUserBuilder.class
 com\congreso\backend\model\Team.class
 com\congreso\backend\model\SystemUser.class
-com\congreso\backend\entities\BoletasContratosEPK.class
 com\congreso\backend\service\RolS.class
 com\congreso\backend\entities\DcontratosEPK.class
 com\congreso\backend\libs\GeneradorCodigos.class
@@ -182,6 +183,7 @@ com\congreso\backend\model\General.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
 com\congreso\backend\config\security\SwaggerConfig.class
+com\congreso\backend\repository\DcontratosR.class
 com\congreso\backend\model\Sectores$SectoresBuilder.class
 com\congreso\backend\model\forms\InquilinosForm$InquilinosFormBuilder.class
 com\congreso\backend\model\SystemUsers.class
@@ -231,6 +233,7 @@ com\congreso\backend\repository\Impl\RubrosImplR.class
 com\congreso\backend\entities\DcontratosE.class
 com\congreso\backend\entities\PrediosE.class
 com\congreso\backend\repository\Impl\MenuImplR.class
+com\congreso\backend\model\Dcontratos$DcontratosBuilder.class
 com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class
 com\congreso\backend\entities\McontratosE.class

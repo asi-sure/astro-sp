@@ -4,6 +4,7 @@ import com.congreso.backend.entities.forms.DcontratosForms;
 import com.congreso.backend.libs.FormatoNumeros;
 import com.congreso.backend.libs.ObtenerFechas;
 import com.congreso.backend.model.BoletasContratos;
+import com.congreso.backend.model.Dcontratos;
 import com.congreso.backend.repository.BoletasContratosR;
 import com.congreso.backend.repository.InquilinosR;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +21,14 @@ public class BoletasContratosImplR implements BoletasContratosR {
     private String sql;
 
     @Override
-    public void save_boletasContratos(List<DcontratosForms> obj, String codcon, BoletasContratos bol, LocalDate xfechaini){
-        sql = " INSERT INTO boletas_contratos(codcon,codc,codpre,mes,anio,gestion,monto,creado_por) "+
-              "   values(?,?,?,?,?,?,?,?) ";
-        obj.forEach(det ->{
-            if (det.getPrincipal()==1) {
-db.update(sql, codcon, det.getCodc(), det.getCodpre(),bol.getMes(),bol.getAnio(),bol.getGestion(),determinarMontoBoletas(det.getImporte(),xfechaini),bol.getCreado_por());
-            }else{
-db.update(sql, codcon, det.getCodc(), det.getCodpre(),bol.getMes(),bol.getAnio(),bol.getGestion(),0,bol.getCreado_por());
-            }
-        });
+    public void save_boletasContratos(Dcontratos det, BoletasContratos bol, LocalDate xfechaini){
+        sql = " INSERT INTO boletas_contratos(id_dcon,mes,anio,gestion,monto,creado_por) "+
+              "   values(?,?,?,?,?,?) ";
+        if (det.getPrincipal()==1){
+db.update(sql, det.getId_dcon(),bol.getMes(),bol.getAnio(),bol.getGestion(),determinarMontoBoletas(det.getImporte(),xfechaini),bol.getCreado_por());
+        }else{
+db.update(sql, det.getId_dcon(),bol.getMes(),bol.getAnio(),bol.getGestion(),0,bol.getCreado_por());
+        }
     }
 
     public float determinarMontoBoletas(float xmonto, LocalDate xfechaini){
