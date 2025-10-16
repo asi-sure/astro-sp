@@ -7,7 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DcontratosForms {
     private String codc;
-    private String codpre;
     private float importe;
-    private int principal;
 }

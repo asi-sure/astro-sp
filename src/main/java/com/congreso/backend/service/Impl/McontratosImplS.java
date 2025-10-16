@@ -52,13 +52,19 @@ public class McontratosImplS implements McontratosS {
         return PaginationUtils.toPaginatedResponse(page);
     }
 
+//    @Override
+//    public PaginatedResponse<McontratosE> findAll_boletasByCicli(long cicli, Pageable pageable) {
+//        Page<McontratosE> page = mcontratosRepo.boletasByInquilinos(cicli,pageable);
+//        return PaginationUtils.toPaginatedResponse(page);
+//    }
+//
     @Override
     public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable) {
         Page<McontratosE> page2 = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
         Page<McontratosEDto> page =  page2.map(McontratosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }
-
+//
     @Override
     @Transactional
     public ResponseEntity<ApiResponse> save(McontratosForms in) {
@@ -67,13 +73,15 @@ public class McontratosImplS implements McontratosS {
         //loading data to McontratosDto
         McontratosDto obj = new McontratosDto();
         obj.setCodcon(codigo);
+        obj.setPredio(in.getCodpre());
+        obj.setRubro(in.getCodc());
         obj.setGestion(general.getGestion());
         obj.setFechaini(in.getFechaini());
         obj.setFechafin(in.getFechafin());
         obj.setEstado(1);
         obj.setCicli(in.getCodcliente());
         obj.setCiresp(in.getCodresponsable());
-        obj.setTipoper("I");
+        obj.setTipocon("I");
         obj.setMonto(in.getMonto());
         obj.setObs(in.getObs());
         obj.setCf(1);//applyin billing
@@ -81,23 +89,22 @@ public class McontratosImplS implements McontratosS {
         obj.setIndefinido(in.getIndefinido());
         obj.setStop(0);
         //loading data of Boletas
-        BoletasContratos bol = new BoletasContratos();
-        bol.setMes(ObtenerFechas.getMonth(in.getFechaini()));
-        bol.setAnio(ObtenerFechas.getYear(in.getFechaini()));
-        bol.setGestion(general.getGestion());
-        bol.setCreado_por(in.getCodresponsable());
+//        BoletasContratos bol = new BoletasContratos();
+//        bol.setMes(ObtenerFechas.getMonth(in.getFechaini()));
+//        bol.setAnio(ObtenerFechas.getYear(in.getFechaini()));
+//        bol.setGestion(general.getGestion());
+//        bol.setCreado_por(in.getCodresponsable());
 
 //INSERT INTO boletas_contratos(codcon,codc,codpre,   mes,anio,gestion,monto,creado_por)
 
         String res1 = mcontratosR.save_Mcontratos(obj);  //save Mcontratos
         mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//save mcontratos
-        List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
-        dcontratos.forEach(det ->{
-            boletasContratosR.save_boletasContratos(det,bol,obj.getFechaini()); //generar boletas
-        });
-
+//        List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
+//        dcontratos.forEach(det ->{
+//            boletasContratosR.save_boletasContratos(det,bol,obj.getFechaini()); //generar boletas
+//        });
 
         boolean res3=generalR.update_contratos();//contador de contratos
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
-}
+}//end of class

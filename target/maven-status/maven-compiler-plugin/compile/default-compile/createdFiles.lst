@@ -18,6 +18,7 @@ com\congreso\backend\service\Impl\RoleImplS.class
 com\congreso\backend\entities\SeccionesE.class
 com\congreso\backend\model\forms\RubrosForm.class
 com\congreso\backend\service\PermissionS.class
+com\congreso\backend\service\BoletasContratosS.class
 com\congreso\backend\service\InquilinosS.class
 com\congreso\backend\controller\PersonsC.class
 com\congreso\backend\service\MenuS.class
@@ -40,7 +41,9 @@ com\congreso\backend\controller\Impl\RegionImplC.class
 com\congreso\backend\controller\Impl\TeamImplC.class
 com\congreso\backend\exception\util\ApiResponse.class
 com\congreso\backend\controller\Impl\RolImplC.class
+com\congreso\backend\entities\Dto\BoletasContratosEDto.class
 com\congreso\backend\model\Departament.class
+com\congreso\backend\entities\Dto\BoletasContratosDetalleEDto.class
 com\congreso\backend\repository\Impl\RoleImplR.class
 com\congreso\backend\controller\SeccionesC.class
 com\congreso\backend\service\RoleS.class
@@ -59,6 +62,7 @@ com\congreso\backend\repository\Impl\InquilinosImplR.class
 com\congreso\backend\model\Region$RegionBuilder.class
 com\congreso\backend\controller\InquilinosC.class
 com\congreso\backend\repository\InquilinosR.class
+com\congreso\backend\mapper\BoletasContratosMapper.class
 com\congreso\backend\model\SystemUsers$SystemUsersBuilder.class
 com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\dto\MenusDto.class
@@ -94,6 +98,7 @@ com\congreso\backend\service\Impl\PasswordResetTokenImplS.class
 com\congreso\backend\model\Departament$DepartamentBuilder.class
 com\congreso\backend\config\security\filters\JwtTokenValidator.class
 com\congreso\backend\repositoryE\RubrosRepo.class
+com\congreso\backend\service\Impl\BoletasContratosImplS.class
 com\congreso\backend\entities\PersonsE$PersonsEBuilder.class
 com\congreso\backend\repository\RubrosR.class
 com\congreso\backend\model\dto\SystemUsersDto$SystemUsersDtoBuilder.class

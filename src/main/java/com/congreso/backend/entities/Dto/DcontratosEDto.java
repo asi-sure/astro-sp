@@ -8,8 +8,5 @@ import lombok.Setter;
 @Setter
 public class DcontratosEDto {
     private float importe;
-    private int principal;
-    private int lectura;
-    private String predio;
     private String rubro;
 }

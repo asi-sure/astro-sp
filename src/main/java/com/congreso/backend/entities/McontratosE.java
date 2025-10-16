@@ -22,7 +22,9 @@ public class McontratosE {
 
     @Id
     private String codcon;
-
+    protected String codc;
+    protected String codpre;
+    private String tipocon;
     private int gestion;
 
     @NotNull(message = "Campo requerido")
@@ -34,8 +36,6 @@ public class McontratosE {
     private LocalDate fechafin;
 
     private int estado;
-
-    private String tipoper;
 
     private float monto;
 
@@ -58,6 +58,18 @@ public class McontratosE {
 
     private Integer eliminado_por;
     private LocalDate eliminado_en;
+
+    @ManyToOne
+    @MapsId("codc")
+    @JoinColumn(name = "codc")
+    @JsonManagedReference
+    RubrosE rubros;
+
+    @ManyToOne
+    @MapsId("codpre")
+    @JoinColumn(name = "codpre")
+    @JsonManagedReference
+    PrediosE predios;
 
     @ManyToOne
     @JoinColumn(name="cicli")

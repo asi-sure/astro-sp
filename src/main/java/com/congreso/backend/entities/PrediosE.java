@@ -32,8 +32,12 @@ public class PrediosE {
     @JsonBackReference
     SeccionesE secciones;
 
+//    @OneToMany(mappedBy = "predios")
+//    @JsonBackReference
+//    Set<DcontratosE> dcontratos;
+
     @OneToMany(mappedBy = "predios")
     @JsonBackReference
-    Set<DcontratosE> dcontratos;
+    Set<McontratosE> mcontratos;
 
 }

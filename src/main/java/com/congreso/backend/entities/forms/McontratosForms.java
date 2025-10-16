@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class McontratosForms {
     private String codcon;
+    private String codc;
+    private String codpre;
     private int gestion;
     private LocalDate fechaini;
     private LocalDate fechafin;

@@ -17,6 +17,7 @@ import java.util.Date;
 
 public interface McontratosC {
     PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable);
+//    PaginatedResponse<McontratosE> findAll_boletasByCicli(long cicli, Pageable pageable);
     PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable);
     ResponseEntity<ApiResponse> save(McontratosForms in);
 }

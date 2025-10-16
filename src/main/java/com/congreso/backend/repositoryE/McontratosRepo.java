@@ -26,16 +26,44 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
             @Param("fechafin") LocalDate fechafin,
             Pageable pageable);
 
+//    @Query(
+//            value = " SELECT i "+
+//                    " FROM  McontratosE i "+
+//                    "       JOIN i.dcontratos d "+
+//                    "       JOIN d.boletasContratos b "+
+//                    " WHERE i.inquilino.id = :cicli and "+
+//                    "       b.pagado < b.monto  ")
+//    //deberia modificar a pagados y no pagados
+//    Page<McontratosE> boletasByInquilinos(
+//            @Param("cicli") long cicli,
+//            Pageable pageable);
 
-    /*
-     @Query(
-            value = " SELECT i "+
-                    " FROM McontratosE i "+
-                    " WHERE i.estado = :estado AND " +
-                    " UPPER(i.nombre) LIKE UPPER(:buscar)")
-    Page<SectoresE> listarSectores(
-            @Param("estado") int estado,
-            @Param("buscar") String buscar,
-            Pageable pageable);
-     */
-}
+
+
+
+
+
+//    @Query(
+//    value = "SELECT DISTINCT m "+
+//            "FROM McontratosE m " +
+//            "JOIN m.dcontratos d " + // Une con DcontratosE
+//            "JOIN d.boletasContratos b " + // Une con BoletasContratosE
+//            "WHERE m.inquilino.cedula = :cicli AND " +
+//            "b.estado = 1 " // Ejemplo: Condición en un atributo de BoletasContratosE
+//    )
+//    Page<McontratosE> boletasByInquilinos(
+//        @Param("cicli") String cicli,
+//        Pageable pageable
+//    );
+//
+//     @Query(
+//            value = " SELECT i "+
+//                    " FROM McontratosE i "+
+//                    " WHERE i.estado = :estado AND " +
+//                    " UPPER(i.nombre) LIKE UPPER(:buscar)")
+//    Page<SectoresE> listarSectores(
+//            @Param("estado") int estado,
+//            @Param("buscar") String buscar,
+//            Pageable pageable);
+
+} //end of class

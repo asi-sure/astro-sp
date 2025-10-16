@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -14,21 +16,13 @@ import lombok.*;
 @Builder
 @Table(name = "dcontratos")
 public class DcontratosE {
-
-//    @EmbeddedId
-//    private DcontratosEPK id;
     @Id
     private long id_dcon;
 
     protected String codcon;
     protected String codc;
-    protected String codpre;
-
     private float importe;
-
-    private int principal;
-
-    private int lectura;
+    private int estado;
 
     @ManyToOne
     @MapsId("codcon")
@@ -42,9 +36,8 @@ public class DcontratosE {
     @JsonManagedReference
     RubrosE rubros;
 
-    @ManyToOne
-    @MapsId("codpre")
-    @JoinColumn(name = "codpre")
-    @JsonManagedReference
-    PrediosE predios;
+//    @OneToMany(mappedBy = "dcontratos", fetch = FetchType.EAGER) // <--- ADDED FETCH TYPE
+//    @JsonManagedReference
+//    List<BoletasContratosE> boletasContratos;
+
 }

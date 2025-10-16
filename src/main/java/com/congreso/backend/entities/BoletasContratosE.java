@@ -1,9 +1,7 @@
 package com.congreso.backend.entities;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -32,8 +30,14 @@ public class BoletasContratosE {
     private int estadopago;
     private int creado_por;
     private LocalDate fechareg;
-    private int  actualizado_por;
+    private Integer  actualizado_por;
     private LocalDate actualizado_en;
-    private int  eliminado_por;
+    private Integer  eliminado_por;
     private LocalDate eliminado_en;
+
+    @ManyToOne
+    @MapsId("id_dcon")
+    @JoinColumn(name = "id_dcon")
+    @JsonBackReference
+    DcontratosE dcontratos;
 }

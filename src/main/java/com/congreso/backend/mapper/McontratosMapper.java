@@ -28,7 +28,12 @@ public class McontratosMapper {
         dto.setFecha(entity.getFecha());
         dto.setStop(entity.getStop());
         dto.setFechareg(entity.getFechareg());
-
+        if (entity.getPredios() != null) {
+            dto.setPredio(entity.getPredios().getNombre());
+        }
+        if (entity.getRubros() != null) {
+            dto.setRubro(entity.getRubros().getNombre());
+        }
         // Map related entities to their DTOs
         if (entity.getInquilino() != null) {
             String xap="", xam="";
@@ -57,9 +62,6 @@ public class McontratosMapper {
         }
         DcontratosEDto dto = new DcontratosEDto();
         dto.setImporte(dcontrato.getImporte());     //  setCodcont(dcontrato.getCodcont()); // Assuming DcontratosE has a 'codcont' field
-        dto.setPrincipal(dcontrato.getPrincipal()); // dto.setCodserv(dcontrato.getCodserv()); // Assuming DcontratosE has a 'codserv' field
-        dto.setLectura(dcontrato.getLectura());
-        dto.setPredio(dcontrato.getPredios().getNombre());
         dto.setRubro(dcontrato.getRubros().getNombre());
         return dto;
     }

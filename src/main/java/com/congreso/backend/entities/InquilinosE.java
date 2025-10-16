@@ -59,6 +59,17 @@ public class InquilinosE {
     private Inquilinos_ubicE ubicacion_gps;
 
     public String datos(){
-        return this.nombre+" "+this.ap+" "+this.am;
+        String xdato=this.nombre;
+        if (this.ap!=null){
+          if (!this.ap.trim().equals("")){
+              xdato=xdato + " "+this.ap.trim();
+          }
+        }
+        if (this.am!=null){
+            if (!this.am.trim().equals("")){
+                xdato=xdato + " "+this.am.trim();
+            }
+        }
+        return xdato;
     }
 }

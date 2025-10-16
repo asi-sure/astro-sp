@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 public class McontratosEDto {
     private String codcon;
+    private String predio;
+    private String rubro;
     private int gestion;
     private LocalDate fechaini;
     private LocalDate fechafin;

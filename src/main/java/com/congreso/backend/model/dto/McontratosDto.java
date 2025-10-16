@@ -22,11 +22,13 @@ import java.util.List;
 @Builder
 public class McontratosDto {
     private String codcon;
+    private String predio;
+    private String rubro;
     private int gestion;
     private LocalDate fechaini;
     private LocalDate fechafin;
     private int estado;
-    private String tipoper;
+    private String tipocon;
     private float monto;
     private String obs;
     private int contador;

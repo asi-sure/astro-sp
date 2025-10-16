@@ -37,6 +37,15 @@ public class McontratosImplC implements McontratosC {
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
         return mcontratosS.findAll(estado,buscar,fechaini,fechafin,pageable);
     }
+//
+//    @Override
+//    @GetMapping("mcontratos/boletas/todo")
+//    public PaginatedResponse<McontratosE> findAll_boletasByCicli(
+//            @RequestParam(name = "cicli", required = true) long cicli,
+//            @PageableDefault(size = 10,direction = Sort.Direction.ASC) Pageable pageable ) {
+//        return mcontratosS.findAll_boletasByCicli(cicli,pageable);
+//    }
+
     @Override
     @GetMapping("mcontratos")
     public PaginatedResponse<McontratosEDto> findAll_2(

@@ -1,12 +1,10 @@
 package com.congreso.backend.repository.Impl;
 
-import com.congreso.backend.entities.forms.DcontratosForms;
 import com.congreso.backend.libs.FormatoNumeros;
 import com.congreso.backend.libs.ObtenerFechas;
 import com.congreso.backend.model.BoletasContratos;
 import com.congreso.backend.model.Dcontratos;
 import com.congreso.backend.repository.BoletasContratosR;
-import com.congreso.backend.repository.InquilinosR;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
