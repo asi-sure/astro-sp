@@ -7,6 +7,7 @@ import com.congreso.backend.exception.util.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -42,6 +43,13 @@ public class GlobalExceptionHandler {
     public ApiResponse handleThrowable(Throwable ex, HttpServletRequest request) {
         logger.error("Se produjo una excepción no manejada:", ex);
         ApiResponse response = new ApiResponse("Se produjo una excepción no manejada", request.getRequestURI());
+        return response;
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class) //by oam
+    @ResponseBody
+    public ApiResponse DataIntegrityViolationException(DataIntegrityViolationException ex) {
+        logger.error("Bad references to table:", ex);
+        ApiResponse response = new ApiResponse("Error por Integridad Referencial", ex.getMostSpecificCause().getMessage());
         return response;
     }
     @ExceptionHandler(HttpMessageNotReadableException.class) //by oam

@@ -68,6 +68,16 @@ public class McontratosImplS implements McontratosS {
     @Override
     @Transactional
     public ResponseEntity<ApiResponse> save(McontratosForms in) {
+        //validation
+        if (in.getMonto()<=0) {
+            throw new IllegalArgumentException("El MONTO debe ser mayor a cero.");
+        }
+        if (in.getFecha().isBefore(in.getFechaini())) {
+            throw new IllegalArgumentException("La fecha transacción no puede ser anterior a la fecha inicial.");
+        }
+        if (in.getFechafin().isBefore(in.getFechaini())) {
+            throw new IllegalArgumentException("La fecha final no puede ser anterior a la fecha inicial.");
+        }
         General general = generalR.findById(1); // recover data from General
         String codigo= GeneradorCodigos.generarCodigo("C",general.getContratos(),general.getAnio());
         //loading data to McontratosDto
