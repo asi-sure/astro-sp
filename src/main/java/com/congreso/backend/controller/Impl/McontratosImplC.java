@@ -63,5 +63,14 @@ public class McontratosImplC implements McontratosC {
         return mcontratosS.save(in);
     }
 
+    @Override
+    @DeleteMapping("mcontratos")
+    public ResponseEntity<ApiResponse> delete(
+            @RequestParam(name = "codcon", required = true) String codcon,
+            @RequestParam(name = "idresponsable", required = true) int idresponsable
+    ) {
+        return mcontratosS.delete(codcon,idresponsable);
+    }
+
 
 }//end of class

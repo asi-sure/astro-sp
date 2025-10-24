@@ -17,7 +17,7 @@ public class DcontratosImplR implements DcontratosR {
     private String sql;
     @Override
     public List<Dcontratos> findByCodcon(String codcon) {
-        sql = " SELECT id_dcon, importe,principal,lectura "+
+        sql = " SELECT id_dcon,codcon,codc, importe,estado "+
                 " FROM dcontratos WHERE codcon = ? ;";
         return db.query(sql, BeanPropertyRowMapper.newInstance(Dcontratos.class),codcon);
     }

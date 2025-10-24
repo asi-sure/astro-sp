@@ -11,4 +11,5 @@ public interface McontratosR {
 
     String save_Mcontratos(McontratosDto obj);
     void save_Dcontratos(List<DcontratosForms> obj, String codcon);
+
 }

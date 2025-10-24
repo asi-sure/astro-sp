@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
@@ -25,6 +26,13 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
             @Param("fechaini") LocalDate fechaini,
             @Param("fechafin") LocalDate fechafin,
             Pageable pageable);
+
+    //llamada a una FUNCTION de la base de datos
+    @Query(value = "SELECT delete_contratos(:xcodcon, :xresponsable)", nativeQuery = true)
+    Boolean callDeleteContratosNative(
+            @Param("xcodcon") String xcodcon,
+            @Param("xresponsable") int xresponsable
+    );
 
 //    @Query(
 //            value = " SELECT i "+

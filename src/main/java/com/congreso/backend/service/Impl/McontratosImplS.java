@@ -68,7 +68,7 @@ public class McontratosImplS implements McontratosS {
     @Override
     @Transactional
     public ResponseEntity<ApiResponse> save(McontratosForms in) {
-        //validation
+        //validation begin
         if (in.getMonto()<=0) {
             throw new IllegalArgumentException("El MONTO debe ser mayor a cero.");
         }
@@ -78,6 +78,7 @@ public class McontratosImplS implements McontratosS {
         if (in.getFechafin().isBefore(in.getFechaini())) {
             throw new IllegalArgumentException("La fecha final no puede ser anterior a la fecha inicial.");
         }
+        //validation end
         General general = generalR.findById(1); // recover data from General
         String codigo= GeneradorCodigos.generarCodigo("C",general.getContratos(),general.getAnio());
         //loading data to McontratosDto
@@ -99,22 +100,36 @@ public class McontratosImplS implements McontratosS {
         obj.setIndefinido(in.getIndefinido());
         obj.setStop(0);
         //loading data of Boletas
-//        BoletasContratos bol = new BoletasContratos();
-//        bol.setMes(ObtenerFechas.getMonth(in.getFechaini()));
-//        bol.setAnio(ObtenerFechas.getYear(in.getFechaini()));
-//        bol.setGestion(general.getGestion());
-//        bol.setCreado_por(in.getCodresponsable());
+        BoletasContratos bol = new BoletasContratos();
+        bol.setMes(ObtenerFechas.getMonth(in.getFechaini()));
+        bol.setAnio(ObtenerFechas.getYear(in.getFechaini()));
+        bol.setGestion(general.getGestion());
+        bol.setCreado_por(in.getCodresponsable());
 
-//INSERT INTO boletas_contratos(codcon,codc,codpre,   mes,anio,gestion,monto,creado_por)
+//        int prueba= mcontratosR.delete_contratos(codigo);
+//        System.out.println("Este es una pruebita::"+prueba);
 
         String res1 = mcontratosR.save_Mcontratos(obj);  //save Mcontratos
         mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//save mcontratos
-//        List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
-//        dcontratos.forEach(det ->{
-//            boletasContratosR.save_boletasContratos(det,bol,obj.getFechaini()); //generar boletas
-//        });
+        boletasContratosR.save_boletasContratos(obj,bol); //generar boletas
+        List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
+        dcontratos.forEach(det ->{
+            boletasContratosR.save_boletas(det.getId_dcon(),bol); //generar boletas
+        });
 
         boolean res3=generalR.update_contratos();//contador de contratos
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> delete(String codcon, int idresponsable) {
+        boolean status = mcontratosRepo.callDeleteContratosNative(codcon, idresponsable);
+        String mensaje="";
+        if (status) {
+            mensaje="Se Eliminó satisfactoriamente.";
+        }else{
+            mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
     }
 }//end of class
