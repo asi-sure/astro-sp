@@ -4,6 +4,7 @@ import com.congreso.backend.controller.McontratosC;
 import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.service.McontratosS;
 import com.congreso.backend.utils.ApiResponse;
@@ -70,6 +71,15 @@ public class McontratosImplC implements McontratosC {
             @RequestParam(name = "idresponsable", required = true) int idresponsable
     ) {
         return mcontratosS.delete(codcon,idresponsable);
+    }
+
+    @Override
+    @PutMapping("mcontratos")
+    public ResponseEntity<ApiResponse> update(
+            @RequestBody McontratosForms2 in,
+            @RequestParam(name = "codcon", required = true) String codcon
+    ) {
+        return mcontratosS.update(in,codcon);
     }
 
 

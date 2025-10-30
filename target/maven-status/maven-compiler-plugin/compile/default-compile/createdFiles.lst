@@ -27,6 +27,7 @@ com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
 com\congreso\backend\repository\PrediosR.class
 com\congreso\backend\controller\RubrosC.class
 com\congreso\backend\model\Role$RoleBuilder.class
+com\congreso\backend\entities\forms\McontratosForms2.class
 com\congreso\backend\repository\TeamR.class
 com\congreso\backend\controller\SectoresC.class
 com\congreso\backend\model\dto\PrediosDto$PrediosDtoBuilder.class

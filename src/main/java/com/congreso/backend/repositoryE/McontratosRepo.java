@@ -33,6 +33,19 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
             @Param("xcodcon") String xcodcon,
             @Param("xresponsable") int xresponsable
     );
+    @Query(value = "SELECT modificar_contratos(:xcodcon, :xresponsable,:xmonto,:xobs)", nativeQuery = true)
+    Boolean callModificarContratos(
+            @Param("xcodcon") String xcodcon,
+            @Param("xresponsable") int xresponsable,
+            @Param("xmonto") float xmonto,
+            @Param("xobs") String xobs
+    );
+
+
+
+
+
+
 
 //    @Query(
 //            value = " SELECT i "+
@@ -45,11 +58,6 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
 //    Page<McontratosE> boletasByInquilinos(
 //            @Param("cicli") long cicli,
 //            Pageable pageable);
-
-
-
-
-
 
 //    @Query(
 //    value = "SELECT DISTINCT m "+

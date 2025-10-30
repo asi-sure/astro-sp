@@ -4,6 +4,7 @@ import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.model.Persons;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.PaginatedResponse;
@@ -21,4 +22,5 @@ public interface McontratosC {
     PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable);
     ResponseEntity<ApiResponse> save(McontratosForms in);
     ResponseEntity<ApiResponse> delete(String codcon, int idresponsable);
+    ResponseEntity<ApiResponse> update(McontratosForms2 in, String codcon);
 }

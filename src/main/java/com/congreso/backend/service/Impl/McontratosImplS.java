@@ -4,6 +4,7 @@ import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.InquilinosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.libs.FormatoNumeros;
 import com.congreso.backend.libs.GeneradorCodigos;
 import com.congreso.backend.libs.ObtenerFechas;
@@ -106,10 +107,8 @@ public class McontratosImplS implements McontratosS {
         bol.setGestion(general.getGestion());
         bol.setCreado_por(in.getCodresponsable());
 
-//        int prueba= mcontratosR.delete_contratos(codigo);
-//        System.out.println("Este es una pruebita::"+prueba);
-
-        String res1 = mcontratosR.save_Mcontratos(obj);  //save Mcontratos
+        //save mcontratos
+        String res1 = mcontratosR.save_Mcontratos(obj);
         mcontratosR.save_Dcontratos(in.getDcontratos(),codigo);//save mcontratos
         boletasContratosR.save_boletasContratos(obj,bol); //generar boletas
         List<Dcontratos> dcontratos = dcontratosR.findByCodcon(codigo);
@@ -131,5 +130,14 @@ public class McontratosImplS implements McontratosS {
             mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> update(McontratosForms2 in, String codcon) {
+        if (in.getMonto()<=0) {
+            throw new IllegalArgumentException("El MONTO debe ser mayor a cero.");
+        }
+        boolean status = mcontratosRepo.callModificarContratos(codcon,in.getCodresponsable(),in.getMonto(),in.getObs());
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Se modificó satisfactoriamente..!", 0);
     }
 }//end of class
