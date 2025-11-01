@@ -23,4 +23,6 @@ public interface McontratosC {
     ResponseEntity<ApiResponse> save(McontratosForms in);
     ResponseEntity<ApiResponse> delete(String codcon, int idresponsable);
     ResponseEntity<ApiResponse> update(McontratosForms2 in, String codcon);
-}
+    ResponseEntity<ApiResponse> parar_contratos(McontratosForms2 in, String codcon);
+
+} //end of class

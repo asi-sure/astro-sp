@@ -40,7 +40,12 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
             @Param("xmonto") float xmonto,
             @Param("xobs") String xobs
     );
-
+    @Query(value = "SELECT parar_contratos(:xcodcon, :xresponsable,:xobs)", nativeQuery = true)
+    Boolean callStopContratos(
+            @Param("xcodcon") String xcodcon,
+            @Param("xresponsable") int xresponsable,
+            @Param("xobs") String xobs
+    );
 
 
 

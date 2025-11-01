@@ -82,5 +82,13 @@ public class McontratosImplC implements McontratosC {
         return mcontratosS.update(in,codcon);
     }
 
+    @Override
+    @PutMapping("mcontratos/stop")
+    public ResponseEntity<ApiResponse> parar_contratos(@RequestBody McontratosForms2 in,
+                                                       @RequestParam(name = "codcon", required = true) String codcon
+    ) {
+        return mcontratosS.parar_contratos(in,codcon);
+    }
+
 
 }//end of class

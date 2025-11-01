@@ -140,4 +140,10 @@ public class McontratosImplS implements McontratosS {
         boolean status = mcontratosRepo.callModificarContratos(codcon,in.getCodresponsable(),in.getMonto(),in.getObs());
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Se modificó satisfactoriamente..!", 0);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> parar_contratos(McontratosForms2 in, String codcon) {
+        boolean status = mcontratosRepo.callStopContratos(codcon,in.getCodresponsable(),in.getObs());
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "El contrato se Canceló satisfactoriamente..!", 0);
+    }
 }//end of class
