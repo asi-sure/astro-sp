@@ -53,11 +53,12 @@ public class SecurityConfig {
 //                    corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                     corsConfig.setAllowedOrigins(Arrays.asList(
                             "http://localhost:4200", // Para desarrollo local
-                            "https://tokengru.netlify.app", // Para lo que hizo GUTY
+//                            "http://localhost:8100", // Para desarrollo local
+//                            "https://tokengru.netlify.app", // Para lo que hizo GUTY
                             "https://projecthardwarestore.onrender.com",
 //                            "https://tallerweb.uajms.edu.bo", // Para swagger
                             "https://astro-sp.onrender.com", // Para swagger
-                            "https://inspiring-pithivier-5b81f7.netlify.app", // Para tu sitio de Netlify
+//                            "https://inspiring-pithivier-5b81f7.netlify.app", // Para tu sitio de Netlify
                             "https://alexpc94.github.io" // Para tu página de GitHub Pages
                     ));
                     corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));

@@ -48,8 +48,8 @@ public class McontratosImplS implements McontratosS {
     private final BoletasContratosR boletasContratosR;
 
     @Override
-    public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable) {
-        Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
+    public PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, int stop, Pageable pageable) {
+        Page<McontratosE> page = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,stop,pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
 
@@ -60,8 +60,8 @@ public class McontratosImplS implements McontratosS {
 //    }
 //
     @Override
-    public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, Pageable pageable) {
-        Page<McontratosE> page2 = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,pageable);
+    public PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin,int stop, Pageable pageable) {
+        Page<McontratosE> page2 = mcontratosRepo.listarMcontratos(xestado,"%"+buscar.trim()+"%",fechaini,fechafin,stop,pageable);
         Page<McontratosEDto> page =  page2.map(McontratosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }

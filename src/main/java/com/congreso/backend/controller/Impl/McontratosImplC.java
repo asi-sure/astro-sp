@@ -35,18 +35,10 @@ public class McontratosImplC implements McontratosC {
             @RequestParam(name = "buscar", required = true) String buscar,
             @RequestParam(name = "fechaini", required = true) LocalDate fechaini,
             @RequestParam(name = "fechafin", required = true) LocalDate fechafin,
+            @RequestParam(name = "stop", required = true) int stop,
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
-        return mcontratosS.findAll(estado,buscar,fechaini,fechafin,pageable);
+        return mcontratosS.findAll(estado,buscar,fechaini,fechafin,stop,pageable);
     }
-//
-//    @Override
-//    @GetMapping("mcontratos/boletas/todo")
-//    public PaginatedResponse<McontratosE> findAll_boletasByCicli(
-//            @RequestParam(name = "cicli", required = true) long cicli,
-//            @PageableDefault(size = 10,direction = Sort.Direction.ASC) Pageable pageable ) {
-//        return mcontratosS.findAll_boletasByCicli(cicli,pageable);
-//    }
-
     @Override
     @GetMapping("mcontratos")
     public PaginatedResponse<McontratosEDto> findAll_2(
@@ -54,8 +46,9 @@ public class McontratosImplC implements McontratosC {
             @RequestParam(name = "buscar", required = true) String buscar,
             @RequestParam(name = "fechaini", required = true) LocalDate fechaini,
             @RequestParam(name = "fechafin", required = true) LocalDate fechafin,
+            @RequestParam(name = "stop", required = true) int stop,
             @PageableDefault(size = 10, sort = "codcon", direction = Sort.Direction.ASC) Pageable pageable ) {
-        return mcontratosS.findAll_2(estado,buscar,fechaini,fechafin,pageable);
+        return mcontratosS.findAll_2(estado,buscar,fechaini,fechafin,stop,pageable);
     }
 
     @Override

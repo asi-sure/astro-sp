@@ -19,12 +19,13 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
                     " FROM McontratosE i "+
                     " WHERE i.estado = :estado and "+
                     " UPPER(CONCAT(i.codcon,i.inquilino.nombre ,i.inquilino.ap,i.inquilino.am,i.persona_resp.name,i.persona_resp.firstName,i.persona_resp.secondName)) LIKE UPPER(:buscar) and"+
-                    " (i.fecha between :fechaini and :fechafin) ")
+                    " (i.fecha between :fechaini and :fechafin) and (i.stop= :stop) ")
     Page<McontratosE> listarMcontratos(
             @Param("estado") int estado,
             @Param("buscar") String buscar,
             @Param("fechaini") LocalDate fechaini,
             @Param("fechafin") LocalDate fechafin,
+            @Param("stop") int stop,
             Pageable pageable);
 
     //llamada a una FUNCTION de la base de datos
