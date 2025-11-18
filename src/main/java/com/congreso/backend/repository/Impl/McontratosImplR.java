@@ -2,10 +2,12 @@ package com.congreso.backend.repository.Impl;
 
 import com.congreso.backend.entities.forms.DcontratosForms;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.model.dto.McontratosDto;
 import com.congreso.backend.repository.McontratosR;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
@@ -18,6 +20,7 @@ import java.sql.Connection;
 import java.sql.Types;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -25,6 +28,13 @@ public class McontratosImplR implements McontratosR {
     private final JdbcTemplate db;
     private String sql;
 
+    @Override
+    public McontratosForms2 findByCodcon(String codcon) {
+        sql = " select codcon,monto,obs,ciresp as codresponsable "+
+              " from mcontratos "+
+              " where codcon = ? ";
+        return db.queryForObject(sql, BeanPropertyRowMapper.newInstance(McontratosForms2.class),codcon);
+    }
     @Override
     public String save_Mcontratos(McontratosDto obj) {
         sql = " INSERT INTO mcontratos(codcon,codpre,codc,tipocon,gestion,fechaini,fechafin,cicli,ciresp,monto,obs,cf,fecha,indefinido) "+

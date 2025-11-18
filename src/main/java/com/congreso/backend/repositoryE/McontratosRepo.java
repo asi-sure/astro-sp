@@ -28,6 +28,14 @@ public interface McontratosRepo extends JpaRepository<McontratosE, String> {
             @Param("stop") int stop,
             Pageable pageable);
 
+//    @Query(
+//            value = " SELECT i "+
+//                    " FROM McontratosE i "+
+//                    " WHERE i.codcon = :xcodcon ")
+//    Page<McontratosE> buscarMcontratos(
+//            @Param("xcodcon") String xcodcon);
+
+
     //llamada a una FUNCTION de la base de datos
     @Query(value = "SELECT delete_contratos(:xcodcon, :xresponsable)", nativeQuery = true)
     Boolean callDeleteContratosNative(

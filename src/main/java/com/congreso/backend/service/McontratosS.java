@@ -17,6 +17,7 @@ public interface McontratosS {
     PaginatedResponse<McontratosE> findAll(int xestado, String buscar, LocalDate fechaini,LocalDate fechafin,int stop, Pageable pageable);
 //    PaginatedResponse<McontratosE> findAll_boletasByCicli(long cicli, Pageable pageable);
     PaginatedResponse<McontratosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin,int stop, Pageable pageable);
+    ResponseEntity<ApiResponse> findByCodcon(String xcodcon);
    ResponseEntity<ApiResponse> save(McontratosForms in);
    ResponseEntity<ApiResponse> delete(String codcon, int idresponsable);
    ResponseEntity<ApiResponse> update(McontratosForms2 in, String codcon);

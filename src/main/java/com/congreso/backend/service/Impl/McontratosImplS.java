@@ -65,7 +65,14 @@ public class McontratosImplS implements McontratosS {
         Page<McontratosEDto> page =  page2.map(McontratosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }
-//
+
+    @Override
+    public ResponseEntity<ApiResponse> findByCodcon(String xcodcon) {
+        McontratosForms2 contratos = mcontratosR.findByCodcon(xcodcon);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", contratos,null);
+    }
+
+    //
     @Override
     @Transactional
     public ResponseEntity<ApiResponse> save(McontratosForms in) {

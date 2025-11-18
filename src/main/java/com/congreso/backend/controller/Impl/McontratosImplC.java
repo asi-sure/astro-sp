@@ -52,6 +52,13 @@ public class McontratosImplC implements McontratosC {
     }
 
     @Override
+    @GetMapping("mcontratos/data")
+    public ResponseEntity<ApiResponse> findByCodcon(
+            @RequestParam(name = "codcon", required = true) String xcodcon) {
+        return mcontratosS.findByCodcon(xcodcon);
+    }
+
+    @Override
     @PostMapping("mcontratos")
     public ResponseEntity<ApiResponse> save(@RequestBody McontratosForms in) {
         return mcontratosS.save(in);
