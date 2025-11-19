@@ -21,6 +21,7 @@ com\congreso\backend\service\PermissionS.class
 com\congreso\backend\service\BoletasContratosS.class
 com\congreso\backend\service\InquilinosS.class
 com\congreso\backend\controller\PersonsC.class
+com\congreso\backend\repositoryE\AuditoriaTransaccionesRepo.class
 com\congreso\backend\service\MenuS.class
 com\congreso\backend\entities\DcontratosE$DcontratosEBuilder.class
 com\congreso\backend\repository\Impl\PasswordResetTokenImplR.class
@@ -69,6 +70,7 @@ com\congreso\backend\model\Inquilinos_ubic$Inquilinos_ubicBuilder.class
 com\congreso\backend\model\dto\MenusDto.class
 com\congreso\backend\repository\GeneralR.class
 com\congreso\backend\repositoryE\PrediosRepo.class
+com\congreso\backend\service\Impl\AuditoriaTransaccionesImplS.class
 com\congreso\backend\model\BoletasContratos.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
 com\congreso\backend\model\dto\SubmenuDto.class
@@ -135,6 +137,7 @@ com\congreso\backend\model\City$CityBuilder.class
 com\congreso\backend\utils\PaginatedResponse.class
 com\congreso\backend\controller\Impl\McontratosImplC.class
 com\congreso\backend\entities\Dto\DcontratosEDto.class
+com\congreso\backend\entities\AuditoriaTransaccionesE$AuditoriaTransaccionesEBuilder.class
 com\congreso\backend\repository\Impl\CityImplR.class
 com\congreso\backend\repository\Impl\TeamImplR.class
 com\congreso\backend\repository\Impl\RegionImplR.class
@@ -148,6 +151,7 @@ com\congreso\backend\service\Impl\McontratosImplS.class
 com\congreso\backend\enumeration\RolSecurityEnum.class
 com\congreso\backend\model\dto\PersonsDto$PersonsDtoBuilder.class
 com\congreso\backend\service\McontratosS.class
+com\congreso\backend\service\AuditoriaTransaccionesS.class
 com\congreso\backend\service\Impl\MenuImplS.class
 com\congreso\backend\model\SystemUser$SystemUserBuilder.class
 com\congreso\backend\model\Team.class
@@ -158,6 +162,7 @@ com\congreso\backend\libs\GeneradorCodigos.class
 com\congreso\backend\repository\Impl\SeccionesImplR.class
 com\congreso\backend\controller\Impl\PersonsImplC.class
 com\congreso\backend\utils\CustomResponseBuilder.class
+com\congreso\backend\controller\AuditoriaTransaccionesC.class
 com\congreso\backend\controller\PermissionC.class
 com\congreso\backend\model\Person.class
 com\congreso\backend\repository\PermissionR.class
@@ -179,6 +184,7 @@ com\congreso\backend\repositoryE\SectoresRepo.class
 com\congreso\backend\model\Predios$PrediosBuilder.class
 com\congreso\backend\model\dto\SystemUsersDto.class
 com\congreso\backend\repository\Impl\PermissionImplR.class
+com\congreso\backend\controller\Impl\AuditoriaTransaccionesImplC.class
 com\congreso\backend\exception\GlobalExceptionHandler.class
 com\congreso\backend\controller\Impl\PersonImplC.class
 com\congreso\backend\model\Team$TeamBuilder.class
@@ -238,6 +244,7 @@ com\congreso\backend\entities\BoletasContratosE$BoletasContratosEBuilder.class
 com\congreso\backend\repository\Impl\RubrosImplR.class
 com\congreso\backend\entities\DcontratosE.class
 com\congreso\backend\entities\PrediosE.class
+com\congreso\backend\entities\AuditoriaTransaccionesE.class
 com\congreso\backend\repository\Impl\MenuImplR.class
 com\congreso\backend\model\Dcontratos$DcontratosBuilder.class
 com\congreso\backend\service\Impl\PersonsImplS.class
