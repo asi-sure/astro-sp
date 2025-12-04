@@ -58,6 +58,10 @@ public class InquilinosE {
     @JsonManagedReference
     private Inquilinos_ubicE ubicacion_gps;
 
+    @OneToMany(mappedBy="inquilino")
+    @JsonBackReference
+    private List<MacopladosE> acoplados;
+
     public String datos(){
         String xdato=this.nombre;
         if (this.ap!=null){

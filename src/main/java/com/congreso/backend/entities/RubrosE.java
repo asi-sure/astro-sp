@@ -52,5 +52,9 @@ public class RubrosE {
 
     @OneToMany(mappedBy = "rubros")
     @JsonBackReference
+    Set<DacopladosE> dacoplados;
+
+    @OneToMany(mappedBy = "rubros")
+    @JsonBackReference
     Set<McontratosE> mcontratos;
 }

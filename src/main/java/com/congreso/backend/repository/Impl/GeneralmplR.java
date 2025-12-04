@@ -27,4 +27,12 @@ public class GeneralmplR implements GeneralR {
         res = db.update(sql) > 0;
         return res;
     }
+
+    @Override
+    public boolean update_acoplados() {
+        Boolean res=false;
+        String sql = " UPDATE general SET acoplados=acoplados + 1 WHERE id = 1;";
+        res = db.update(sql) > 0;
+        return res;
+    }
 }
