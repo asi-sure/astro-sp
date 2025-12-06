@@ -18,5 +18,6 @@ public interface MacopladosS {
     PaginatedResponse<MacopladosEDto> findAll_2(int xestado, String buscar, LocalDate fechaini, LocalDate fechafin, int stop, Pageable pageable);
     ResponseEntity<ApiResponse> findByCoda(String xcodca);
     ResponseEntity<ApiResponse> save(MacopladosForms in);
+    ResponseEntity<ApiResponse> delete(String coda, int idresponsable);
 
 }

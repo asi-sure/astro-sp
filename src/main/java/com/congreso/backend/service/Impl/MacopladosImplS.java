@@ -107,4 +107,16 @@ public class MacopladosImplS implements MacopladosS {
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
 
+    @Override
+    public ResponseEntity<ApiResponse> delete(String coda, int idresponsable) {
+        boolean status = macopladosRepo.callDeleteAcopladosNative(coda, idresponsable);
+        String mensaje="";
+        if (status) {
+            mensaje="Se Eliminó satisfactoriamente.";
+        }else{
+            mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
 }

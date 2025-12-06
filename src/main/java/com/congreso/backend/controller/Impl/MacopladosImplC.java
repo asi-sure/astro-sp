@@ -61,4 +61,12 @@ public class MacopladosImplC implements MacopladosC {
     public ResponseEntity<ApiResponse> save(@RequestBody MacopladosForms in) {
         return macopladosS.save(in);
     }
+    @Override
+    @DeleteMapping("macoplados")
+    public ResponseEntity<ApiResponse> delete(
+            @RequestParam(name = "coda", required = true) String coda,
+            @RequestParam(name = "idresponsable", required = true) int idresponsable
+    ) {
+        return macopladosS.delete(coda,idresponsable);
+    }
 }

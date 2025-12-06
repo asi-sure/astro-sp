@@ -24,4 +24,14 @@ public interface MacopladosRepo extends JpaRepository<MacopladosE, String> {
             @Param("fechafin") LocalDate fechafin,
             @Param("stop") int stop,
             Pageable pageable);
-}
+    //llamada a una FUNCTION de la base de datos
+    @Query(value = "SELECT delete_acoplados(:xcoda, :xresponsable)", nativeQuery = true)
+    Boolean callDeleteAcopladosNative(
+            @Param("xcoda") String xcoda,
+            @Param("xresponsable") int xresponsable
+    );
+
+
+
+
+} //end of class
