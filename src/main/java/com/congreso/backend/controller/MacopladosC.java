@@ -6,6 +6,7 @@ import com.congreso.backend.entities.MacopladosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.MacopladosForms;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.PaginatedResponse;
 import org.springframework.data.domain.Pageable;
@@ -19,4 +20,5 @@ public interface MacopladosC {
     ResponseEntity<ApiResponse> findByCoda(String xcoda);
     ResponseEntity<ApiResponse> save(MacopladosForms in);
     ResponseEntity<ApiResponse> delete(String coda, int idresponsable);
+    ResponseEntity<ApiResponse> update(MacopladosForms in, String coda);
 }

@@ -6,6 +6,7 @@ import com.congreso.backend.entities.MacopladosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.MacopladosForms;
 import com.congreso.backend.entities.forms.McontratosForms;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.service.MacopladosS;
 import com.congreso.backend.service.McontratosS;
 import com.congreso.backend.utils.ApiResponse;
@@ -36,7 +37,6 @@ public class MacopladosImplC implements MacopladosC {
             @PageableDefault(size = 10, sort = "coda", direction = Sort.Direction.ASC) Pageable pageable ) {
         return macopladosS.findAll(estado,buscar,fechaini,fechafin,stop,pageable);
     }
-
     @Override
     @GetMapping("macoplados")
     public PaginatedResponse<MacopladosEDto> findAll_2(
@@ -48,7 +48,6 @@ public class MacopladosImplC implements MacopladosC {
             @PageableDefault(size = 10, sort = "coda", direction = Sort.Direction.ASC) Pageable pageable ) {
         return macopladosS.findAll_2(estado,buscar,fechaini,fechafin,stop,pageable);
     }
-
     @Override
     @GetMapping("macoplados/data")
     public ResponseEntity<ApiResponse> findByCoda(
@@ -68,5 +67,14 @@ public class MacopladosImplC implements MacopladosC {
             @RequestParam(name = "idresponsable", required = true) int idresponsable
     ) {
         return macopladosS.delete(coda,idresponsable);
+    }
+
+    @Override
+    @PutMapping("macoplados")
+    public ResponseEntity<ApiResponse> update(
+            @RequestBody MacopladosForms in,
+            @RequestParam(name = "coda", required = true) String coda
+    ) {
+        return macopladosS.update(in,coda);
     }
 }

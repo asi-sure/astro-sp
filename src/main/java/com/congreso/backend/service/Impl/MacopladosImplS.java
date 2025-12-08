@@ -18,8 +18,10 @@ import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
 import com.congreso.backend.utils.PaginatedResponse;
 import com.congreso.backend.utils.PaginationUtils;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -53,9 +55,15 @@ public class MacopladosImplS implements MacopladosS {
         Page<MacopladosEDto> page =  page2.map(MacopladosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }
+//    @Override
+//    public ResponseEntity<ApiResponse> findByCoda222(String xcoda) {
+//        MacopladosForms2 acoplados = macopladosR.findByCoda(xcoda);
+//        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", acoplados,null);
+//    }
+
     @Override
-    public ResponseEntity<ApiResponse> findByCoda(String xcoda) {
-        MacopladosForms2 acoplados = macopladosR.findByCoda(xcoda);
+    public ResponseEntity<ApiResponse> findByCoda(String xcodca) {
+        MacopladosE acoplados = macopladosRepo.obtenerMacoplados(xcodca);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", acoplados,null);
     }
 
@@ -96,14 +104,14 @@ public class MacopladosImplS implements MacopladosS {
 //
         //save mcontratos
         String res1 = macopladosR.save_Macoplados(obj);
-        macopladosR.save_Dacoplados(in.getDacoplados(),codigo);//save mcontratos
+        macopladosR.save_Dacoplados(in.getDacoplados(),codigo);//save macoplados
 //        boletasContratosR.save_boletasContratos(obj,bol); //generar boletas
         List<Dacoplados> dacoplados = dacopladosR.findByCoda(codigo);
         dacoplados.forEach(det ->{
             boletasAcopladosR.save_boletasAcoplados(det.getId_daco(),in.getFecha(),det.getImporte(),bol); //generar boletas
         });
 
-        boolean res3=generalR.update_acoplados();//contador de contratos
+        boolean res3=generalR.update_acoplados();//contador de acoplados
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", null);
     }
 
@@ -117,6 +125,58 @@ public class MacopladosImplS implements MacopladosS {
             mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
         }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
+    }
+
+    @Override
+    @Transactional
+    public ResponseEntity<ApiResponse> update(MacopladosForms in, String coda) {
+        boolean status = macopladosRepo.callModificarAcoplados(coda, Math.toIntExact(in.getCodresponsable()));
+        if (status==false) {
+            throw new DataIntegrityViolationException("No se puede realizar la Modificación por REFERENCIA a datos..");
+        }
+//DataIntegrityViolationException
+        General general = generalR.findById(1); // recover data from General
+        String codigo= GeneradorCodigos.generarCodigo("A",general.getAcoplados(),general.getAnio());
+        //loading data to McontratosDto
+        MacopladosDto obj = new MacopladosDto();
+        obj.setCoda(codigo);
+        obj.setGestion(general.getGestion());
+        obj.setEstado(1);
+        obj.setCicli(in.getCodcliente());
+        obj.setCiresp(in.getCodresponsable());
+        obj.setObs(in.getObs());
+        obj.setCf(1);//applyin billing
+        obj.setFecha(in.getFecha());
+        obj.setStop(0);
+        final float[] xmonto = {0};
+        AtomicBoolean xban= new AtomicBoolean(true);
+        in.getDacoplados().forEach(det ->{
+            xmonto[0] = xmonto[0] + det.getImporte();
+            if (det.getImporte()<=0) { xban.set(false); }
+        });
+        if (!xban.get()) {
+            throw new IllegalArgumentException("El MONTO en Detalle Acoplado debe ser mayor a cero.");
+        }
+        obj.setMonto(xmonto[0]); //actualiza monto
+//        //loading data of Boletas
+        BoletasAcopladosE bol = new BoletasAcopladosE();
+        bol.setMes(ObtenerFechas.getMonth(in.getFecha()));
+        bol.setAnio(ObtenerFechas.getYear(in.getFecha()));
+        bol.setGestion(general.getGestion());
+        bol.setCreado_por(in.getCodresponsable());
+//
+        //save mcontratos
+        String res1 = macopladosR.save_Macoplados(obj);
+        macopladosR.save_Dacoplados(in.getDacoplados(),codigo);//save macoplados
+//        boletasContratosR.save_boletasContratos(obj,bol); //generar boletas
+        List<Dacoplados> dacoplados = dacopladosR.findByCoda(codigo);
+        dacoplados.forEach(det ->{
+            boletasAcopladosR.save_boletasAcoplados(det.getId_daco(),in.getFecha(),det.getImporte(),bol); //generar boletas
+        });
+
+        boolean res3=generalR.update_acoplados();//contador de acoplados
+
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Se modificó satisfactoriamente..!", 0);
     }
 
 }
