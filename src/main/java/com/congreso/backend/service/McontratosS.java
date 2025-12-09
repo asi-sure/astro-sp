@@ -23,9 +23,5 @@ public interface McontratosS {
    ResponseEntity<ApiResponse> update(McontratosForms2 in, String codcon);
    ResponseEntity<ApiResponse> parar_contratos(McontratosForms2 in, String codcon);
 
-//    @Param("xcodcon") String xcodcon,
-//    @Param("xresponsable") int xresponsable,
-//    @Param("xmonto") float xmonto,
-//    @Param("xobs") String xobs
 
 }//end of class

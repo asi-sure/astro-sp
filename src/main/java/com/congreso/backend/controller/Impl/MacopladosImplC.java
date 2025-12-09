@@ -5,6 +5,7 @@ import com.congreso.backend.entities.Dto.MacopladosEDto;
 import com.congreso.backend.entities.MacopladosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.MacopladosForms;
+import com.congreso.backend.entities.forms.MacopladosForms2;
 import com.congreso.backend.entities.forms.McontratosForms;
 import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.service.MacopladosS;
@@ -77,4 +78,14 @@ public class MacopladosImplC implements MacopladosC {
     ) {
         return macopladosS.update(in,coda);
     }
-}
+
+    @Override
+    @PutMapping("macoplados/stop")
+    public ResponseEntity<ApiResponse> parar_acoplados(
+            @RequestBody MacopladosForms2 in,
+            @RequestParam(name = "coda", required = true) String coda
+    ) {
+        return macopladosS.parar_acoplados(in,coda);
+    }
+
+} //end of class

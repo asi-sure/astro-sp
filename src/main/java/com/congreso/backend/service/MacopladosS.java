@@ -5,6 +5,7 @@ import com.congreso.backend.entities.Dto.McontratosEDto;
 import com.congreso.backend.entities.MacopladosE;
 import com.congreso.backend.entities.McontratosE;
 import com.congreso.backend.entities.forms.MacopladosForms;
+import com.congreso.backend.entities.forms.MacopladosForms2;
 import com.congreso.backend.entities.forms.McontratosForms;
 import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.utils.ApiResponse;
@@ -21,5 +22,6 @@ public interface MacopladosS {
     ResponseEntity<ApiResponse> save(MacopladosForms in);
     ResponseEntity<ApiResponse> delete(String coda, int idresponsable);
     ResponseEntity<ApiResponse> update(MacopladosForms in, String coda);
+    ResponseEntity<ApiResponse> parar_acoplados(MacopladosForms2 in, String codcon);
 
 }

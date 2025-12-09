@@ -41,7 +41,12 @@ public interface MacopladosRepo extends JpaRepository<MacopladosE, String> {
             @Param("xcoda") String xcoda,
             @Param("xresponsable")  int xresponsable
     );
-
+    @Query(value = "SELECT parar_acoplados(:xcoda, :xresponsable,:xobs)", nativeQuery = true)
+    Boolean callStopAcoplados(
+            @Param("xcoda") String xcoda,
+            @Param("xresponsable") int xresponsable,
+            @Param("xobs") String xobs
+    );
 
 
 } //end of class

@@ -5,6 +5,7 @@ import com.congreso.backend.entities.Dto.MacopladosEDto;
 import com.congreso.backend.entities.MacopladosE;
 import com.congreso.backend.entities.forms.MacopladosForms;
 import com.congreso.backend.entities.forms.MacopladosForms2;
+import com.congreso.backend.entities.forms.McontratosForms2;
 import com.congreso.backend.libs.GeneradorCodigos;
 import com.congreso.backend.libs.ObtenerFechas;
 import com.congreso.backend.mapper.MacopladosMapper;
@@ -55,17 +56,17 @@ public class MacopladosImplS implements MacopladosS {
         Page<MacopladosEDto> page =  page2.map(MacopladosMapper::toDto);
         return PaginationUtils.toPaginatedResponse(page);
     }
-//    @Override
-//    public ResponseEntity<ApiResponse> findByCoda222(String xcoda) {
-//        MacopladosForms2 acoplados = macopladosR.findByCoda(xcoda);
-//        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", acoplados,null);
-//    }
 
     @Override
     public ResponseEntity<ApiResponse> findByCoda(String xcodca) {
         MacopladosE acoplados = macopladosRepo.obtenerMacoplados(xcodca);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", acoplados,null);
     }
+//    @Override
+//    public ResponseEntity<ApiResponse> findByCoda222(String xcoda) {
+//        MacopladosForms2 acoplados = macopladosR.findByCoda(xcoda);
+//        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Búsqueda exitosa.", acoplados,null);
+//    }
 
     @Override
     public ResponseEntity<ApiResponse> save(MacopladosForms in) {
@@ -177,6 +178,14 @@ public class MacopladosImplS implements MacopladosS {
         boolean res3=generalR.update_acoplados();//contador de acoplados
 
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Se modificó satisfactoriamente..!", 0);
+    }
+    @Override
+    public ResponseEntity<ApiResponse> parar_acoplados(MacopladosForms2 in, String coda) {
+        boolean status = macopladosRepo.callStopAcoplados(coda,in.getCodresponsable(),in.getObs());
+        if (status == false) {
+            throw new IllegalArgumentException("No se puedo ejecutar la transacción.");
+        }
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "El contrato se Canceló satisfactoriamente..!", 0);
     }
 
 }
