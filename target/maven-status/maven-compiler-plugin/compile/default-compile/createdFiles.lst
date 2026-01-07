@@ -38,7 +38,6 @@ com\congreso\backend\controller\SectoresC.class
 com\congreso\backend\model\dto\PrediosDto$PrediosDtoBuilder.class
 com\congreso\backend\repository\Impl\PrediosImplR.class
 com\congreso\backend\entities\RubrosE.class
-com\congreso\backend\repository\Impl\BoletasAcopladosImplR.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
 com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class

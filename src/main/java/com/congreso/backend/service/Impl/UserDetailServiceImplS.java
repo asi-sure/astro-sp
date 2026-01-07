@@ -50,9 +50,10 @@ public class UserDetailServiceImplS implements UserDetailsService {
         Set<GrantedAuthority> authoritiesSet = new HashSet<>(authorities);
 
         // Verificar si el usuario tiene al menos un rol o permiso
-        if (authorities.isEmpty()) {
-            throw new IllegalStateException("El usuario no tiene roles ni permisos asignados");
-        }
+        //esto lo desactive
+//        if (authorities.isEmpty()) {
+//            throw new IllegalStateException("El usuario no tiene roles ni permisos asignados");
+//        }
 
         // Manejar valores nulos de las propiedades booleanas
         boolean isEnabled = user.getIsEnabled() != null ? user.getIsEnabled() : true;
