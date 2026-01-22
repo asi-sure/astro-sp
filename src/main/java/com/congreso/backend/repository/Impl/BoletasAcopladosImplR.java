@@ -20,7 +20,7 @@ public class BoletasAcopladosImplR implements BoletasAcopladosR {
     @Override
     public void save_boletasAcoplados(long id_daco,LocalDate xfecha, float xmonto, BoletasAcopladosE bol) {
         sql = " INSERT INTO boletas_acoplados(id_daco,mes,anio,gestion,monto,creado_por) "+
-              "   values(?,?,?,?,?,?) ";
+                "   values(?,?,?,?,?,?) ";
         db.update(sql,id_daco,bol.getMes(),bol.getAnio(),bol.getGestion(),determinarMontoBoletas(xmonto,xfecha),bol.getCreado_por());
     }
     public float determinarMontoBoletas(float xmonto, LocalDate xfechaini){

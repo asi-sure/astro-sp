@@ -38,6 +38,7 @@ com\congreso\backend\controller\SectoresC.class
 com\congreso\backend\model\dto\PrediosDto$PrediosDtoBuilder.class
 com\congreso\backend\repository\Impl\PrediosImplR.class
 com\congreso\backend\entities\RubrosE.class
+com\congreso\backend\repository\Impl\BoletasAcopladosImplR.class
 com\congreso\backend\model\dto\RoleDto$RoleDtoBuilder.class
 com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
@@ -54,6 +55,7 @@ com\congreso\backend\entities\Dto\BoletasContratosDetalleEDto.class
 com\congreso\backend\repository\Impl\RoleImplR.class
 com\congreso\backend\controller\SeccionesC.class
 com\congreso\backend\service\RoleS.class
+com\congreso\backend\controller\Impl\IconosMenuImplC.class
 com\congreso\backend\repository\Impl\PersonImplR.class
 com\congreso\backend\controller\Impl\CityImplC.class
 com\congreso\backend\entities\Inquilinos_ubicE.class
@@ -102,6 +104,7 @@ com\congreso\backend\service\Impl\DepartamentImplS.class
 com\congreso\backend\model\Inquilinos.class
 com\congreso\backend\repository\Impl\DcontratosImplR.class
 com\congreso\backend\service\Impl\EmailService.class
+com\congreso\backend\entities\Iconos_menuE$Iconos_menuEBuilder.class
 com\congreso\backend\repository\Impl\MacopladosImplR.class
 com\congreso\backend\exception\type\BadRequestException.class
 com\congreso\backend\exception\util\ApiException.class
@@ -171,6 +174,7 @@ com\congreso\backend\service\Impl\McontratosImplS.class
 com\congreso\backend\enumeration\RolSecurityEnum.class
 com\congreso\backend\model\dto\PersonsDto$PersonsDtoBuilder.class
 com\congreso\backend\service\McontratosS.class
+com\congreso\backend\entities\Iconos_menuE.class
 com\congreso\backend\service\AuditoriaTransaccionesS.class
 com\congreso\backend\service\Impl\MenuImplS.class
 com\congreso\backend\model\SystemUser$SystemUserBuilder.class
@@ -219,6 +223,8 @@ com\congreso\backend\model\General.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
 com\congreso\backend\config\security\SwaggerConfig.class
+com\congreso\backend\repositoryE\Iconos_menuRepo.class
+com\congreso\backend\service\Impl\Iconos_menuImplS.class
 com\congreso\backend\repository\DcontratosR.class
 com\congreso\backend\model\Sectores$SectoresBuilder.class
 com\congreso\backend\model\forms\InquilinosForm$InquilinosFormBuilder.class
@@ -229,6 +235,7 @@ com\congreso\backend\service\Impl\PrediosImplS.class
 com\congreso\backend\repository\BoletasAcopladosR.class
 com\congreso\backend\repository\Impl\BoletasContratosImplR.class
 com\congreso\backend\service\Impl\SystemsUserImplS.class
+com\congreso\backend\controller\IconosMenuC.class
 com\congreso\backend\model\dto\MacopladosDto$MacopladosDtoBuilder.class
 com\congreso\backend\config\security\jwt\JwtUtils.class
 com\congreso\backend\model\Rubros$RubrosBuilder.class
@@ -265,6 +272,7 @@ com\congreso\backend\model\Submenu$SubmenuBuilder.class
 com\congreso\backend\repository\DepartamentR.class
 com\congreso\backend\model\dto\SubmenuDto$SubmenuDtoBuilder.class
 com\congreso\backend\controller\MenuC.class
+com\congreso\backend\service\Iconos_menuS.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\controller\Impl\PrediosImplC.class
 com\congreso\backend\entities\BoletasContratosE$BoletasContratosEBuilder.class
