@@ -34,7 +34,5 @@ public class SectoresE {
     @OneToMany(mappedBy = "sectores")
     @JsonManagedReference
     Set<SeccionesE> secciones;
-
-
 }
 

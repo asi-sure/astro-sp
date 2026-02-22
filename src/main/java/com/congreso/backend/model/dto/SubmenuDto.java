@@ -2,6 +2,8 @@ package com.congreso.backend.model.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,6 +15,7 @@ public class SubmenuDto {
     private String name;
     private String description;
     private String link;
+    private List<PrivilegiosDto> privilegios;
 
 /*    public SubmenuDto(int id_menu,int id_subm, String name, String description, String link) {
         this.id_menu = id_menu;

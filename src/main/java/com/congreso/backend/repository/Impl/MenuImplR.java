@@ -5,6 +5,7 @@ import com.congreso.backend.model.Menu;
 //import com.congreso.backend.model.Submenu;
 import com.congreso.backend.model.dto.MenuDto;
 import com.congreso.backend.model.dto.MenusDto;
+import com.congreso.backend.model.dto.PrivilegiosDto;
 import com.congreso.backend.model.dto.SubmenuDto;
 import com.congreso.backend.repository.MenuR;
 import lombok.RequiredArgsConstructor;
@@ -61,6 +62,19 @@ public class MenuImplR implements MenuR {
                 +" order by s.id_menu,su.id_subm, su.name; ";
         return db.query(sql, new BeanPropertyRowMapper<SubmenuDto>(SubmenuDto.class),id_person);
     }
+
+    @Override
+    public List<PrivilegiosDto> findPrivilegiosByPerson(Long id_person) {
+        sql =     " select pri.id_priv,pri.id_subm, pri.alias, pri.descripcion "
+                 +" from rolper r, rolme m, mesub s, priv_menu pm, privilegios pri "
+                 +" where  (r.id_person= ? )and "
+                 +" (r.id_role=m.id_role)and "
+                 +" (m.id_menu=s.id_menu)and "
+                 +" (s.id_mesub=pm.id_mesub)and "
+                 +" (pm.id_priv=pri.id_priv) ";
+        return db.query(sql, new BeanPropertyRowMapper<PrivilegiosDto>(PrivilegiosDto.class),id_person);
+    }
+
     @Override
     public Long saveMenu(Menu me) {
         String sql = "  INSERT INTO menu(description,name,status,icon, type_menu) "

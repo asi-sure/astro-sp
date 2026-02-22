@@ -96,6 +96,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ApiException handleResourceNotFoundException(ResourceNotFoundException ex) {
         logger.warn("Recurso no encontrado:", ex);
+//        logger.warn("Recurso no encontrado: {}", ex.getMessage());
         ApiException exception = new ApiException();
         exception.setErrorMessage(ex.getMessage());
         exception.setStatusCode(HttpStatus.NOT_FOUND.value());
