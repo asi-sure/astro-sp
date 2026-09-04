@@ -33,6 +33,14 @@ public class RoleImplR implements RoleR {
                 + "   values (?,?) RETURNING id_role;";
         return db.queryForObject(sql, new Object[]{role.getId_role(), role.getId_person()}, Long.class);
     }
+
+    @Override
+    public Long grantRolMenu(RolMe rolme) {
+        String sql = "  INSERT INTO rolme (id_role, id_menu) "
+                + "   values (?,?) RETURNING id_role;";
+        return db.queryForObject(sql, new Object[]{rolme.getId_role(), rolme.getId_menu()}, Long.class);
+    }
+
     @Override
     public Boolean revokePersons(int idPerson, int idRol) {
         Boolean res=false;
@@ -41,6 +49,16 @@ public class RoleImplR implements RoleR {
         res = db.update(sql, idRol, idPerson) > 0;
         return res;
     }
+
+    @Override
+    public Boolean revokeRolMenu(int idRol, int idMenu) {
+        Boolean res=false;
+        String sql = " DELETE FROM rolme " +
+                " WHERE id_role = ? and id_menu= ?;";
+        res = db.update(sql, idRol, idMenu) > 0;
+        return res;
+    }
+
     @Override
     public Long save(Role role) {
         sql = "  INSERT INTO role (description, name, status) "

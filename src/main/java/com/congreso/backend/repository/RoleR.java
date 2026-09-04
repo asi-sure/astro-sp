@@ -9,7 +9,9 @@ import java.util.List;
 public interface RoleR {
     List<Role> findAll(Boolean status);
     Long grantPersons(Rolper role);
+    Long grantRolMenu(RolMe rolme);
     Boolean revokePersons(int idPerson, int idRol);
+    Boolean revokeRolMenu(int idPerson, int idRol);
     Long save(Role role);
     boolean update(Role obj, int id); //modificar datos
     boolean delete(int id); //Eliminar datos

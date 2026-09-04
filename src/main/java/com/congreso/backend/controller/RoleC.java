@@ -3,6 +3,7 @@ package com.congreso.backend.controller;
 import com.congreso.backend.controller.request.AuthLoginRequest;
 import com.congreso.backend.enumeration.Tipo_persons;
 import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.RolMe;
 import com.congreso.backend.model.Role;
 import com.congreso.backend.model.Rolper;
 import com.congreso.backend.utils.ApiResponse;
@@ -16,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 public interface RoleC {
     ResponseEntity<ApiResponse> findAll(boolean xstatus);
     ResponseEntity<ApiResponse> grantPersons(Rolper role);
+    ResponseEntity<ApiResponse> grantRolMenu(RolMe rolmenu);
     ResponseEntity<ApiResponse> revokePersons(int idPerson, int idRol);
+    ResponseEntity<ApiResponse> revokeRolMenu(int idRol, int idMenu);
     ResponseEntity<ApiResponse> save(@RequestBody Role role);
     ResponseEntity<ApiResponse> update(Role role, int id);
     ResponseEntity<ApiResponse> delete(int id);

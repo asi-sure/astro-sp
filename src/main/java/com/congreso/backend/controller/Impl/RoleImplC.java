@@ -2,6 +2,7 @@ package com.congreso.backend.controller.Impl;
 
 import com.congreso.backend.controller.RoleC;
 import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.RolMe;
 import com.congreso.backend.model.Role;
 import com.congreso.backend.model.Rolper;
 import com.congreso.backend.service.RolS;
@@ -34,9 +35,21 @@ public class RoleImplC implements RoleC {
     }
 
     @Override
+    @PostMapping("role/menu/grant")
+    public ResponseEntity<ApiResponse> grantRolMenu(@RequestBody RolMe rolmenu) {
+        return roleS.grantRolMenu(rolmenu);
+    }
+
+    @Override
     @DeleteMapping("role/revoke/{idRol}/{idPerson}")
     public ResponseEntity<ApiResponse> revokePersons(@PathVariable int idPerson, @PathVariable int idRol) {
         return roleS.revokePersons(idPerson,idRol);
+    }
+
+    @Override
+    @DeleteMapping("role/menu/revoke/{idRol}/{idmenu}")
+    public ResponseEntity<ApiResponse> revokeRolMenu(@PathVariable int idRol, @PathVariable int idMenu) {
+        return roleS.revokePersons(idRol, idMenu);
     }
 
     @Override
