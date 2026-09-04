@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface RoleR {
     List<Role> findAll(Boolean status);
+    List<Menu> findAll_MenusSinAsignar(int id_role);
+    List<Menu> findAll_MenusAsignados(int id_role);
     Long grantPersons(Rolper role);
     Long grantRolMenu(RolMe rolme);
     Boolean revokePersons(int idPerson, int idRol);

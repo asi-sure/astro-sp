@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 public interface RoleS {
     ResponseEntity<ApiResponse> findAll(boolean xstatus);
     ResponseEntity<ApiResponse> findById(Long id);
+    ResponseEntity<ApiResponse> findAll_menusSinAsignar(int id_role);
+    ResponseEntity<ApiResponse> findAll_menusAsignados(int id_role);
     ResponseEntity<ApiResponse> grantPersons(Rolper role);
     ResponseEntity<ApiResponse> grantRolMenu(RolMe rolmenu);
     ResponseEntity<ApiResponse> revokePersons(int idPerson, int idRol);

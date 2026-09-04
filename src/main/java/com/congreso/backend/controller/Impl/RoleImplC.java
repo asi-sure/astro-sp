@@ -35,6 +35,18 @@ public class RoleImplC implements RoleC {
     }
 
     @Override
+    @GetMapping("role/menu/noasignados/{id_role}")
+    public ResponseEntity<ApiResponse> findAll_menusSinAsignar(@PathVariable int id_role) {
+        return roleS.findAll_menusSinAsignar(id_role);
+    }
+
+    @Override
+    @GetMapping("role/menu/siasignados/{id_role}")
+    public ResponseEntity<ApiResponse> findAll_menusAsignados(@PathVariable int id_role) {
+        return roleS.findAll_menusAsignados(id_role);
+    }
+
+    @Override
     @PostMapping("role/menu/grant")
     public ResponseEntity<ApiResponse> grantRolMenu(@RequestBody RolMe rolmenu) {
         return roleS.grantRolMenu(rolmenu);
@@ -47,9 +59,9 @@ public class RoleImplC implements RoleC {
     }
 
     @Override
-    @DeleteMapping("role/menu/revoke/{idRol}/{idmenu}")
+    @DeleteMapping("role/menu/revoke/{idRol}/{idMenu}")
     public ResponseEntity<ApiResponse> revokeRolMenu(@PathVariable int idRol, @PathVariable int idMenu) {
-        return roleS.revokePersons(idRol, idMenu);
+        return roleS.revokeRolMenu(idRol, idMenu);
     }
 
     @Override

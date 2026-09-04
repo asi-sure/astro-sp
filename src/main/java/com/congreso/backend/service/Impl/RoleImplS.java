@@ -3,6 +3,7 @@ package com.congreso.backend.service.Impl;
 import com.congreso.backend.entities.MenuE;
 import com.congreso.backend.entities.RoleE;
 import com.congreso.backend.exception.type.ResourceNotFoundException;
+import com.congreso.backend.model.Menu;
 import com.congreso.backend.model.RolMe;
 import com.congreso.backend.model.Rolper;
 import com.congreso.backend.model.dto.PersonsDto;
@@ -46,6 +47,24 @@ public class RoleImplS implements RoleS {
     public ResponseEntity<ApiResponse> findById(Long id) {
         Role role = roleR.getById(id);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", role);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> findAll_menusSinAsignar(int id_role) {
+        RoleE xrole = roleRepo.findById(id_role)
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. rol","ID. rol",id_role));
+
+        List<Menu> menus = roleR.findAll_MenusSinAsignar(id_role);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", menus);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> findAll_menusAsignados(int id_role) {
+        RoleE xrole = roleRepo.findById(id_role)
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. rol","ID. rol",id_role));
+
+        List<Menu> menus = roleR.findAll_MenusAsignados(id_role);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", menus);
     }
 
     @Override

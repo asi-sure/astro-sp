@@ -27,6 +27,29 @@ public class RoleImplR implements RoleR {
         sql = "SELECT * FROM role WHERE status = ?;";
         return db.query(sql, new BeanPropertyRowMapper<>(Role.class),status);
     }
+
+    @Override
+    public List<Menu> findAll_MenusSinAsignar(int id_role) {
+        sql =   "select * " +
+                "from menu m " +
+                "where  m.status=true and " +
+                "     not exists (" +
+                "        select * " +
+                "        from rolme r " +
+                "        where r.id_menu=m.id_menu and " +
+                "              r.id_role= ? " +
+                "     )";
+        return db.query(sql, new BeanPropertyRowMapper<>(Menu.class),id_role);
+    }
+    @Override
+    public List<Menu> findAll_MenusAsignados(int id_role) {
+        sql =   "select m.* " +
+                "from rolme rm, menu m " +
+                "where rm.id_menu=m.id_menu and " +
+                "    m.status=true and " +
+                "    rm.id_role= ?";
+        return db.query(sql, new BeanPropertyRowMapper<>(Menu.class),id_role);
+    }
     @Override
     public Long grantPersons(Rolper role) {
         String sql = "  INSERT INTO rolper (id_role, id_person) "
