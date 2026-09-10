@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "mesub")
 public class MesubE {
     @Id
-    private Long id_mesub;
+    private int id_mesub;
     private int id_menu;
     private int id_subm;
 

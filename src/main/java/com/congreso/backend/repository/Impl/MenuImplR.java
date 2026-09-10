@@ -3,10 +3,8 @@ package com.congreso.backend.repository.Impl;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Menu;
 //import com.congreso.backend.model.Submenu;
-import com.congreso.backend.model.dto.MenuDto;
-import com.congreso.backend.model.dto.MenusDto;
-import com.congreso.backend.model.dto.PrivilegiosDto;
-import com.congreso.backend.model.dto.SubmenuDto;
+import com.congreso.backend.model.Submenu;
+import com.congreso.backend.model.dto.*;
 import com.congreso.backend.repository.MenuR;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -74,7 +72,34 @@ public class MenuImplR implements MenuR {
                  +" (pm.id_priv=pri.id_priv) ";
         return db.query(sql, new BeanPropertyRowMapper<PrivilegiosDto>(PrivilegiosDto.class),id_person);
     }
-
+    @Override
+    public List<Submenu> findAll_SubmenuSinAsignar(int id_menu) {
+        sql =   "select * " +
+                "from submenu s " +
+                "where  s.status=true and " +
+                "      not exists ( " +
+                "          select * " +
+                "          from mesub m " +
+                "          where m.id_subm=s.id_subm and " +
+                "                m.id_menu= ? " +
+                "      )";
+        return db.query(sql, new BeanPropertyRowMapper<>(Submenu.class),id_menu);
+    }
+    @Override
+//    public List<Submenu> findAll_SubmenuAsignados(int id_menu) {
+    public List<SubmenuPrivDto> findAll_SubmenuAsignados(int id_menu) {
+        sql =   "select m.id_mesub,s.id_subm,s.name,s.description,s.link,s.status " +
+                "from mesub m, submenu s " +
+                "where m.id_subm=s.id_subm and " +
+                "      s.status=true and " +
+                "      m.id_menu= ? ";
+        return db.query(sql, new BeanPropertyRowMapper<>(SubmenuPrivDto.class),id_menu);
+    }
+//    private Long id_subm;
+//    private String name;
+//    private String description;
+//    private String link;
+//    private Boolean status;
     @Override
     public Long saveMenu(Menu me) {
         String sql = "  INSERT INTO menu(description,name,status,icon, type_menu) "

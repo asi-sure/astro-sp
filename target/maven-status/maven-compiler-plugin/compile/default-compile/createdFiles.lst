@@ -121,6 +121,7 @@ com\congreso\backend\repository\Impl\DcontratosImplR.class
 com\congreso\backend\service\Impl\EmailService.class
 com\congreso\backend\entities\Iconos_menuE$Iconos_menuEBuilder.class
 com\congreso\backend\repository\Impl\MacopladosImplR.class
+com\congreso\backend\model\dto\PrivMenuDto$PrivMenuDtoBuilder.class
 com\congreso\backend\exception\type\BadRequestException.class
 com\congreso\backend\exception\util\ApiException.class
 com\congreso\backend\utils\PaginationUtils.class
@@ -134,6 +135,7 @@ com\congreso\backend\service\Impl\BoletasContratosImplS.class
 com\congreso\backend\entities\PersonsE$PersonsEBuilder.class
 com\congreso\backend\mapper\MacopladosMapper.class
 com\congreso\backend\repository\RubrosR.class
+com\congreso\backend\model\dto\SubmenuPrivDto$SubmenuPrivDtoBuilder.class
 com\congreso\backend\repositoryE\Priv_MenuRepo.class
 com\congreso\backend\model\dto\SystemUsersDto$SystemUsersDtoBuilder.class
 com\congreso\backend\model\Dacoplados.class
@@ -142,6 +144,7 @@ com\congreso\backend\service\Impl\PersonImplS.class
 com\congreso\backend\repositoryE\MacopladosRepo.class
 com\congreso\backend\controller\DepartamentC.class
 com\congreso\backend\config\security\SecurityConfig.class
+com\congreso\backend\model\dto\SubmenuPrivDto.class
 com\congreso\backend\controller\TeamC.class
 com\congreso\backend\controller\PrivilegiosC.class
 com\congreso\backend\model\BoletasAcoplados$BoletasAcopladosBuilder.class
@@ -161,6 +164,7 @@ com\congreso\backend\controller\Impl\SystemUsersImplC.class
 com\congreso\backend\model\forms\InquilinosForm.class
 com\congreso\backend\model\Rolper.class
 com\congreso\backend\model\Rubros.class
+com\congreso\backend\entities\Dto\PrivilegiosDto.class
 com\congreso\backend\model\BoletasAcoplados.class
 com\congreso\backend\service\Impl\PermissionImplS.class
 com\congreso\backend\model\Menu.class
@@ -248,6 +252,7 @@ com\congreso\backend\model\dto\MacopladosDto.class
 com\congreso\backend\model\General.class
 com\congreso\backend\service\Impl\CityImplS.class
 com\congreso\backend\service\Impl\Priv_MenuImplS.class
+com\congreso\backend\model\dto\PrivMenuDto.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
 com\congreso\backend\config\security\SwaggerConfig.class
 com\congreso\backend\repositoryE\Iconos_menuRepo.class
@@ -270,6 +275,7 @@ com\congreso\backend\controller\McontratosC.class
 com\congreso\backend\model\forms\RubrosForm$RubrosFormBuilder.class
 com\congreso\backend\repository\McontratosR.class
 com\congreso\backend\entities\MesubE$MesubEBuilder.class
+com\congreso\backend\repositoryE\MesubRepo.class
 com\congreso\backend\service\Impl\SystemUsersImplS.class
 com\congreso\backend\model\Permission.class
 com\congreso\backend\mapper\McontratosMapper.class
@@ -282,6 +288,7 @@ com\congreso\backend\repository\MenuR.class
 com\congreso\backend\model\Inquilinos_ubic.class
 com\congreso\backend\controller\Impl\AuthenticationImplC.class
 com\congreso\backend\controller\SystemUserC.class
+com\congreso\backend\exception\type\DataAlreadyExistsException.class
 com\congreso\backend\service\SubmenuS.class
 com\congreso\backend\repository\Impl\SectoresImplR.class
 com\congreso\backend\repository\SystemUserR.class

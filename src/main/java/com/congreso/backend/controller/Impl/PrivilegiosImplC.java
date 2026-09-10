@@ -6,10 +6,7 @@ import com.congreso.backend.service.PrivilegiosS;
 import com.congreso.backend.utils.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,26 @@ public class PrivilegiosImplC implements PrivilegiosC {
     @GetMapping("privilegios")
     public ResponseEntity<ApiResponse> findAll() {
         return privilegiosS.findAll();
+    }
+
+    @Override
+    @GetMapping("privilegios/menu/submenu")
+    public ResponseEntity<ApiResponse> findByIdmenuIdsubm(@RequestParam(name = "idMenu") int idMenu,
+                                                          @RequestParam(name = "idSubm") int idSubm) {
+        return privilegiosS.findByIdmenuIdsubm(idMenu,idSubm);
+    }
+    @Override
+    @PostMapping("privilegios/priv_menu")
+    public ResponseEntity<ApiResponse> save_PrivMenu(
+                @RequestParam(name = "id_mesub") int id_mesub,
+                @RequestParam(name = "id_priv") int id_priv) {
+        return privilegiosS.savePrivMenu(id_mesub, id_priv);
+    }
+
+    @Override
+    @DeleteMapping("privilegios/priv_menu/{id_priv_menu}")
+    public ResponseEntity<ApiResponse> delete_PrivMenu(@PathVariable int id_priv_menu) {
+        return privilegiosS.delete_PrivMenu(id_priv_menu);
     }
 
 //    @Override

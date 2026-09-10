@@ -1,6 +1,7 @@
 package com.congreso.backend.exception;
 
 import com.congreso.backend.exception.type.BadRequestException;
+import com.congreso.backend.exception.type.DataAlreadyExistsException;
 import com.congreso.backend.exception.type.ResourceNotFoundException;
 import com.congreso.backend.exception.util.ApiException;
 import com.congreso.backend.exception.util.ApiResponse;
@@ -12,10 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.time.ZonedDateTime;
@@ -44,6 +47,14 @@ public class GlobalExceptionHandler {
         logger.error("Se produjo una excepción no manejada:", ex);
         ApiResponse response = new ApiResponse("Se produjo una excepción no manejada", request.getRequestURI());
         return response;
+    }
+    @ExceptionHandler(DataAlreadyExistsException.class)
+    @ResponseBody
+    public ApiResponse handleDataAlreadyExistsException(DataAlreadyExistsException ex) {
+        logger.error("El Dato ya Existe :", ex);
+        ApiResponse response = new ApiResponse("Error, el Dato ya Existe en la Base de datos.", ex.getMessage());
+        return response;
+//        return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
     }
     @ExceptionHandler(DataIntegrityViolationException.class) //by oam
     @ResponseBody

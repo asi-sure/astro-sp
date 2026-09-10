@@ -17,7 +17,7 @@ public class Priv_MenuImplC implements Priv_MenuC {
     private final Priv_MenuS priv_menuS;
 
     @Override
-    @GetMapping("privilegios-menu")
+    @GetMapping("privilegios/menu")
     public ResponseEntity<ApiResponse> findAll() {
         return priv_menuS.findAll();
     }

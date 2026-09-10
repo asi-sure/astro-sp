@@ -1,9 +1,15 @@
 package com.congreso.backend.service.Impl;
 
+import com.congreso.backend.entities.MenuE;
+import com.congreso.backend.entities.RoleE;
+import com.congreso.backend.exception.type.ResourceNotFoundException;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Menu;
+import com.congreso.backend.model.Submenu;
+import com.congreso.backend.model.dto.SubmenuPrivDto;
 import com.congreso.backend.repository.DepartamentR;
 import com.congreso.backend.repository.MenuR;
+import com.congreso.backend.repositoryE.MenuRepo;
 import com.congreso.backend.service.MenuS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -25,6 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MenuImplS implements MenuS {
     private final MenuR menuR;
+    private final MenuRepo menuRepo;
     private final CustomResponseBuilder customResponseBuilder;
 
     @Override
@@ -37,6 +44,23 @@ public class MenuImplS implements MenuS {
         List<Menu> menu = menuR.findAll_2(xstatus);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", menu);
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> findAll_SubmenusSinAsignar(int id_menu) {
+        MenuE xmenu = menuRepo.findById(id_menu)
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. menu","ID. menu",id_menu));
+        List<Submenu> submenu = menuR.findAll_SubmenuSinAsignar(id_menu);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", submenu);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> findAll_SubmenusAsignados(int id_menu) {
+        MenuE xmenu = menuRepo.findById(id_menu)
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. menu","ID. menu",id_menu));
+        List<SubmenuPrivDto> submenu = menuR.findAll_SubmenuAsignados(id_menu);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", submenu);
+    }
+
     @Override
     public ResponseEntity<ApiResponse> saveMenu(Menu me) {
         Long idmenu = menuR.saveMenu(me);

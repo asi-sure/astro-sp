@@ -23,6 +23,17 @@ public class MenuImplC implements MenuC {
         return menuS.findAll_2(xstatus);
     }
     @Override
+    @GetMapping("menu/submenu/noasignados/{id_menu}")
+    public ResponseEntity<ApiResponse> findAll_submenusSinAsignar(@PathVariable int id_menu) {
+        return menuS.findAll_SubmenusSinAsignar(id_menu);
+    }
+
+    @Override
+    @GetMapping("menu/submenu/siasignados/{id_menu}")
+    public ResponseEntity<ApiResponse> findAll_submenusAsignados(@PathVariable int id_menu) {
+        return menuS.findAll_SubmenusAsignados(id_menu);
+    }
+    @Override
     @PostMapping("menu")
     public ResponseEntity<ApiResponse> save(@RequestBody Menu menu) {
         return menuS.saveMenu(menu);

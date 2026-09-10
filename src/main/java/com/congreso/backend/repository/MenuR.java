@@ -3,10 +3,8 @@ package com.congreso.backend.repository;
 import com.congreso.backend.model.Menu;
 //import com.congreso.backend.model.Persons;
 //import com.congreso.backend.model.Submenu;
-import com.congreso.backend.model.dto.MenuDto;
-import com.congreso.backend.model.dto.MenusDto;
-import com.congreso.backend.model.dto.PrivilegiosDto;
-import com.congreso.backend.model.dto.SubmenuDto;
+import com.congreso.backend.model.Submenu;
+import com.congreso.backend.model.dto.*;
 
 import java.util.List;
 
@@ -18,6 +16,8 @@ public interface MenuR {
     List<MenusDto> findMenuByPerson(Long id_person);
     List<SubmenuDto> findSubmenuByPerson(Long id_person);
     List<PrivilegiosDto> findPrivilegiosByPerson(Long id_person);
+    List<Submenu> findAll_SubmenuSinAsignar(int id_menu);
+    List<SubmenuPrivDto> findAll_SubmenuAsignados(int id_menu);
     Long saveMenu(Menu me);
     boolean update(Menu me, int id_menu);
     boolean deleteById(int id_menu);
