@@ -3,6 +3,7 @@ package com.congreso.backend.repository.Impl;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Menu;
 //import com.congreso.backend.model.Submenu;
+import com.congreso.backend.model.RolMe;
 import com.congreso.backend.model.Submenu;
 import com.congreso.backend.model.dto.*;
 import com.congreso.backend.repository.MenuR;
@@ -95,11 +96,20 @@ public class MenuImplR implements MenuR {
                 "      m.id_menu= ? ";
         return db.query(sql, new BeanPropertyRowMapper<>(SubmenuPrivDto.class),id_menu);
     }
-//    private Long id_subm;
-//    private String name;
-//    private String description;
-//    private String link;
-//    private Boolean status;
+    @Override
+    public Long grantMenuSubmenu(MesubDto mesub) {
+        String sql = "  INSERT INTO mesub (id_menu, id_subm) "
+                + "   values (?,?) RETURNING id_menu;";
+        return db.queryForObject(sql, new Object[]{mesub.getId_menu(),mesub.getId_submenu()}, Long.class);
+    }
+    @Override
+    public Boolean revokeMenuSubmenu(int idMesub) {
+        Boolean res=false;
+        String sql = " DELETE FROM mesub " +
+                " WHERE id_mesub = ? ";
+        res = db.update(sql, idMesub) > 0;
+        return res;
+    }
     @Override
     public Long saveMenu(Menu me) {
         String sql = "  INSERT INTO menu(description,name,status,icon, type_menu) "

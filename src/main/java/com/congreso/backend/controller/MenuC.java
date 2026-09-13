@@ -2,6 +2,8 @@ package com.congreso.backend.controller;
 
 import com.congreso.backend.model.Menu;
 import com.congreso.backend.model.Persons;
+import com.congreso.backend.model.RolMe;
+import com.congreso.backend.model.dto.MesubDto;
 import com.congreso.backend.utils.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ public interface MenuC {
     ResponseEntity<ApiResponse> findAll_2(@PathVariable boolean xstatus);
     ResponseEntity<ApiResponse> findAll_submenusSinAsignar(@PathVariable int id_menu);
     ResponseEntity<ApiResponse> findAll_submenusAsignados(@PathVariable int id_menu);
+    ResponseEntity<ApiResponse> grantMenuSubmenu(MesubDto mesub);
+    ResponseEntity<ApiResponse> revokeMenuSubmenu(int idMesub);
     ResponseEntity<ApiResponse> save(@RequestBody Menu menu);
     ResponseEntity<ApiResponse> update(@RequestBody Menu me, @PathVariable int id_menu);
     ResponseEntity<ApiResponse> delete(@PathVariable int id_menu);

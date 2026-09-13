@@ -31,7 +31,7 @@ public class SubmenuImplS implements SubmenuS {
     }
 
     @Override
-    public ResponseEntity<ApiResponse> findById(long id_subm) {
+    public ResponseEntity<ApiResponse> findById(int id_subm) {
         Optional<SubmenuE> submenu = submenuRepo.findById(id_subm);
         if (submenu.isEmpty()) {
             throw new ResourceNotFoundException("el submenú con ID " + id_subm + " no existe.");

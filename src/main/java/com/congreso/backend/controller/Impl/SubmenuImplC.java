@@ -25,7 +25,7 @@ public class SubmenuImplC implements SubmenuC {
 
     @Override
     @GetMapping("submenu/{id_subm}")
-    public ResponseEntity<ApiResponse> findById(@PathVariable long id_subm) {
+    public ResponseEntity<ApiResponse> findById(@PathVariable int id_subm) {
         return submenuS.findById(id_subm);
     }
 }

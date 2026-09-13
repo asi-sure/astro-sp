@@ -1,15 +1,22 @@
 package com.congreso.backend.service.Impl;
 
 import com.congreso.backend.entities.MenuE;
+import com.congreso.backend.entities.MesubE;
 import com.congreso.backend.entities.RoleE;
+import com.congreso.backend.entities.SubmenuE;
+import com.congreso.backend.exception.type.DataAlreadyExistsException;
 import com.congreso.backend.exception.type.ResourceNotFoundException;
 import com.congreso.backend.model.Departament;
 import com.congreso.backend.model.Menu;
 import com.congreso.backend.model.Submenu;
+import com.congreso.backend.model.dto.MesubDto;
 import com.congreso.backend.model.dto.SubmenuPrivDto;
 import com.congreso.backend.repository.DepartamentR;
 import com.congreso.backend.repository.MenuR;
 import com.congreso.backend.repositoryE.MenuRepo;
+import com.congreso.backend.repositoryE.MesubRepo;
+import com.congreso.backend.repositoryE.RoleRepo;
+import com.congreso.backend.repositoryE.SubmenuRepo;
 import com.congreso.backend.service.MenuS;
 import com.congreso.backend.utils.ApiResponse;
 import com.congreso.backend.utils.CustomResponseBuilder;
@@ -32,6 +39,8 @@ import java.util.List;
 public class MenuImplS implements MenuS {
     private final MenuR menuR;
     private final MenuRepo menuRepo;
+    private final MesubRepo mesubRepo;
+    private final SubmenuRepo submenuRepo;
     private final CustomResponseBuilder customResponseBuilder;
 
     @Override
@@ -59,6 +68,29 @@ public class MenuImplS implements MenuS {
                 .orElseThrow(() -> new ResourceNotFoundException("El ID. menu","ID. menu",id_menu));
         List<SubmenuPrivDto> submenu = menuR.findAll_SubmenuAsignados(id_menu);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", submenu);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> grantMenuSubmenu(MesubDto mesub) {
+        MenuE xmenu = menuRepo.findById(mesub.getId_menu())
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. menu","ID. menu",mesub.getId_menu()));
+        SubmenuE xsubmenu = submenuRepo.findById(mesub.getId_submenu())
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. submenu","ID. submenu",mesub.getId_submenu()));
+        boolean res = mesubRepo.existsMesub_ByIdMenuAndIdSubm(mesub.getId_menu(),mesub.getId_submenu());
+        if (res) {
+            throw new DataAlreadyExistsException("Error, la Relación Menu y Submenu ya existe.");
+        }
+        Long id = menuR.grantMenuSubmenu(mesub);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", 0);
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> revokeMenuSubmenu(int idMesub) {
+        MesubE xmesub = mesubRepo.findById(idMesub)
+                .orElseThrow(() -> new ResourceNotFoundException("El ID. mesub","ID. mesub",idMesub));
+        Boolean res = menuR.revokeMenuSubmenu(idMesub);
+        return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", 0);
+
     }
 
     @Override

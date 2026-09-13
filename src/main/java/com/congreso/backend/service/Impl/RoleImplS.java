@@ -6,7 +6,7 @@ import com.congreso.backend.exception.type.ResourceNotFoundException;
 import com.congreso.backend.model.Menu;
 import com.congreso.backend.model.RolMe;
 import com.congreso.backend.model.Rolper;
-import com.congreso.backend.model.dto.PersonsDto;
+//import com.congreso.backend.model.dto.PersonsDto;
 import com.congreso.backend.repository.RoleR;
 import com.congreso.backend.repositoryE.MenuRepo;
 import com.congreso.backend.repositoryE.RoleRepo;
@@ -79,7 +79,7 @@ public class RoleImplS implements RoleS {
                 .orElseThrow(() -> new ResourceNotFoundException("El ID. rol","ID. rol",rolmenu.getId_role()));
         MenuE smenu = menuRepo.findById(rolmenu.getId_menu())
                 .orElseThrow(() -> new ResourceNotFoundException("El ID. menu","ID. menu",rolmenu.getId_menu()));
-
+//falta validar en caso que se quiera volver a guardar..
         Long id = roleR.grantRolMenu(rolmenu);
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), "Consulta exitosa.", 0);
     }

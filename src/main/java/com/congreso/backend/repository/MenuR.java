@@ -18,6 +18,8 @@ public interface MenuR {
     List<PrivilegiosDto> findPrivilegiosByPerson(Long id_person);
     List<Submenu> findAll_SubmenuSinAsignar(int id_menu);
     List<SubmenuPrivDto> findAll_SubmenuAsignados(int id_menu);
+    Long grantMenuSubmenu(MesubDto mesub);
+    Boolean revokeMenuSubmenu(int idMesub);
     Long saveMenu(Menu me);
     boolean update(Menu me, int id_menu);
     boolean deleteById(int id_menu);

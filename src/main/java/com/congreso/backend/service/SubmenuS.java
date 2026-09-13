@@ -5,5 +5,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface SubmenuS {
     ResponseEntity<ApiResponse> findAll();
-    ResponseEntity<ApiResponse> findById(long id_subm);
+    ResponseEntity<ApiResponse> findById(int id_subm);
 }

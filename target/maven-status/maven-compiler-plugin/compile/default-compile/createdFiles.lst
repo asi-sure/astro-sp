@@ -133,6 +133,7 @@ com\congreso\backend\entities\RoleE$RoleEBuilder.class
 com\congreso\backend\repositoryE\RubrosRepo.class
 com\congreso\backend\service\Impl\BoletasContratosImplS.class
 com\congreso\backend\entities\PersonsE$PersonsEBuilder.class
+com\congreso\backend\model\dto\MesubDto.class
 com\congreso\backend\mapper\MacopladosMapper.class
 com\congreso\backend\repository\RubrosR.class
 com\congreso\backend\model\dto\SubmenuPrivDto$SubmenuPrivDtoBuilder.class
@@ -256,6 +257,7 @@ com\congreso\backend\model\dto\PrivMenuDto.class
 com\congreso\backend\controller\request\AuthCreateRoleRequest.class
 com\congreso\backend\config\security\SwaggerConfig.class
 com\congreso\backend\repositoryE\Iconos_menuRepo.class
+com\congreso\backend\model\dto\MesubDto$MesubDtoBuilder.class
 com\congreso\backend\service\Impl\Iconos_menuImplS.class
 com\congreso\backend\repository\DcontratosR.class
 com\congreso\backend\model\Sectores$SectoresBuilder.class

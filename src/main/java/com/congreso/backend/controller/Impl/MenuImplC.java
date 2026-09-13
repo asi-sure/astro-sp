@@ -3,7 +3,8 @@ package com.congreso.backend.controller.Impl;
 import com.congreso.backend.controller.MenuC;
 import com.congreso.backend.model.Menu;
 import com.congreso.backend.model.Persons;
-import com.congreso.backend.service.DepartamentS;
+import com.congreso.backend.model.dto.MesubDto;
+//import com.congreso.backend.service.DepartamentS;
 import com.congreso.backend.service.MenuS;
 import com.congreso.backend.utils.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,19 @@ public class MenuImplC implements MenuC {
     public ResponseEntity<ApiResponse> findAll_submenusAsignados(@PathVariable int id_menu) {
         return menuS.findAll_SubmenusAsignados(id_menu);
     }
+
+    @Override
+    @PostMapping("menu/submenu/grant")
+    public ResponseEntity<ApiResponse> grantMenuSubmenu(@RequestBody MesubDto mesub) {
+        return menuS.grantMenuSubmenu(mesub);
+    }
+
+    @Override
+    @DeleteMapping("menu/submenu/revoke/{idMesub}")
+    public ResponseEntity<ApiResponse> revokeMenuSubmenu(@PathVariable int idMesub) {
+        return menuS.revokeMenuSubmenu(idMesub);
+    }
+
     @Override
     @PostMapping("menu")
     public ResponseEntity<ApiResponse> save(@RequestBody Menu menu) {
