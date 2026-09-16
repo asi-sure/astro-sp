@@ -23,6 +23,8 @@ public class AuditoriaTransaccionesImplS implements AuditoriaTransaccionesS {
     private final AuditoriaTransaccionesRepo auditoriaTransaccionesRepo;
     @Override
     public PaginatedResponse<AuditoriaTransaccionesE> findAll(String buscar, LocalDate fechaini, LocalDate fechafin, String tipoOperacion, Pageable pageable) {
+        if (tipoOperacion.equals("TODOS")) { tipoOperacion="%"; }
+        if (buscar.equals("") || buscar.equals(" ") || buscar.equals(".") || buscar==null) { buscar="%"; }
         Page<AuditoriaTransaccionesE> page = auditoriaTransaccionesRepo.listarAuditoriasTransacciones("%"+buscar.trim()+"%",fechaini,fechafin,"%"+tipoOperacion.trim()+"%",pageable);
         return PaginationUtils.toPaginatedResponse(page);
     }
