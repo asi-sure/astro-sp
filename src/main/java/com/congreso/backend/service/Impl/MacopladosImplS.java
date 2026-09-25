@@ -118,13 +118,19 @@ public class MacopladosImplS implements MacopladosS {
 
     @Override
     public ResponseEntity<ApiResponse> delete(String coda, int idresponsable) {
-        boolean status = macopladosRepo.callDeleteAcopladosNative(coda, idresponsable);
+        int status = macopladosRepo.callDeleteAcopladosNative(coda, idresponsable);
         String mensaje="";
-        if (status) {
-            mensaje="Se Eliminó satisfactoriamente.";
-        }else{
-            mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
+        if (status == 1) {
+            throw new IllegalArgumentException("Error, La Transaccion tiene pagos realizados");
         }
+        if (status == 2) {
+            throw new IllegalArgumentException("Error, La Transaccion esta en estado DETENIDO.");
+        }
+//        if (status) {
+//            mensaje="Se Eliminó satisfactoriamente.";
+//        }else{
+//            mensaje="No se puede Eliminar el contrato por tener DATOS pendientes. Revisar!";
+//        }
         return customResponseBuilder.buildResponse(HttpStatus.OK.value(), mensaje, 0);
     }
 

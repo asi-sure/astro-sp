@@ -32,7 +32,7 @@ public interface MacopladosRepo extends JpaRepository<MacopladosE, String> {
             @Param("xcoda") String xcoda);
     //llamada a una FUNCTION de la base de datos
     @Query(value = "SELECT delete_acoplados(:xcoda, :xresponsable)", nativeQuery = true)
-    Boolean callDeleteAcopladosNative(
+    int callDeleteAcopladosNative(
             @Param("xcoda") String xcoda,
             @Param("xresponsable") int xresponsable
     );

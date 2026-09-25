@@ -52,6 +52,7 @@ com\congreso\backend\service\Impl\RolImplS.class
 com\congreso\backend\model\dto\MenusDto$MenusDtoBuilder.class
 com\congreso\backend\model\Inquilinos$InquilinosBuilder.class
 com\congreso\backend\entities\InquilinosE$InquilinosEBuilder.class
+com\congreso\backend\service\Impl\GeneralImplS.class
 com\congreso\backend\controller\Impl\RegionImplC.class
 com\congreso\backend\entities\MacopladosE.class
 com\congreso\backend\controller\Impl\TeamImplC.class
@@ -96,6 +97,7 @@ com\congreso\backend\service\Impl\AuditoriaTransaccionesImplS.class
 com\congreso\backend\model\BoletasContratos.class
 com\congreso\backend\repository\MacopladosR.class
 com\congreso\backend\model\Persons$PersonsBuilder.class
+com\congreso\backend\controller\GeneralC.class
 com\congreso\backend\model\dto\SubmenuDto.class
 com\congreso\backend\service\Impl\PrivilegiosImplS.class
 com\congreso\backend\controller\AuthenticacionC.class
@@ -139,6 +141,7 @@ com\congreso\backend\repository\RubrosR.class
 com\congreso\backend\model\dto\SubmenuPrivDto$SubmenuPrivDtoBuilder.class
 com\congreso\backend\repositoryE\Priv_MenuRepo.class
 com\congreso\backend\model\dto\SystemUsersDto$SystemUsersDtoBuilder.class
+com\congreso\backend\repositoryE\MesesRepo.class
 com\congreso\backend\model\Dacoplados.class
 com\congreso\backend\service\PrivilegiosS.class
 com\congreso\backend\service\Impl\PersonImplS.class
@@ -147,6 +150,7 @@ com\congreso\backend\controller\DepartamentC.class
 com\congreso\backend\config\security\SecurityConfig.class
 com\congreso\backend\model\dto\SubmenuPrivDto.class
 com\congreso\backend\controller\TeamC.class
+com\congreso\backend\entities\MesesE.class
 com\congreso\backend\controller\PrivilegiosC.class
 com\congreso\backend\model\BoletasAcoplados$BoletasAcopladosBuilder.class
 com\congreso\backend\service\SystemsUserS.class
@@ -191,14 +195,17 @@ com\congreso\backend\entities\forms\DacopladosForms.class
 com\congreso\backend\repository\Impl\RegionImplR.class
 com\congreso\backend\model\Role.class
 com\congreso\backend\repository\SectoresR.class
+com\congreso\backend\service\GeneralS.class
 com\congreso\backend\controller\PersonC.class
 com\congreso\backend\service\Impl\MacopladosImplS.class
 com\congreso\backend\entities\MenuE.class
 com\congreso\backend\entities\forms\DcontratosForms.class
 com\congreso\backend\controller\Impl\RoleImplC.class
+com\congreso\backend\entities\GeneralE.class
 com\congreso\backend\model\dto\McontratosDto.class
 com\congreso\backend\service\Impl\McontratosImplS.class
 com\congreso\backend\enumeration\RolSecurityEnum.class
+com\congreso\backend\entities\MesesE$MesesEBuilder.class
 com\congreso\backend\model\dto\PersonsDto$PersonsDtoBuilder.class
 com\congreso\backend\service\McontratosS.class
 com\congreso\backend\entities\Iconos_menuE.class
@@ -286,6 +293,7 @@ com\congreso\backend\validator\EmailNameValidator.class
 com\congreso\backend\repository\Impl\McontratosImplR.class
 com\congreso\backend\controller\Impl\SubmenuImplC.class
 com\congreso\backend\model\dto\MenuDto.class
+com\congreso\backend\controller\Impl\GeneralImplC.class
 com\congreso\backend\repository\MenuR.class
 com\congreso\backend\model\Inquilinos_ubic.class
 com\congreso\backend\controller\Impl\AuthenticationImplC.class
@@ -313,7 +321,9 @@ com\congreso\backend\repository\SeccionesR.class
 com\congreso\backend\model\Submenu$SubmenuBuilder.class
 com\congreso\backend\repository\DepartamentR.class
 com\congreso\backend\model\dto\SubmenuDto$SubmenuDtoBuilder.class
+com\congreso\backend\repositoryE\GeneralRepo.class
 com\congreso\backend\controller\MenuC.class
+com\congreso\backend\entities\GeneralE$GeneralEBuilder.class
 com\congreso\backend\service\Iconos_menuS.class
 com\congreso\backend\CongresoBackendApplication.class
 com\congreso\backend\controller\Impl\PrediosImplC.class
