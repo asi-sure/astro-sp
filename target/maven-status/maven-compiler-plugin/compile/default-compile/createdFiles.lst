@@ -218,6 +218,7 @@ com\congreso\backend\model\SystemUser.class
 com\congreso\backend\service\RolS.class
 com\congreso\backend\entities\DcontratosEPK.class
 com\congreso\backend\libs\GeneradorCodigos.class
+com\congreso\backend\entities\forms\GeneralResumenForms.class
 com\congreso\backend\repository\Impl\SeccionesImplR.class
 com\congreso\backend\entities\forms\MacopladosForms.class
 com\congreso\backend\controller\Impl\PersonsImplC.class
@@ -335,6 +336,7 @@ com\congreso\backend\entities\PrediosE.class
 com\congreso\backend\controller\SubmenuC.class
 com\congreso\backend\entities\AuditoriaTransaccionesE.class
 com\congreso\backend\repository\Impl\MenuImplR.class
+com\congreso\backend\entities\Dto\GeneralResumenDto.class
 com\congreso\backend\model\Dcontratos$DcontratosBuilder.class
 com\congreso\backend\service\Impl\PersonsImplS.class
 com\congreso\backend\service\RegionS.class
