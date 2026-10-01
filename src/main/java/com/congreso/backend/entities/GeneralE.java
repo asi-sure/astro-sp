@@ -18,16 +18,13 @@ public class GeneralE {
     private Long id;
 
     @NotNull(message = "Campo requerido")
-    private int gestion;
+    private Integer gestion;
 
     @NotNull(message = "Campo requerido")
     private int contratos;
 
     @NotNull(message = "Campo requerido")
     private int acoplados;
-
-//    @NotNull(message = "Campo requerido")
-//    private int mes;
 
     @NotNull(message = "Campo requerido")
     private int anio;

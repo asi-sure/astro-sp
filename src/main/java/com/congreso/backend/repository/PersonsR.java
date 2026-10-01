@@ -14,6 +14,7 @@ public interface PersonsR {
     List<PersonsDto> findAll(boolean xstatus, Tipo_persons tipoper);
 
     Persons findById(int id);
+    boolean si_existe_Id(int id);
     List<Role> roleFindById(int id);
     Long savePersons(Persons person);
     boolean update(Persons obj, int id);

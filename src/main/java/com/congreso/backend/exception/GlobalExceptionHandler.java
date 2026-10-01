@@ -25,7 +25,6 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -125,4 +124,17 @@ public class GlobalExceptionHandler {
         exception.setZonedDateTime(ZonedDateTime.now());
         return exception;
     }
-}
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ApiException handlerBadRequestException(IllegalArgumentException ex) {
+        logger.warn("Solicitud incorrecta al servidor:", ex.getMessage());
+        ApiException exception = new ApiException();
+        exception.setErrorMessage(ex.getMessage());
+        exception.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        exception.setZonedDateTime(ZonedDateTime.now());
+        return exception;
+    }
+
+
+} //end of class

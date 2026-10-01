@@ -36,6 +36,26 @@ public class PersonsImplR implements PersonsR {
     }
 
     @Override
+    public boolean si_existe_Id(int id) {
+        Boolean existe;
+        sqlString="SELECT EXISTS(SELECT 1 FROM persons WHERE id = ?)";
+        existe = db.queryForObject(sqlString, Boolean.class, id);
+        return existe != null && existe;
+    }
+
+    /*
+            String sql="";
+        Boolean existe;
+        if (id==0){ //solo busca cedula
+            sql="SELECT EXISTS(SELECT 1 FROM persons WHERE cedula = ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula);
+        }else{ //busca cedula e ID
+            sql="SELECT EXISTS(SELECT 1 FROM persons WHERE cedula = ? and id<> ?)";
+            existe = db.queryForObject(sql, Boolean.class, xcedula, id);
+        }
+        return existe != null && existe;
+     */
+    @Override
     public List<Role> roleFindById(int id) {
         sqlString = "SELECT r.* FROM role r, rolper p WHERE (r.id_role=p.id_role)and(p.id_person=?);";
         return db.query(sqlString, new BeanPropertyRowMapper<>(Role.class), id);
