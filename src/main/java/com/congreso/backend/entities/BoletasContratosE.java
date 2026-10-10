@@ -18,8 +18,7 @@ import java.util.Date;
 @Table(name = "boletas_contratos")
 public class BoletasContratosE {
     @Id
-    private long id_boleta_con;
-    private long id_dcon;
+    private int id_boleta_con;
     private int mes;
     private int anio;
     private int gestion;
@@ -36,8 +35,7 @@ public class BoletasContratosE {
     private LocalDate eliminado_en;
 
     @ManyToOne
-    @MapsId("id_dcon")
-    @JoinColumn(name = "id_dcon")
+    @JoinColumn(name = "codcon")
     @JsonBackReference
-    DcontratosE dcontratos;
+    McontratosE mcontratos;
 }

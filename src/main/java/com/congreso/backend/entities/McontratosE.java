@@ -84,4 +84,8 @@ public class McontratosE {
     @OneToMany(mappedBy = "mcontratos")
     @JsonManagedReference
     List<DcontratosE> dcontratos;
+
+    @OneToMany(mappedBy = "mcontratos")
+    @JsonManagedReference
+    List<BoletasContratosE> boletasContratos;
 }

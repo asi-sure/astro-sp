@@ -36,5 +36,5 @@ public class BoletasAcopladosE {
     @MapsId("id_daco")
     @JoinColumn(name = "id_daco")
     @JsonBackReference
-    DacopladosE dacoplados;
+    DacopladosE dacoplados1111;
 }
